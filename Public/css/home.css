@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+body{
+	padding-top:50px;
+}
+
+.img{
+	width: 100%;
+    overflow:hidden;
+}
+
+.prolist{
+	float:right;
+	margin-right:5px;
+}
+.prolist li a{
+	float:right;
+	margin-left:5px;
+	margin-right:5px;
+	padding-left:0px;
+	padding-right:0px;
+
+}
