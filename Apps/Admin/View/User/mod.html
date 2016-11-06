@@ -1,0 +1,62 @@
+<layout name="layout" />
+  <ol class="breadcrumb">
+    <span>所在位置：</span>
+        <li><a href="__APP__/Admin/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+        <li><a href="__URL__/index">管理员</a></li>   
+         <li class="active">修改</li>
+    <span class="pull-right"><a href="__URL__/index"><button type="button" class="btn btn-warning btn-xs pull-right">返回</button></a></span>
+  </ol>
+  <h1 >管理员-修改</h1>
+  <div class="row">
+    <div class="col-sm-8">
+          <p class="pull-right visible-xs"><button class="btn-xs btn-primary">tar</button></p>
+          <div class="panel panel-default">  
+            <div class="panel-body addmod">
+                <form action="__URL__/update" method="post" enctype='multipart/form-data'  role="form">
+                    <input type="hidden" name="id" value="<{$user.id}>" />
+                    <div class="form-group input-group-lg">
+                        <label for="exampleupdateTime"><{$user.moder}>：</label>
+                        更新于:<{$user.updatetime}> 
+                    </div>
+                    <div class="form-group input-group-lg">
+                        <label for="exampleInputusername"></label>
+                        <input type="text" class="form-control" name="username" value="<{$user.username}>" placeholder="登录名" > 
+                    </div>
+                    <div class="form-group input-group-lg">
+                        <label for="exampleInputrealname"></label>
+                        <input type="text" class="form-control" name="realname" value="<{$user.realname}>" placeholder="姓名" > 
+                    </div>                  
+
+                    <div class="form-group input-group-lg">
+                        <label for="exampleInputrealname">状态：</label>
+                        在职<input type='radio' name='state' value='在职' <?php echo $user['state']=='在职'?'checked=”checked”':null;?> />
+                        离职<input type='radio' name='state' value='离职' <?php echo $user['state']=='离职'?'checked=”checked”':null;?> />
+                    </div>
+
+                    <div class="form-group input-group-lg">
+                        <label for="exampleInputrealname"></label>
+                        <input type="text" class="form-control" name="phone" value="<{$user.phone}>" placeholder="手机" > 
+                    </div>  
+                    
+                    <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+                  <div class="btn-group pull-left">
+                        <a href="__URL__/add"><button  class="btn btn-success btn-lg" style="margin-left:30px;">添 加</button></a>
+                        <a href="__URL__"><button  class="btn btn-warning btn-lg" style="margin-left:30px;">返 回</button></a>
+                  </div>
+              </div>
+          </div>
+    </div>                      
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">管理员</h3>
+            </div>            
+            <ul class="list-group">
+            <volist name='data' id='vo' empty="没有数据">
+                <li class="list-group-item" title="管理员"><a href="__URL__/mod/id/<{$vo.id}>""><{$vo.realname}>:<{$vo.state}></a></li>
+            </volist>            
+            </ul>                        
+        </div>          
+    </div>
+</div>

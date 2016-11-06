@@ -1,0 +1,57 @@
+<layout name="layout" />
+  <ol class="breadcrumb">
+    <span>所在位置：</span>
+        <li><a href="__APP__/Admin/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+        <li><a href="__URL__">诚聘人才</a></li>   
+         <li class="active">修改</li>
+    <span class="pull-right"><a href="__URL__"><button type="button" class="btn btn-warning btn-xs pull-right">返回</button></a></span>
+  </ol>
+    
+
+    <div class="col-sm-8">
+          <p class="pull-right visible-xs"><button class="btn-xs btn-primary">tar</button></p>
+          <div class="panel panel-default">
+          <h3 >诚聘人才-修改</h3>  
+            <div class="panel-body addmod">
+                <form action="__URL__/update" method="post" enctype='multipart/form-data' role="form">
+                <input type="hidden" name="id" value="<{$data.id}>" />
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputrealname"></label>
+                      <input type="text" class="form-control" name="title" value="<{$data.title}>" placeholder="职位" > 
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputrealname"></label>
+                      <input type="text" class="form-control" name="salary" value="<{$data.salary}>" placeholder="薪酬" > 
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputrealname"></label>
+                      <textarea class="form-control" name="desc" rows="5"><{$data.desc}></textarea>
+                       
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputrealname"></label>
+                      <input type="text" class="form-control" name="place" value="<{$data.place}>" placeholder="地点" > 
+                  </div>
+                  <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+                  <div class="btn-group pull-left">
+                    <a href="__URL__/add"><button  class="btn btn-success btn-lg" style="margin-left:50px;">添加</button></a>
+                    <a href="__URL__"><button  class="btn btn-warning btn-lg" style="margin-left:50px;">返 回</button></a>
+                  </div>
+              </div>
+          </div>
+    </div>                      
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">管理员</h3>
+            </div>            
+            <ul class="list-group">
+            <volist name='arr' id='vo' empty="没有数据">
+                <li class="list-group-item" title="诚聘人才"><a href="__URL__/mod/id/<{$vo.id}>""><{$vo.title}>:<{$vo.state}></a></li>
+            </volist>            
+            </ul>                        
+        </div>          
+    </div>
+</div>            
+                            

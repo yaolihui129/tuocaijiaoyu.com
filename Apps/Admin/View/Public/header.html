@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>石家庄-拓才教育</title>
+    <meta name="keywords" content="培训，小学" />
+  <meta name="description" content="石家庄-拓才教育" />
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <!-- Bootstrap -->
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <import type="css" file="Css.admin" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="__APP__/Home/Index/index"><!-- <img alt="Brand" src="__IMAGES__/logo.jpg"> -->拓才教育</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="__APP__/Admin/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>           
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="#"><span class="glyphicon glyphicon-book"></span> 课程<span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">                
+                 <li><a href="__APP__/Admin/Course/index/coursetype/学前少儿">学前少儿</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Course/index/coursetype/小学课程">小学课程</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Course/index/coursetype/中学课程">中学课程</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Course/index/coursetype/作业托管">作业托管</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Course/index/coursetype/兴趣拓展">兴趣拓展</a></li>
+               </ul>
+           </li>
+           <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="#"><span class="glyphicon glyphicon-user"></span> 人员<span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">                
+                 <li><a href="__APP__/Admin/Customer/index/custype/老师">老师</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Customer/index/custype/助教">助教</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Customer/index/custype/学生">学生</a></li>
+               </ul>
+           </li>
+
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> 设置&nbsp;<span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">
+                 <li><a href="__APP__/Admin/User">管理员</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Hr">招聘</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Setting/index">关于</a></li>
+                 <li class="divider"></li>
+                 <li><a href="__APP__/Admin/Dict/index">字典</a></li>
+                 <!--<li class="divider"></li>
+                 <li><a href="__APP__/Admin/Index/test">系统</a></li>-->                
+               </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+             
+             <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <b>欢迎您-</b><{$_SESSION.realname}> <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                 <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">个人信息</a></li>
+                    <li><a href="__APP__/Admin/User/setpass">修改密码</a></li>             
+                    <li class="divider"></li>
+                    <li><a href="__APP__/Admin/Login/logout" onclick="return confirm('你确定要退出系统吗？')" >退出</a></li>
+                </ul>
+          </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+
+
+

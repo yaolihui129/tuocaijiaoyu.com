@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+"http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>石家庄-托才教育</title>
+<link href="__CSS__main.css" type="text/css" rel="stylesheet" />
+<import type="js" file="Js.jquery" />
+<import type="js" file="Js.global" />
+
+<style type="text/css">
+		     body{background:url(__IMAGES__/login.jpg) no-repeat center top;background-size:100%;font-family:'Microsoft Yahei','Simsun',"宋体"}
+			.login_tt{font-size:24px; line-height:30px; color:#fff; width:462px; margin:0 auto; margin-top:150px; text-align:center}
+			.login{background:url(__IMAGES__/login_bg.png) no-repeat; width:462px; height:244px; margin:0 auto; margin-top:15px; padding-top:40px;}
+			.input1{margin:0px 0 0 65px; font-size:14px; color:#888;}
+			.input1 input{width:140px; height:28px; border:0; line-height:28px; margin-left:5px;}
+			.input2{margin:23px 0 0 60px; font-size:14px; color:#888;}
+			.input2 input{width:140px; height:28px; border:0; line-height:28px; margin-left:5px;}
+			.input3_box{background:#fff url(__IMAGES__/login_bg.png) no-repeat -36px -87px; border:1px #bbb solid; border-radius:5px; height:35px; line-height:32px;width:182px; padding-left:30px; color:#666; float:left;}
+			.input3{margin:20px 0 0 33px;}
+			.input3_box input{width:53px; height:28px; border:0; line-height:28px; margin-left:5px; margin-top:2px;}
+			.input3 img{margin-left:3px; width:80px; height:32px; border:0; float:left; display:inline; margin-top:2px;}
+			.login_btn{margin:25px 0 0 33px;}
+			.login_btn input{background:url(__IMAGES__/login_btn.gif) no-repeat; width:216px; height:43px; border:0; cursor:pointer;}
+			.copyright{text-align:center; color:#fff;}
+			.copyright a,.copyright a:hover{color:#fff;}
+			.login .input_name{float:left; margin-top:3px; display:block;}
+		</style>
+
+</head>
+<body>
+<div class="login_tt">
+		   <span class="num">拓才教育</span>后台管理系统
+	   </div><!--login_tt-->
+       <form action="__URL__/login" method="post" >
+		   <div class="login" id="login-form" >
+		        <div class="input1">
+                    <span class="input_name">用 户:</span>
+				    <input type="text" name="username" size="20">
+				    <div class="clear"></div>
+				 </div><!--input1-->
+				 <div class="input2">
+                    <span class="input_name">密 码:</span>
+				    <input type="password" name="password" size="20">
+                    <div class="clear"></div>
+				 </div><!--input2-->
+				 <div class="login_btn">
+                      <input type="submit"  name="do_submit" value="" >
+                      <div class="clear"></div>
+				 </div><!--login_btn-->
+			</div><!--login-form-->
+		</form>
+             <div class="copyright">
+		     Copyright <span class="num">&copy;</span> 2016-2020
+		     <a href="#" target="_blank">yaolh</a> 版权所有
+		     </div>
+
+
+		<script type="text/javascript">
+			$(function(){
+
+				$(":input[name='name']").focus();
+
+				$(".authcode").click(function(){
+					$(this).attr("src", $(this).attr("src") + '&time=' + new Date().getTime());
+				});
+
+				$(":submit").click(function(){
+					if ($(":input[name='name']").val() == '') {
+						alert('帐号不能为空！')
+						return false;
+					}
+
+					if ($(":input[name='pw']").val() == '') {
+						alert('密码不能为空！')
+						return false;
+					}
+
+					return true;
+				});
+			});
+		</script>
+
+
+</body>
+</html>

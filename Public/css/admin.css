@@ -6,13 +6,11 @@ body{
 	background:url(__IMAGES__/welcome.jpg) no-repeat; 
 }
 
-
 /*首页*/
-#shouyegg{
-	height: 370px;
-}
-.img{
-	width: 100%;
-    overflow:hidden;
-}
 
+
+/*提交页面*/
+.addmod{
+	padding: 10px  30px;
+
+}

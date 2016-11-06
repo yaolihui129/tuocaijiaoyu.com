@@ -1,0 +1,41 @@
+<layout name="layout" />
+	<div class="row">
+        <div class="col-sm-9">
+           	<p class="pull-right visible-xs">
+               <button class="btn-xs btn-primary"></button>
+           	</p>
+           	<div class="panel panel-primary">
+             	<div class="panel-heading">
+                 	<h1 class="panel-title">诚聘人才</h1>
+             	</div>
+             	<div class="panel-body">
+                 	
+        			<volist name='data' id='vo' empty="没有数据">
+       					<div class="page_tt"><{$vo.title}><span style="margin-left:30px;">工资：<{$vo.salary}></span>
+         					<span style="float:right;">
+          						<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1058793920&amp;site=qq&amp;menu=yes" target="_blank">
+		  						<img border="0" title="在线客服" alt="在线客服" style="margin-top:0px;" src="http://wpa.qq.com/pa?p=2:1058793920:41">
+		  						</a> 发布日期：<{$vo.date}>
+		  					</span>
+						</div>
+						<div class="danye_main">		    
+		    				<span style=" float:left;width:600px;"><{$vo.desc}></span>
+						</div>
+						<div class="clear"></div>	
+			 		</volist>		
+   				
+            	</div>
+        	</div>          	
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-primary">
+             	<div class="panel-heading">
+                  	<h3 class="panel-title">关于我们</h3>
+            	</div>            
+                <ul class="list-group">
+			        <li class="list-group-item"><a href="__APP__/Home/About/index" title="关于我们">关于我们</a></li>
+			        <li class="list-group-item"><a href="__APP__/Home/About/hr" title="诚聘人才">诚聘人才</a></li>
+			    </ul>                        
+            </div>          
+        </div>
+    </div>

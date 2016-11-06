@@ -1,0 +1,69 @@
+<layout name="layout" />
+<ol class="breadcrumb">
+    <span>所在位置：</span>
+        <li><a href="__APP__/Admin/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+        <li><a href="__URL__/index/custype/<{$w.custype}>">人员-<{$w.custype}></a></li>  
+        <li class="active">修改</li>
+    <span class="pull-right"><a href="__URL__/index/custype/<{$w.custype}>"><button type="button" class="btn btn-warning btn-xs pull-right">返回</button></a></span>
+  </ol>
+  
+
+
+
+  <div class="row">
+    <div class="col-sm-9">
+        <p class="pull-right visible-xs"><button class="btn-xs btn-primary">tar</button></p>
+        <div class="panel panel-default">
+        <h3 ><{$w.custype}>-修改</h3>
+            <div class="panel-body addmod">
+                <form action="__URL__/update" method="post" enctype='multipart/form-data' role="form">
+                  <input type="hidden" name="id" value="<{$arr.id}>" />
+                  <div class="form-group">
+                        <label for="exampleupdateTime"><{$arr.moder}>：</label>
+                        更新于:<{$arr.updatetime}> 
+                    </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputusername"></label>
+                      <input type="text" class="form-control" name="phone" value="<{$arr.phone}>" placeholder="手机号" >  
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputusername"></label>
+                      <input type="text" class="form-control" name="realname" value="<{$arr.realname}>" placeholder="姓名" >  
+                  </div>
+                   <div class="form-group input-group-lg">
+                      <label for="exampleInputusername"></label>
+                      <{$state}> 
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputusername"></label>
+                      <input type="text" class="form-control" name="custype" value="<{$arr.custype}>" placeholder="类型" >  
+                  </div>
+                 
+                  
+                  <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+                  <div class="btn-group pull-left">
+
+                      <a href="__URL__/add/custype/<{$w.custype}>"><button  class="btn btn-success btn-lg" style="margin-left:50px;">添 加</button></a>
+
+                      <a href="__URL__/index/custype/<{$w.custype}>"><button  class="btn btn-warning btn-lg" style="margin-left:50px;">返 回</button></a>
+                  </div>
+            </div>
+        </div>
+    </div>                      
+    <div class="col-sm-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><{$w.custype}></h3>
+            </div>            
+            <ul class="list-group">
+            <volist name='data' id='vo' empty="没有数据">
+               <li class="list-group-item" >
+                  <a href="__URL__/mod/id/<{$vo.id}>/custype/<{$w.custype}>"><{$vo.phone}>:<{$vo.realname}>【<{$vo.state}>】</a>
+               </li>
+            </volist>            
+            </ul>                        
+        </div>          
+    </div>
+</div>
+     
