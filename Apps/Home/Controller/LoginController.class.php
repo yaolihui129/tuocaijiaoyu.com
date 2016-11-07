@@ -19,7 +19,7 @@ class LoginController extends Controller {
             $this->redirect('/Home/Index/index');
         }else{
 
-            $this->error('用户或密码错误，请重新登陆！', "index");
+            $this->error('用户或密码错误，请重新登陆！', U('Home/Index/index'));
         }
 
     }
