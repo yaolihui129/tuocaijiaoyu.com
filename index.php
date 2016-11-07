@@ -3,8 +3,6 @@
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 header('Content-Type:text/html;Charset=UTF-8');
 
-
-
 // 定义应用目录
 define('APP_PATH','./Apps/');
 
