@@ -29,9 +29,9 @@ class PublicController extends Controller {
             define('CALENDAR_INIT', 1);
             $str .= '<script src="'.__ROOT__.'/Public/Admin/js/date/js/jscal2.js"></script>
    				 <script src="'.__ROOT__.'/Public/Admin/js/date/js/lang/cn.js"></script>
-   				 <link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/Admin/js/date/css/jscal2.css" />
-    				<link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/Admin/js/date/css/border-radius.css" />
-    				<link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/Admin/js/date/css/steel/steel.css" />';
+   				 <link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/js/date/css/jscal2.css" />
+    				<link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/js/date/css/border-radius.css" />
+    				<link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/js/date/css/steel/steel.css" />';
         }
         $str .= '<input style="height:20px" type="text" name="'.$name.'" id="'.$id.'" value="'.$value.'" size="'.$size.'" class="date" readonly>&nbsp;';
         $str .= '<script type="text/javascript">
@@ -60,7 +60,7 @@ class PublicController extends Controller {
     public static function editor($textareaid = 'content', $value='', $toolbar = 'desc', $height = 200, $color = '', $up=true) {
         $str ='<textarea id="'.$textareaid.'" name="'.$textareaid.'">'.$value.'</textarea>';
         if(!defined('EDITOR_INIT')) {
-            $str .= '<script type="text/javascript" src="'.__ROOT__.'/Public/Admin/js/ckeditor/ckeditor.js"></script>';
+            $str .= '<script type="text/javascript" src="'.__ROOT__.'/Public/js/ckeditor/ckeditor.js"></script>';
             define('EDITOR_INIT', 1);
         }
 
@@ -120,7 +120,7 @@ class PublicController extends Controller {
 
         if(!defined('COLOR_INIT')) {
             define('COLOR_INIT', 1);
-            $str= '<script src="'.__ROOT__.'/Public/Admin/js/jscolor/jscolor.js"></script>';
+            $str= '<script src="'.__ROOT__.'/Public/js/jscolor/jscolor.js"></script>';
 
         }
         $str .= '<input class="color" style="width:48px;height:16px;overfrom:hidden" name="'.$name.'" value="'.$value.'" />';

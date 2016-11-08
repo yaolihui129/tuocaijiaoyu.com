@@ -14,8 +14,8 @@ class IndexController extends Controller {
             $_SESSION['ip']=get_client_ip();
             $_SESSION['browser']=GetBrowser();
             $_SESSION['os']=GetOs();
-            $_SESSION['himg']=$data['hpath'].$data['himg'];
-            $_SESSION['aimg']=$data['apath'].$data['aimg'];
+            $_SESSION['himg']=$data['hpath'].'/thumb_'.$data['himg'];
+            $_SESSION['aimg']=$data['apath'].'/thumb_'.$data['aimg'];
 
 
         
