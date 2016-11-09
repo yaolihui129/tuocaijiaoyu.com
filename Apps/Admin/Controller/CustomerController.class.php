@@ -95,6 +95,46 @@ class CustomerController extends CommonController {
         }
     }
 
+    public function himg(){
+        $custype=$_GET['custype'];
+        $this->assign('custype',$custype);
+        $id=$_GET['id'];
+        
+        $m=M('customer');
+        $arr=$m->find($id);
+        $this->assign('user',$arr);
+         
+        $this->display();
+    
+    }
+    
+    public function imgh(){
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
+        $upload->savePath  = '/Customer/'; // 设置附件上传目录
+    
+        $info  =   $upload->upload();
+        dump($info);
+        if(!$info) {// 上传错误提示错误信息
+            $this->error($upload->getError());
+        }else{// 上传成功 获取上传文件信息
+            $_POST['hpath']=$info['himg']['savepath'];
+            $_POST['himg']=$info['himg']['savename'];
+            /* 实例化模型*/
+            $db=D('customer');
+            if ($db->save($_POST)){
+                $image = new \Think\Image();
+                $image->open('./Public/Upload/'.$info['himg']['savepath'].$info['himg']['savename']);
+                $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['himg']['savepath'].'/thumb_'.$info['himg']['savename']);
+                $this->success("上传成功！");
+            }else{
+                $this->error("上传失败！");
+            }
+        }
+    }
+    
 
 
 
