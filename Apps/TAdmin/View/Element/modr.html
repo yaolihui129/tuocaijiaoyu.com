@@ -1,0 +1,47 @@
+  <layout name="layout" />
+        <div class="place">
+                                 所在位置：
+                <a href="__APP__/TAdmin/Program">项目</a>
+                ><a href="__APP__/TAdmin/Func/range/proid/<{$w.proid}>">范围</a>
+                ><a href="__URL__/indexr/funcid/<{$w.funcid}>/proid/<{$w.proid}>">数据模板</a>
+                >控件编辑
+               <span style="float:right;margin-right:60px;">
+                 <a href="__URL__/indexr/funcid/<{$w.funcid}>/proid/<{$w.proid}>"> 返回</a>
+               </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >控件编辑
+              <span>(功能点：<{$w.funcid|getSPFunc=###}>)</span>
+              </div>
+              <div class="left" align="left" style="widtht:25%;">
+               <h1>功能控件</h1>
+                    <volist name='data' id='vo' empty="没有数据">
+                      <ur>
+                         <li><a href="__URL__/modr/id/<{$vo.id}>/funcid/<{$w.funcid}>/proid/<{$w.proid}>">
+                         <{$vo.sn}>.<{$vo.typeset}>:<{$vo.control}>-<{$vo.data}></a>:<{$vo.state}>
+                         </li>
+                       </ur>
+                    </volist>
+              </div>
+              <div class="midd" align="right" >
+
+                  <table border="0" width="500" align="left">
+                  <form action="__URL__/update" method="post" >
+                  <input type="hidden" name="funcid" value="<{$element.funcid}>" />
+                  <input type="hidden" name="id" value="<{$element.id}>" />
+                  <tr><td>更新：</td><td><{$element.moder}>更新于:<{$element.updateTime}></td></tr>
+                     <tr><td> 顺序：</td><td><input type="text" name="sn" value="<{$element.sn}>"  class="input300"/></td></tr>
+                     <tr><td>控件：</td><td><input type="text" name="control" value="<{$element.control}>"  class="input300"/></td></tr>
+                     <tr><td> 数据：</td><td><input type="text" name="data" value="<{$element.data}>"  class="input300"/></td></tr>
+                     <tr><td>状态：</td><td><{$state}>类型：<{$typeset}></td></tr>
+                     <tr><td></td>
+                         <td>
+                             <input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                             <a href="__URL__/addr/funcid/<{$w.funcid}>/proid/<{$w.proid}>"><button  class="btn" >添加</button></a>
+                             <a href="__URL__/indexr/funcid/<{$w.funcid}>/proid/<{$w.proid}>"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

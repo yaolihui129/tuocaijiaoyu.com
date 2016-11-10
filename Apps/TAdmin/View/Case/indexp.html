@@ -1,0 +1,65 @@
+     <layout name="layout" />
+        <div class="place"> 所在位置：<a href="__APP__/Program">项目</a>
+            ><a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>/prodid/<{$w.prodid}>">系统</a>
+            ><a href="__APP__/TAdmin/Path/indexp/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">路径</a>
+            ><a href="__APP__/TAdmin/Func/indexp/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">功能点</a>
+            >用例
+          <span style="float:right;margin-right:60px;">
+            <a href="__APP__/TAdmin/Func/indexp/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>"> 返回</a>
+          </span>
+        </div>
+        <div class="content">
+           <div class="main">
+             <div class="top" >
+                <span style="margin-left:15%;">用例：<{$w.funcid|getSPFunc=###}></span>
+                <span style="float:right;">当前项目：<{$w.proid|getProNo=###}></span>
+             </div>
+              <div class="left" align="left" style="width:15%;">
+                 <volist name='data' id='vo' empty="没有数据"><ul>
+                    <li><a href="__URL__/indexp/funcid/<{$vo.id}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">
+                    <{$vo.sn}>.【<{$vo.state}>】<{$vo.func}>:<{$vo.id|countFCase=###}></a></li>
+                 </ul></volist>
+              </div>
+              <div class="midd" align="right" >
+                   <table border="1" width="84%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=2% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=15% align="left"  bgcolor="#ccc">意图
+                          <span style="float:right;margin-right:5px;">
+                             <a href="__APP__/TAdmin/Element/indexp/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">模板</a>
+                             <a href="__URL__/addp/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>"  >添加 </a>
+                          </span>
+                       </th>
+                       <th width=10% align="left"  bgcolor="#ccc">预期</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=5% align="center" bgcolor="#ccc">项目</th>
+                       <th width=3% align="center" bgcolor="#ccc">维护</th>
+                       <th width=7% align="center" bgcolor="#ccc">更新时间</th>
+                       <!-- <th width=2% align="center" bgcolor="#ccc">操作 </th> -->
+                     </tr>
+                     <form action="__URL__/order" method="post" >
+                     <volist name='cases' id='case' empty="没有数据">
+                     <tr>
+                       <td align="center" ><{$case.id}></td>
+                       <td align="center" ><input type="text" name="sn[<{$case.id}>]" value="<{$case.sn}>"  class="input40"/></td>
+                       <td ><a href="#" ><{$case.main}></a>
+                         <span style="float:right;margin-right:5px;">
+                           <a href="__URL__/modp/id/<{$case.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">修改</a>
+                         </span>
+                       </td>
+                       <td align="left" ><{$case.expected}></td>
+                       <td align="center" ><{$case.state}></td>
+                       <td align="center" ><{$case.fproid|getProNo=###}></td>
+                       <td align="center" ><{$case.moder}></td>
+                       <td align="center" ><{$case.updateTime}></td>
+                      <!--  <td align="center" >
+                          <a href="__URL__/del/id/<{$case.id}>" onclick="return confirm('你确定要删除用例：<{$case.main}>？')">删除</a>
+                       </td> -->
+                    </tr>
+                    </volist>
+                    <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                    </form>
+                </table>
+              </div><!-- midd -->
+           </div><!-- main -->

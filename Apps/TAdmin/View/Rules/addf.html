@@ -1,0 +1,39 @@
+ <layout name="layout" />
+      <div class="place">所在位置：
+         <a href="__APP__/TAdmin/Program">项目</a>
+         ><a href="__APP__/TAdmin/Func/func/proid/<{$w.proid}>">功能点</a>
+         ><a href="__APP__/TAdmin/Rules/indexf/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">规则</a>
+         >添加
+         <span style="float:right;margin-right:60px;">
+             <a href="__APP__/TAdmin/Rules/indexf/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>"> 返回</a>
+         </span>
+      </div>
+      <div class="content">
+          <div class="main">
+              <div class="top" style="margin-left:35%;">规则添加
+              <span>(功能点：<{$w.funcid|getSPFunc=###}>)</span>
+              </div>
+              <div class="left"  align="left" style="width:35%">
+                    <volist name='data' id='vo' empty="没有数据"><ul><li>
+                       <a href="__URL__/modf/id/<{$vo.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">
+                       <{$vo.sn}>.<{$vo.rules}></a>
+                  </li></ul></volist>
+              </div>
+              <div class="midd"  align="right" >
+                  <table border="0" width="700" align="left">
+                   <form action="__URL__/insert" method="post" >
+                   <input type="hidden" name="funcid" value="<{$w.funcid}>" />
+                     <tr><td> 顺序：</td><td><input type="text" name="sn" value="<{$c}>"  class="input500"/></td> </tr>
+                     <tr><td>规则：</td><td><input type="text" name="rules" value=""  class="input500"/></td></tr>
+                     <tr><td>来源：</td><td><input type="text" name="source" value="需求文档"  class="input500"/></td> </tr>
+                     <tr><td>项目：</td><td><{$fproid}>状态:<{$state}></td></tr>
+                     <tr><td>备注：</td><td><{$beizhu}></td> </tr>
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                              <a href="__APP__/TAdmin/Rules/indexf/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">
+                              <button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

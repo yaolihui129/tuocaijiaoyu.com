@@ -1,0 +1,64 @@
+ <layout name="layout" />
+       <div class="place"> 所在位置：<a href="__APP__/TAdmin/Program">项目</a>
+             ><a href="__APP__/TAdmin/Stage/index/proid/<{$w.proid}>">里程碑</a>
+             ><a href="__APP__/TAdmin/Stagetester/index/proid/<{$w.proid}>/stageid/<{$w.stageid}>/type/<{$w.type}>">测试者</a>
+             ><a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$w.stagetesterid}>/tester/<{$w.tester}>/proid/<{$w.proid}>/stageid/<{$w.stageid}>/type/<{$w.type}>">列队</a>
+             >待测模块库
+            <span style="float:right;margin-right:60px;">
+            <a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$w.stagetesterid}>/tester/<{$w.tester}>/proid/<{$w.proid}>/stageid/<{$w.stageid}>/type/<{$w.type}>"> 返回</a>
+            </span>
+       </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:20px;"> 待测<{$w.type}>模块库:
+                  <span style="float:right;"> 当前项目：<{$w.proid|getProNo=###}></span>
+              </div>
+              <div class="midd"  align="left" >
+                 <table border="0" width="100%" align="center">
+                    <tr>
+                       <th width=35% align="left">列队场景</th>
+                       <th width=65% align="left">待测模块</th>
+                    </tr>
+                    <tr>
+                      <td  valign="top">
+                          <table border="1" width="95%" align="left">
+                            <tr>
+                              <th width=7% align="center" bgcolor="#ccc">顺序</th>
+                              <th width=10% align="center" bgcolor="#ccc">ID</th>
+                              <th width=83% align="left" bgcolor="#ccc">场景</th>
+                           </tr>
+                           <volist name='exe' id='ex'>
+                           <tr>
+                             <td align="center" ><{$ex.sn}></td>
+                             <td align="center" ><{$ex.id}></td>
+                             <td ><a href="#" ><{$ex.swho}>【<{$ex.swhen}>】<{$ex.scene}></a></td>
+                           </tr>
+                           </volist>
+                         </table>
+                      </td>
+                      <td  valign="top">
+                          <table border="1" width="100%" align="left">
+                            <tr>
+                              <th width=5% align="center" bgcolor="#ccc">顺序</th>
+                              <th width=90% align="left" bgcolor="#ccc">模块</th>
+                              <th width=5% align="center" bgcolor="#ccc">次数</th>
+                           </tr>
+                           <volist name='data' id='pa'>
+                           <tr>
+                             <td align="center" ><{$pa.sn}></td>
+                             <td ><a href="__URL__/jion/pathid/<{$pa.id}>/stagetesterid/<{$w.stagetesterid}>/type/<{$w.type}>" >
+                               <{$pa.system}>-<{$pa.path}>  <{$pa.state}></a>
+                                 <span style="float:right;margin-right:5px;">
+                                    <a href="__URL__/jion/pathid/<{$pa.id}>/stagetesterid/<{$w.stagetesterid}>/type/<{$w.type}>/proid/<{$w.proid}>" >加入</a>
+                                    <a href="#" >查看<{$pa.id|countFunc=###}></a>
+                                 </span>
+                             </td>
+                             <td align="center" ><{$se.id}></td>
+                           </tr>
+                           </volist>
+                         </table>
+                      </td>
+                   </tr>
+                 </table>
+               </div><!-- midd -->
+           </div><!-- main -->

@@ -1,0 +1,41 @@
+<layout name="layout" />
+        <div class="place"> 所在位置：>手工测试</div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:20%;">手工测试
+                  <span style="float:right;">
+                                               当前项目：<{$w.proid|getProNo=###}>
+                   </span>
+              </div>
+              <div class="left" align="left" style="width:20%;">
+                    <volist name='data' id='vo' empty="没有数据">
+                      <ur>
+                         <li><a href="__URL__/index/stagetesterid/<{$vo.id}>/proid/<{$vo.proid}>/type/<{$w.type}>">
+                         <{$vo.prono}>:<{$vo.stage}>:<{$vo.state}>:<{$vo.id|countExescene=###}></a></li>
+                       </ur>
+                    </volist>
+              </div>
+              <div class="midd"  align="left">
+                   <table border="1" width="80%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=2% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=40% align="left"  bgcolor="#ccc">场景</th>
+                       <th width=3% align="left" bgcolor="#ccc">结果</th>
+                       <th width=3% align="left" bgcolor="#ccc">操作 </th>
+                     </tr>
+                     <volist name='exe' id='ex' empty="没有数据">
+                    <tr>
+                       <td align="center" ><{$ex.id}></td>
+                       <td align="center" ><{$ex.sn}></td>
+                       <td ><a href="__APP__/TAdmin/Exefunc/index/id/<{$ex.id}>/stagetesterid/<{$w.stagetesterid}>/proid/<{$w.proid}>/type/<{$w.type}>" ><{$ex.swho}>【<{$ex.swhen}>】<{$ex.scene}></a></td>
+                       <td align="left" ><{$ex.results}></td>
+                       <td align="left" >
+                            <a href="__APP__/TAdmin/Exefunc/index/id/<{$ex.id}>/stagetesterid/<{$w.stagetesterid}>/proid/<{$w.proid}>/type/<{$w.type}>">执行:<{$ex.id|countExeFunc=###}></a>
+                       </td>
+                    </tr>
+                    </volist>
+                </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

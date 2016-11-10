@@ -1,0 +1,65 @@
+<layout name="layout" />
+        <div class="place">
+                                 所在位置：
+                <a href="__APP__/TAdmin/Program">项目</a>
+                ><a href="__APP__/TAdmin/Func/func/proid/<{$w.proid}>">功能点</a>
+                ><a href="__URL__/indexf/funcid/<{$w.funcid}>/proid/<{$w.proid}>">数据模板</a>
+                >更多
+               <span style="float:right;margin-right:60px;">
+                 <a href="__APP__/TAdmin/Element/indexf/funcid/<{$w.funcid}>/proid/<{$w.proid}>"> 返回</a>
+               </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >
+              <span>(<{$w.funcid|getSPFunc=###}>)更多</span>
+              <span style="float:right;">
+                                                    当前项目：<{$w.proid|getProNo=###}>
+                  </span>
+              </div>
+              <div class="left" align="left" style="width:35%;">
+               <h1>用例</h1>
+                    <volist name='dcases' id='vo' empty="没有数据">
+                      <ur>
+                         <li><a href="__URL__/modr/id/<{$vo.id}>/funcid/<{$w.funcid}>/proid/<{$w.proid}>">
+                         <{$vo.sn}>.<{$vo.main}>:<{$vo.expected}>【<{$vo.fproid|getProNo=###}>】</a>:<{$vo.dstate}>
+                         </li>
+                       </ur>
+                    </volist>
+              </div>
+              <div class="midd" align="right" >
+
+                  <table border="0" width="600" align="left">
+                  <form action="__URL__/update" method="post" >
+                  <input type="hidden" name="id" value="<{$arr.id}>" />
+                     <tr><td bgcolor="#ccc">更新：</td><td><{$arr.moder}>&nbsp;更新于:<{$arr.updateTime}></td></tr>
+                     <tr><td bgcolor="#ccc"> 用例：</td><td><{$arr.sn}>.<{$arr.main}>:<{$arr.expected}>(<{$arr.id}>)&nbsp;<b>状态：</b><{$dstate}></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[0]['control']?$data[0]['control']:'Num1'}>:</td><td><input type="text" name="num1" value="<{$arr.num1}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[1]['control']?$data[1]['control']:'Num2'}>:</td><td><input type="text" name="num2" value="<{$arr.num2}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[2]['control']?$data[2]['control']:'Num3'}>:</td><td><input type="text" name="num3" value="<{$arr.num3}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[3]['control']?$data[3]['control']:'Num4'}>:</td><td><input type="text" name="num4" value="<{$arr.num4}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[4]['control']?$data[4]['control']:'Num5'}>:</td><td><input type="text" name="num5" value="<{$arr.num5}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[5]['control']?$data[5]['control']:'Num6'}>:</td><td><input type="text" name="num6" value="<{$arr.num6}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[6]['control']?$data[6]['control']:'Num7'}>:</td><td><input type="text" name="num7" value="<{$arr.num7}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[7]['control']?$data[7]['control']:'Num8'}>:</td><td><input type="text" name="num8" value="<{$arr.num8}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[8]['control']?$data[8]['control']:'Num9'}>:</td><td><input type="text" name="num9" value="<{$arr.num9}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[9]['control']?$data[9]['control']:'Num10'}>:</td><td><input type="text" name="num10" value="<{$arr.num10}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[10]['control']?$data[10]['control']:'Num11'}>:</td><td><input type="text" name="num11" value="<{$arr.num11}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[11]['control']?$data[11]['control']:'Num12'}>:</td><td><input type="text" name="num12" value="<{$arr.num12}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[12]['control']?$data[12]['control']:'Num13'}>:</td><td><input type="text" name="num13" value="<{$arr.num13}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[13]['control']?$data[13]['control']:'Num14'}>:</td><td><input type="text" name="num14" value="<{$arr.num14}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[14]['control']?$data[14]['control']:'Num15'}>:</td><td><input type="text" name="num15" value="<{$arr.num15}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[15]['control']?$data[15]['control']:'Num16'}>:</td><td><input type="text" name="num16" value="<{$arr.num16}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[16]['control']?$data[16]['control']:'Num17'}>:</td><td><input type="text" name="num17" value="<{$arr.num17}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[17]['control']?$data[17]['control']:'Num18'}>:</td><td><input type="text" name="num18" value="<{$arr.num18}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[18]['control']?$data[18]['control']:'Num19'}>:</td><td><input type="text" name="num19" value="<{$arr.num19}>"  class="input500"/></td></tr>
+                     <tr><td bgcolor="#ccc"><{$data[19]['control']?$data[19]['control']:'Num20'}>:</td><td><input type="text" name="num20" value="<{$arr.num20}>"  class="input500"/></td></tr>
+                     <tr><td></td>
+                         <td>
+                             <input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                             <a href="__APP__/TAdmin/Element/indexf/funcid/<{$w.funcid}>/proid/<{$w.proid}>"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

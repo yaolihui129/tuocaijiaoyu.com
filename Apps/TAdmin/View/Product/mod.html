@@ -1,0 +1,37 @@
+      <layout name="layout" />
+        <div class="place">
+                                 所在位置：
+             <a href="__URL__">产品</a>
+             >添加
+            <span style="float:right;margin-right:60px;">
+            <a href="__URL__"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top"> 产品编辑</div>
+              <div class="left"  align="left"style="width:10%">
+                    <volist name='data' id='vo' empty="没有数据">
+                      <ur>
+                       <a href="__URL__/mod/id/<{$vo.id}>"><{$vo.id}>.<{$vo.short}></a><br>
+                       </ur>
+                    </volist>
+              </div>
+              <div class="midd"  align="right" >
+                  <table border="0" width="30%" align="left">
+                  <form action="__URL__/update" method="post" >
+                  <input type="hidden" name="id" value="<{$prod.id}>" />
+                     <tr><td> 更新：</td><td><{$prod.moder}>更新于:<{$prod.updateTime}></td></tr>
+                     <tr><td>简称：</td><td><input type="text" name="short" value="<{$prod.short}>"  class="input200"/></td></tr>
+                     <tr><td>产品</td><td><input type="text" name="product" value="<{$prod.product}>"  class="input200"/></td></tr>
+                     <tr><td>状态</td><td> <{$state}></td></tr>
+                     <tr><td></td>
+                         <td>
+                             <input type="submit" class="btn" name="do_submit" value="提 交"></form>
+                              <a href="__URL__/add" ><button  class="btn">添加 </button></a>
+                              <a href="__URL__"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

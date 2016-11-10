@@ -1,0 +1,47 @@
+   <layout name="layout" />
+        <div class="place"> 所在位置：
+             <a href="__APP__/TAdmin/Program">项目</a>
+             ><a href="__APP__/TAdmin/Func/range/proid/<{$w.proid}>">范围</a>
+             >测试结果
+             <span style="float:right;margin-right:60px;">
+                  <a href="__APP__/TAdmin/Func/range/proid/<{$w.proid}>"> 返回</a>
+             </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >
+              <span><{$w.funcid|getSPFunc=###}>失败:<{$w.funcid|countFResult=###}>/<{$w.funcid|countFQResult=###}></span>
+                <span style="float:right;">
+                                                 当前项目：<{$w.proid|getProNo=###}>最终测试结果：
+                  <a href="__URL__/reset/funcid/<{$w.funcid}>" onclick="return confirm('测试结果将被置为“未测试”')"><{$w.funcid|getFResult=###}></a>
+                  <a href="__URL__/pass/funcid/<{$w.funcid}>"><button  class="btn" >标记通过</button></a>
+
+                </span>
+              </div>
+              <div class="midd" align="right" >
+                   <table border="1" width="100%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">里程碑</th>
+                       <th width=2% align="center" bgcolor="#ccc">人员</th>
+                       <th width=10% align="center" bgcolor="#ccc">场景</th>
+                       <th width=1% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=3% align="center" bgcolor="#ccc">功能</th>
+                       <th width=2% align="center" bgcolor="#ccc">结果</th>
+                       <th width=10% align="center" bgcolor="#ccc">备注</th>
+                       <th width=5% align="center" bgcolor="#ccc">更新时间</th>
+                     </tr>
+                   <volist name='arr' id='ar' empty="没有数据">
+                     <tr>
+                       <td align="center" ><{$ar.stage}></td>
+                       <td align="center" ><{$ar.tester}></td>
+                       <td align="center" ><{$ar.swho}>[<{$ar.swhen}>]<{$ar.scene}></td>
+                        <td align="center" ><{$ar.sn}></td>
+                         <td align="center" ><{$ar.func}></td>
+                       <td align="center" ><{$ar.result}></td>
+                       <td align="center" ><{$ar.remark}></td>
+                       <td align="center" ><{$ar.updateTime}></td>
+                     </tr>
+                    </volist>
+                </table>
+              </div><!-- midd -->
+           </div><!-- main -->

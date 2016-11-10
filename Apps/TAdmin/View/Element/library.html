@@ -1,0 +1,50 @@
+      <layout name="layout" />
+        <div class="place"> 所在位置：<a href="__APP__/TAdmin/Program/indexl">项目</a>>控件库
+            <span style="float:right;margin-right:60px;"><a href="__APP__/TAdmin/Program/indexl"> 返回</a></span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">
+                 <span style="margin-left:25%;">控件库:<{$w.proid|getPro=###}></span>
+                 <span style="float:right;"></span>
+              </div>
+              <div class="left" align="left"  style="width:23%;padding:0 2% 0 0;">
+                <volist name='data' id='pro' empty="没有数据"><ul><li>
+                   <a href="__URL__/library/proid/<{$pro.id}>""><{$pro.prono}>【<{$pro.prost}>】<{$pro.program}>:</a><hr>
+                </li></ul> </volist>
+              </div>
+              <div class="midd" >
+                   <table border="1" width="75%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=2% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=5% align="center" bgcolor="#ccc">系统</th>
+                       <th width=10% align="center" bgcolor="#ccc">路径</th>
+                       <th width=5% align="center" bgcolor="#ccc">功能</th>
+                       <th width=10% align="center"  bgcolor="#ccc">类型 </th>
+                       <th width=10% align="center"  bgcolor="#ccc">控件</th>
+                       <th width=5% align="center" bgcolor="#ccc">数据</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=7% align="center" bgcolor="#ccc">操作 </th>
+                     </tr>
+                     <volist name='elements' id='element' empty="没有数据">
+                    <tr>
+                       <td align="center" ><{$element.id}></td>
+                       <td align="center" ><{$element.sn}></td>
+                       <td align="center" ><{$element.system}></td>
+                       <td align="center" ><{$element.path}></td>
+                       <td align="center" ><{$element.func}></td>
+                       <td align="center" ><{$element.typeset}></td>
+                       <td align="center" ><{$element.control}></td>
+                       <td align="center" ><{$element.data}></td>
+                       <td align="center" ><{$element.state}></td>
+                       <td align="center" >
+                          <a href="__URL__/add/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>"  >添加 </a>
+                          <a href="__APP__/TAdmin/Element/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">模板</a>
+                          <a href="__URL__/mod/id/<{$case.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">修改</a>
+                       </td>
+                    </tr>
+                  </volist>
+                </table>
+              </div><!-- midd -->
+           </div><!-- main -->

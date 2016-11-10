@@ -1,0 +1,37 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__URL__">用户</a>>上传照片
+           <span style="float:right;margin-right:60px;"><a href="__URL__">  返回</a></span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">上传照片</div>
+              <div class="left">
+                    <volist name='data' id='vo' empty="没有数据">
+                       <a href="__URL__/photo/id/<{$vo.id}>""><{$vo.userNo}>-<{$vo.realname}>:<{$vo.state}></a><br>
+                    </volist>
+              </div>
+              <div class="midd">
+
+                  <table border="0" width="500" align="left">
+                    <form action="__URL__/upload" method="post" enctype='multipart/form-data'>
+                      <input type="hidden" name="id" value="<{$user.id}>" />
+                      <tr><td> 更新：</td>
+                         <td><{$user.moder}>更新于:<{$user.updateTime}></td>
+                     </tr>
+                     <tr><td> 员工号：</td><td><{$user.userNo}>姓名：<{$user.realname}></td>
+                     </tr>
+                      <tr><td>头像：</td>
+                         <td><input type="file" name="filename" class="input200"/></td>
+                     </tr>
+                     <tr><td></td>
+                         <td><img alt="头像" src="__ROOT__/Public/Upload/<{$user.filename}>" height="200" width="160"></td>
+                     </tr>
+                     <tr><td></td>
+                         <td>
+                         <input type="submit" class="btn" name="do_submit" value="上传"></form>
+                          <a href="__URL__"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

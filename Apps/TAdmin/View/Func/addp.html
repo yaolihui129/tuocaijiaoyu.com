@@ -1,0 +1,39 @@
+     <layout name="layout" />
+        <div class="place">
+                                 所在位置：
+                   <a href="__APP__/TAdmin/Program">项目</a>
+                   ><a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>/prodid/<{$w.prodid}>">系统</a>
+                   ><a href="__APP__/TAdmin/Path/indexp/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">路径</a>
+                   ><a href="__URL__/indexp/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">功能点</a>
+                   >添加
+                  <span style="float:right;margin-right:60px;">
+                     <a href="__URL__/indexp/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>"> 返回</a>
+                  </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">功能点添加
+              <span style="margin-left:20%;">路径： <{$w.pathid|getSPath=###}></span>
+              </div>
+              <div class="left"  align="left" style="width:25%">
+                    <volist name='data' id='vo' empty="没有数据"><ul><li>
+                       <a href="__URL__/modp/id/<{$vo.id}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">
+                       <{$vo.sn}>.【<{$vo.state}>】<{$vo.func}></a>
+                    </li></ul></volist>
+              </div>
+              <div class="midd" align="right" >
+                  <table border="0" width="40%" align="left">
+                  <form action="__URL__/insert" method="post" >
+                  <input type="hidden" name="pathid" value="<{$w.pathid}>" />
+                     <tr><td>顺序：</td><td><input type="text" name="sn" value="<{$c}>"  class="input300"/></td></tr>
+                     <tr><td>功能：</td><td><input type="text" name="func" value=""  class="input300"/></td></tr>
+                     <tr><td>项目：</td> <td><{$fproid}>状态:<{$state}></td></tr>
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                             <a href="__URL__/indexp/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">
+                             <button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

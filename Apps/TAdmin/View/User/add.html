@@ -1,0 +1,52 @@
+      <layout name="layout" />
+        <div class="place">
+                                 所在位置：
+             <a href="__URL__">用户</a>
+             >添加
+            <span style="float:right;margin-right:60px;">
+            <a href="__URL__"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">用户添加</div>
+               <div class="left"  width="20%" align="center" >
+                    <volist name='data' id='vo' empty="没有数据">
+                       <a href="__URL__/mod/id/<{$vo.id}>""><{$vo.userNo}>-<{$vo.realname}>:<{$vo.state}></a><br>
+                    </volist>
+              </div>
+              <div class="midd" width="50%" align="center" >
+                  <table border="0" width="600" align="left">
+                  <form action="__URL__/insert" method="post" enctype='multipart/form-data'>
+                     <tr><td> 员工号：</td>
+                         <td><input type="text" name="userNo" value=""  class="input300"/></td>
+                     </tr>
+                     <tr><td>登录名：</td>
+                         <td><input type="text" name="username" value="" class="input300"/> *密码默认为：123456</td>
+                     </tr>
+                     <tr><td>姓名：</td>
+                         <td><input type="text" name="realname" value="" class="input300"/></td>
+                     </tr>
+                     <tr><td>头像：</td>
+                         <td><input type="file" name="filename" class="input200"/></td>
+                     </tr>
+                     <tr><td>职位：</td><td><{$position}></td></tr>
+                     <tr><td> 分组：</td><td><{$usergp}></td></tr>
+                     <tr><td>部门：</td>
+                         <td><input type="text" name="team" value="惠买车-产品研发中心-质量管理部" class="input300"/></td>
+                     </tr>
+                     <tr><td>手机：</td>
+                         <td><input type="text" name="phone" value="" class="input300" /></td>
+                     </tr>
+                     <tr><td> 座机：</td>
+                         <td><input type="text" name="tel" value="" class="input300"/></td>
+                     </tr>
+                     <tr><td></td>
+                         <td>
+                             <input type="submit" class="btn" name="do_submit" value="提 交"></form>
+                              <a href="__URL__"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

@@ -1,0 +1,37 @@
+      <layout name="layout" />
+        <div class="place">
+                                 所在位置：
+                   <a href="__APP__/TAdmin/Program">项目</a>
+                   ><a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>/prodid/<{$w.prodid}>">系统</a>
+                   ><a href="__URL__/indexp/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">路径</a>
+                   >添加
+                  <span style="float:right;margin-right:60px;">
+                  <a href="__URL__/indexp/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>"> 返回</a>
+                  </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >路径添加
+              <span style="margin-left:23%">系统：<{$w.sysid|getSystem=###}></span>
+              </div>
+              <div class="left"  align="left" style="width:30%">
+                  <volist name='data' id='vo' empty="没有数据"><ul><li>
+                     <a href="__URL__/modp/id/<{$vo.id}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid<{$w.proid}>">
+                     <{$vo.sn}>.<{$vo.path}>:<{$vo.pstate}></a>
+                  </li></ul></volist>
+              </div>
+              <div class="midd"  align="left" >
+                  <table border="0" width="40%" align="left">
+                   <form action="__URL__/insert" method="post" >
+                   <input type="hidden" name="sysid" value="<{$w.sysid}>" />
+                     <tr><td>顺序：</td><td><input type="text" name="sn" value="<{$c}>"  class="input300"/></td> </tr>
+                     <tr><td>路径:</td><td><input type="text" name="path" value=""  class="input300"/></td></tr>
+                     <tr><td>状态:</td><td><{$pstate}></td></tr>
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                             <a href="__URL__/indexp/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

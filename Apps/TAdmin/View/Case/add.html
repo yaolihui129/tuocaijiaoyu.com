@@ -1,0 +1,43 @@
+<layout name="layout" />
+        <div class="place">
+                                 所在位置：
+              <a href="__APP__/TAdmin/Product">产品</a>
+              ><a href="__APP__/TAdmin/System/index/prodid/<{$w.prodid}>">系统</a>
+              ><a href="__APP__/TAdmin/Path/index/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">路径</a>
+              ><a href="__APP__/TAdmin/Func/index/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">功能点</a>
+              ><a href="__URL__/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">用例</a>
+              >添加
+               <span style="float:right;margin-right:60px;">
+                 <a href="__URL__/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>"> 返回</a>
+               </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >用例添加
+              <span>(功能点：<{$w.funcid|getSPFunc=###}>)</span>
+              </div>
+              <div class="left" align="left" style="width:30%">
+                  <volist name='data' id='vo' empty="没有数据"><ul><li>
+                     <a href="__URL__/mod/id/<{$vo.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">
+                     <{$vo.sn}>.【<{$vo.state}>】<{$vo.main}></a>
+                 </li> </ul></volist>
+              </div>
+              <div class="midd" align="right" >
+                  <table border="0" width="600" align="left">
+                  <form action="__URL__/insert" method="post" >
+                  <input type="hidden" name="funcid" value="<{$w.funcid}>" />
+                  <input type="hidden" name="source" value="产品库" />
+                     <tr><td>顺序：</td><td><input type="text" name="sn" value="<{$c}>"  class="input60"/>
+                                                     项目：<{$fproid}>状态:<{$state}>级别：<input type="text" name="level" value="2"  class="input80"/>
+                     </td></tr>
+                     <tr><td>意图：</td><td><input type="text" name="main" value=""  class="input500"/></td></tr>
+                     <tr><td>预期：</td><td><input type="text" name="expected" value=""  class="input500"/></td></tr>
+                     <tr><td colspan="2"><{$caozuo}></td></tr>
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                           <a href="__URL__/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

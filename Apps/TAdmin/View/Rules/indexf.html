@@ -1,0 +1,61 @@
+<layout name="layout" />
+         <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>><a href="__APP__/Func/func/proid/<{$w.proid}>">功能点</a>>规则
+             <span style="float:right;margin-right:60px;">
+                 <a href="__APP__/TAdmin/Func/func/proid/<{$w.proid}>"> 返回</a>
+             </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >
+              <span style="margin-left:15%;">规则：<{$w.funcid|getSPFunc=###}></span>
+              <span style="float:right;">当前项目：<{$w.proid|getProNo=###}></span></div>
+              <div class="left" align="left" style="width:15%;">
+                  <volist name='data' id='vo' empty="没有数据">
+                       <ul>
+                           <li><a href="__URL__/indexf/funcid/<{$vo.id}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">
+                               <{$vo.sn}>:<{$vo.func}>:<{$vo.id|countFRules=###}></a></li>
+                       </ul>
+                 </volist>
+              </div>
+              <div class="midd" >
+                   <table border="1" width="84%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=2% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=15% align="left"  bgcolor="#ccc">规则
+                          <span style="float:right;margin-right:5px;">
+                             <a href="__URL__/addf/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>"  >添加 </a>
+                          </span>
+                       </th>
+                       <th width=10% align="center"  bgcolor="#ccc">来源</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=5% align="center" bgcolor="#ccc">项目</th>
+                       <th width=3% align="center" bgcolor="#ccc">维护</th>
+                       <th width=7% align="center" bgcolor="#ccc">更新时间</th>
+                       <!--  <th width=2% align="center" bgcolor="#ccc">操作 </th>-->
+                     </tr>
+                   <form action="__URL__/order" method="post" >
+                   <volist name='rules' id='rule' empty="没有数据">
+                     <tr>
+                       <td align="center" ><{$rule.id}></td>
+                       <td align="center" ><input type="text" name="sn[<{$rule.id}>]" value="<{$rule.sn}>"  class="input40"/></td>
+                       <td ><a href="#" ><{$rule.rules}></a>
+                         <span style="float:right;margin-right:5px;">
+                           <a href="__URL__/modf/id/<{$rule.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">修改</a>
+                         </span>
+                       </td>
+                       <td align="center" ><{$rule.source}></td>
+                       <td align="center" ><{$rule.state}></td>
+                       <td align="center" ><{$rule.fproid|getProNo=###}></td>
+                       <td align="center" ><{$rule.moder}></td>
+                       <td align="center" ><{$rule.updateTime}></td>
+                       <!-- <td align="center" >
+                          <a href="__URL__/del/id/<{$rule.id}>" onclick="return confirm('你确定要删除用例：<{$rule.rules}>？')">删除</a>
+                       </td> -->
+                     </tr>
+                  </volist>
+                     <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                 </form>
+                </table>
+              </div><!-- midd -->
+           </div><!-- main -->

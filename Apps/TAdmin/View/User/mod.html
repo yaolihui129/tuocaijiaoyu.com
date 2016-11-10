@@ -1,0 +1,66 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__URL__">用户</a>>编辑
+             <span style="float:right;margin-right:60px;">
+              <a href="__URL__/add" >添加用户 </a>
+              <a href="__URL__">  返回</a>
+             </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">用户修改</div>
+              <div class="left">
+                    <volist name='data' id='vo' empty="没有数据">
+                       <a href="__URL__/mod/id/<{$vo.id}>""><{$vo.userNo}>-<{$vo.realname}>:<{$vo.state}></a><br>
+                    </volist>
+              </div>
+              <div class="midd">
+
+                  <table border="0" width="500" align="left">
+                    <form action="__URL__/update" method="post" enctype='multipart/form-data'>
+                      <input type="hidden" name="id" value="<{$user.id}>" />
+                      <tr><td> 更新：</td>
+                         <td><{$user.moder}>更新于:<{$user.updateTime}></td>
+                     </tr>
+                     <tr><td> 员工号：</td>
+                         <td><input type="text" name="userNo" value="<{$user.userNo}>" class="input300"/></td>
+                     </tr>
+                     <tr><td>登录名：</td>
+                         <td><input type="text" name="username" value="<{$user.username}>" class="input300"/></td>
+                     </tr>
+                     <tr><td>姓名：</td>
+                         <td><input type="text" name="realname" value="<{$user.realname}>" class="input300"/></td>
+                     </tr>
+                     <tr><td>职位：</td>
+                         <td><{$position}>分组：<{$usergp}></td>
+                     </tr>
+
+                     <tr><td></td>
+                         <td><img alt="头像" src="__ROOT__/Public/Upload/<{$user.filename}>" height="200" width="160"></td>
+                     </tr>
+                      <tr><td>状态：</td>
+                         <td>
+                                                                     在职<input type='radio' name='state' value='在职' <?php echo $user['state']=='在职'?'checked=”checked”':null;?> />
+                                                                     离职<input type='radio' name='state' value='离职' <?php echo $user['state']=='离职'?'checked=”checked”':null;?> />
+                         </td>
+                     </tr>
+                     <tr><td>邮箱：</td>
+                         <td><input type="text" name="email" value="<{$user.email}>" class="input300" /></td>
+                     </tr>
+                     <tr><td>部门：</td>
+                         <td><input type="text" name="team" value="<{$user.team}>" class="input300"/></td>
+                     </tr>
+                     <tr><td>手机：</td>
+                         <td><input type="text" name="phone" value="<{$user.phone}>" class="input300" /></td>
+                     </tr>
+                     <tr><td> 座机：</td>
+                         <td><input type="text" name="tel" value="<{$user.tel}>" class="input300"/></td>
+                     </tr>
+                     <tr><td></td>
+                         <td>
+                         <input type="submit" class="btn" name="do_submit" value="修改"></form>
+                          <a href="__URL__"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

@@ -1,0 +1,55 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>>范围
+            <span style="float:right;margin-right:60px;">
+                <a href="__APP__/TAdmin/Program"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:25%;">范围:<{$w.proid|getPro=###}>
+                   <span style="float:right;">
+                   <a href="__APP__/TAdmin/Func/func/proid/<{$w.proid}>"><button  class="btn" >功能点</button></a>
+                   <a href="__APP__/TAdmin/Case/library/proid/<{$w.proid}>"><button  class="btn" >用例库</button></a>
+                   </span>
+              </div>
+               <div class="left" align="left"  style="width:23%;padding:0 2% 0 0;">
+                    <volist name='pros' id='pro' empty="没有数据"><ur><li>
+                       <a href="__URL__/range/proid/<{$pro.id}>"">
+                       <{$pro.prono}>【<{$pro.prost}>】<{$pro.program}>:<{$pro.id|countRange=###}></a><hr>
+                     </li> </ur> </volist>
+              </div>
+              <div class="midd" align="right"  >
+                   <table border="1" width="74%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=7% align="left" bgcolor="#ccc">系统</th>
+                       <th width=18% align="left"  bgcolor="#ccc">路径</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=12% align="center" bgcolor="#ccc">功能</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=3% align="center" bgcolor="#ccc">结果</th>
+                       <th width=12% align="center" bgcolor="#ccc">操作 </th>
+                     </tr>
+                     <volist name='data' id='st' empty="没有数据">
+                    <tr>
+                       <td align="center" ><{$st.id}></td>
+                       <td align="left" ><{$st.sysno}></td>
+                       <td align="left"><{$st.path}></td>
+                       <td align="center" ><{$st.pstate}></td>
+                       <td align="left" ><{$st.func}>
+                          <span style="float:right;margin-right:5px;">
+                            <a href="__APP__/TAdmin/Func/modr/id/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>/w/range">修改</a></span></td>
+                       <td align="center" ><{$st.state}></td>
+                       <td align="center" ><{$st.result}></td>
+                       <td align="center" >
+                          <a href="__APP__/TAdmin/TAdmin/Test/index/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">失败<{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></a>
+                          <a href="__APP__/TAdmin/Case/indexr/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>" >用例<{$st.id|countFCase=###}></a>
+                          <a href="__APP__/TAdmin/Element/indexr/funcid/<{$st.id}>/proid/<{$w.proid}>">数据模板</a>
+                          <a href="__APP__/TAdmin/Rules/indexr/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>" >规则<{$st.id|countFRules=###}></a>
+                       </td>
+                    </tr>
+                    </volist>
+                </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

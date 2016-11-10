@@ -1,0 +1,46 @@
+<layout name="layout" />
+        <div class="place">
+                                 所在位置：
+             <a href="__APP__/TAdmin/Program">项目</a>
+             ><a href="__URL__/index/proid/<{$w.proid}>">里程碑</a>
+             >添加
+            <span style="float:right;margin-right:60px;">
+            <a href="__URL__/index/proid/<{$w.proid}>"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">里程碑添加</div>
+              <div class="left"  align="left">
+                    <volist name='data' id='vo' empty="没有数据">
+                       <a href="__URL__/mod/id/<{$vo.id}>/proid/<{$w.proid}>"><{$vo.sn}>.<{$vo.stage}>:<{$vo.state}></a><br>
+                    </volist>
+              </div>
+              <div class="midd"  align="right" >
+                  <table border="0" width="300" align="left">
+                  <form action="__URL__/insert" method="post" >
+                  <input type="hidden" name="proid" value="<{$w.proid}>" />
+                     <tr><td> 顺序：</td><td><input type="text" name="sn" value="<{$c}>"  class="input200"/></td></tr>
+                     <tr><td>阶段</td>
+                         <td><select name="stage">
+                                 <option value="编写测试计划">编写测试计划</option>
+                                 <option value="编写测试用例">编写测试用例</option>
+                                 <option value="功能验证">功能验证</option>
+                                 <option value="第一轮测试">第一轮测试</option>
+                                 <option value="第二轮测试">第二轮测试</option>
+                                 <option value="第三轮测试">第三轮测试</option>
+                                 <option value="第四轮测试">第四轮测试</option>
+                                 <option value="线上验证测试">线上验证测试</option>
+                           </select></td></tr>
+                     <tr><td>状态：</td><td><{$state}></td></tr>
+                     <tr><td>文档：</td><td><{$document}></td></tr>
+                     <tr><td>时间：</td><td><{$startDate}>-<{$endDate}></td></tr>
+
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                             <a href="__URL__/index/proid/<{$w.proid}>"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

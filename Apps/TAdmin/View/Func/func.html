@@ -1,0 +1,73 @@
+<layout name="layout" />
+        <div class="place"> 所在位置：<a href="__APP__/Program">项目</a>>功能点
+            <span style="float:right;margin-right:60px;">
+             <a href="__APP__/TAdmin/Program"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:25%;">功能点:<{$w.proid|getPro=###}>
+                  <span style="float:right;">
+                     <a href="__APP__/TAdmin/Func/range/proid/<{$w.proid}>"><button  class="btn" >测试范围</button></a>
+                  </span>
+              </div>
+               <div class="left" align="left"  style="width:23%;padding:0 2% 0 0;">
+                    <volist name='pros' id='pro' empty="没有数据"><ur><li>
+                       <a href="__URL__/func/proid/<{$pro.id}>""><{$pro.prono}>【<{$pro.prost}>】<{$pro.program}></a><hr>
+                      </li></ur></volist>
+              </div>
+              <div class="midd"  align="right">
+                   <table border="1" width="74%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=7% align="left" bgcolor="#ccc">系统</th>
+                       <th width=18% align="left"  bgcolor="#ccc">路径(编辑)</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=12% align="left" bgcolor="#ccc">功能（编辑）</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=5% align="center" bgcolor="#ccc">项目</th>
+                       <th width=12% align="center" bgcolor="#ccc">操作 </th>
+                     </tr>
+                     <volist name='data' id='st' empty="没有数据">
+                    <tr>
+                       <td align="center" ><{$st.id}></td>
+                       <td align="left" ><{$st.sysno}></td>
+                       <td align="left" >
+                       <empty name="st.sysid">
+                       <else />
+                       <empty name="st.pathid">
+                          <{$st.path}>
+                          <span style="float:right;margin-right:5px;">
+                          <a href="__APP__/TAdmin/Path/addf/sysid/<{$st.sysid}>/prodid/<{$st.prodid}>/proid/<{$w.proid}>/w/func">添加</a></span></td>
+                        <else />
+                          <a href="__APP__/Path/modf/id/<{$st.pathid}>/sysid/<{$st.sysid}>/prodid/<{$st.prodid}>/proid/<{$w.proid}>/w/func"><{$st.path}></a>
+                          <span style="float:right;margin-right:5px;">
+                          <a href="__APP__/TAdmin/Path/addf/sysid/<{$st.sysid}>/prodid/<{$st.prodid}>/proid/<{$w.proid}>/w/func">添加</a></span></td>
+                        </empty>
+                        </empty>
+                       <td align="center" ><{$st.pstate}></td>
+                       <td align="left" >
+                       <empty name="st.pathid">
+                       <else />
+                       <empty name="st.funcid">
+                               <a href="__APP__/TAdmin/Func/modf/id/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>/w/func"><{$st.func}></a>
+                               <span style="float:right;margin-right:5px;">
+                              <a href="__APP__/TAdmin/Func/addf/pathid/<{$st.pathid}>/proid/<{$w.proid}>/w/func">添加</a></span></td>
+                        <else />
+                               <span style="float:right;margin-right:5px;">
+                              <a href="__APP__/TAdmin/Func/addf/pathid/<{$st.pathid}>/proid/<{$w.proid}>/w/func">添加</a></span></td>
+                         </empty>
+                        </empty>
+                       <td align="center" ><{$st.state}></td>
+                       <td align="center" ><a href="__URL__/modproid/id/<{$st.id}>/fproid/<{$w.proid}>"><{$st.fproid|getProNo=###}></a></td>
+                       <td align="center" >
+                          <a href="__APP__/TAdmin/Case/indexf/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>" >用例<{$st.id|countFCase=###}></a>
+                          <a href="__APP__/TAdmin/Element/indexf/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">数据模板</a>
+                          <a href="__APP__/TAdmin/Rules/indexf/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>" >规则<{$st.id|countFRules=###}></a>
+                       </td>
+                    </tr>
+                    </volist>
+                </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

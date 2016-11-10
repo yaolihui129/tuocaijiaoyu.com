@@ -1,0 +1,117 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>
+           ><a href="__APP__/TAdmin/Scene/index/proid/<{$w.proid}>">场景</a>
+           ><a href="__APP__/TAdmin/Scenefunc/index/proid/<{$w.proid}>/sceneid/<{$w.sceneid}>">场景功能</a>>功能库
+           <span style="float:right;margin-right:60px;">
+              <a href="__APP__/TAdmin/Scenefunc/index/proid/<{$w.proid}>/sceneid/<{$w.sceneid}>"> 返回</a>
+           </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:20%;">功能库  &nbsp;
+                 <span style="float:right;">当前项目：<{$w.proid|getProNo=###}></span>
+              </div>
+              <div class="left" align="left" style="width:20%">
+                    <volist name='data' id='vo' empty="没有数据">
+                       <ul>
+                         <li style="border:1px solid #eee">
+                             <a href="__URL__/library/pathid/<{$vo.id}>/sceneid/<{$w.sceneid}>/proid/<{$w.proid}>">
+                             <{$vo.sysno}>:<br /><{$vo.sn}>.<{$vo.path}>:<{$vo.id|countFunc=###}></a>
+                        </li>
+                      </ul>
+                    </volist>
+              </div>
+               <div class="midd"  align="left">
+                 <table border="0" width="80%" align="left">
+                      <tr>
+                          <th width="20%" align="left"><{$w.pathid|getPath=###}></th>
+                          <th width="40%" align="left"> 场景：<{$w.sceneid|getScene=###}></th>
+                          <th width="40%" align="left"> 缓存</th>
+                      </tr>
+                      <tr>
+                          <td valign="top">
+                             <table border="1" width="97%" align="left">
+                                 <tr>
+                                    <th align="left" bgcolor="#ccc">功能
+                                   </th>
+                                </tr>
+                               <volist name='funcs' id='st' empty="没有数据">
+                                <tr>
+                                   <td align="left" >
+                                        <{$st.sn}>.
+                                       <a href="__APP__/TAdmin/Scenefunc/addscene/funcid/<{$st.id}>/sceneid/<{$w.sceneid}>" >
+                                           <{$st.func}>【<{$st.state}>】</a>&nbsp;<br>
+                                      <a href="__APP__/TAdmin/Hcfunc/addhc/funcid/<{$st.id}>"><button>+缓存</button></a>
+                                      <span style="float:right;margin-right:5px;">
+                                          <a  href="__APP__/TAdmin/Scenefunc/addscene/funcid/<{$st.id}>/sceneid/<{$w.sceneid}>"><button> +场景</button></a>
+                                     </span>
+                                   </td>
+                                 </tr>
+                                </volist>
+                             </table>
+                          </td>
+                          <td valign="top">
+                            <table border="1" width="97%" align="center">
+                               <tr>
+                                 <th width=5% align="left" bgcolor="#ccc">sn</th>
+                                 <th width=60% align="left" bgcolor="#ccc">功能点
+                                 <a href="__APP__/Scenefunc/addAllhc/sceneid/<{$w.sceneid}>"><button> +缓存</button></a></th>
+                                 <th width=20% align="left" bgcolor="#ccc">备注</th>
+                                 <th width=10% align="center" bgcolor="#ccc">操作 </th>
+                               </tr>
+                            <form action="__APP__/TAdmin/Scenefunc/order" method="post" >
+                            <volist name='sfunc' id='st' empty="没有数据">
+                               <tr>
+                                 <td><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/> </td>
+                                 <td align="left" >
+                                   <{$st.path}>-<{$st.func}>
+                                   <span style="float:right;margin-right:5px;">
+                                     <a href="__APP__/TAdmin/Scenefunc/addhc/id/<{$st.id}>" ><button>+缓存</button></a>
+                                   </span>
+                                 </td>
+                                 <td align="left" ><{$st.remarks}></td>
+                                 <td align="center" >
+                                    <a href="__APP__/TAdmin/Scenefunc/del/id/<{$st.id}>" >移除</a>
+                                 </td>
+                              </tr>
+                             </volist>
+                             <tr><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                           </form>
+                           </table>
+                          </td>
+                          <td valign="top">
+                             <table border="1" width="100%" align="center">
+                               <tr>
+                                 <th width=5% align="left" bgcolor="#ccc">sn</th>
+                                 <th width=60% align="left" bgcolor="#ccc">功能点
+                                 <a href="__APP__/TAdmin/Hcfunc/addAllsf/sceneid/<{$w.sceneid}>"><button>+场景</button></a>
+                                 <span style="float:right;margin-right:5px;">
+                                   <a href="__APP__/TAdmin/Hcfunc/delAll" onclick="return confirm('你确定要清空缓存列表吗？')"><button> 清空缓存</button></a>
+                                 </span>
+                                 </th>
+                                 <th width=20% align="left" bgcolor="#ccc">备注</th>
+                                 <th width=10% align="center" bgcolor="#ccc">操作 </th>
+                               </tr>
+                            <form action="__APP__/TAdmin/Hcfunc/order" method="post" >
+                            <volist name='hfunc' id='hc'>
+                               <tr>
+                                 <td><input type="text" name="sn[<{$hc.id}>]" value="<{$hc.sn}>"  class="input40"/> </td>
+                                 <td align="left" ><{$hc.path}>-<{$hc.func}>
+                                   <span style="float:right;margin-right:5px;">
+                                     <a href="__APP__/TAdmin/Hcfunc/addfunc/id/<{$hc.id}>/sceneid/<{$w.sceneid}>" ><button>+场景</button></a>
+                                    </span>
+                                 </td>
+                                 <td align="left" ><{$hc.remarks}></td>
+                                 <td align="center" >
+                                    <a href="__APP__/TAdmin/Hcfunc/del/id/<{$hc.id}>" >移除</a>
+                                 </td>
+                              </tr>
+                             </volist>
+                             <tr><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                           </form>
+                           </table>
+                          </td>
+                      </tr>
+                 </table>
+                </div><!-- midd -->
+           </div><!-- main -->

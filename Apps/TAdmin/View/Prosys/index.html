@@ -1,0 +1,91 @@
+<layout name="layout" />   <body>
+        <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>>系统
+          <span style="float:right;margin-right:60px;">
+             
+          </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">项目涉及系统:<{$w.proid|getPro=###}>
+                  <span style="float:right;">
+                     <a href="__APP__/TAdmin/Func/func/proid/<{$w.proid}>">
+                     <button  class="btn" >功能点</button></a>
+                     <a href="__APP__/TAdmin/Program"><button class="btn">返回</button></a>
+                  </span>
+              </div>
+              <table  border="0" width="100%" align="center">
+                 <tr>
+                    <th width=57% align="left" ><h1>项目系统</h1></th>
+                    <th width=40% align="left" ><h1>备选系统</h1></th>
+                 </tr>
+                 <tr>
+                    <td valign="top">
+                     <table border="1" width="95%"">
+                        <tr>
+                          <th width=3% align="left" bgcolor="#ccc">编号</th>
+                          <th width=13% align="left" bgcolor="#ccc">系统</th>
+                          <th width=3% align="left" bgcolor="#ccc">维护</th>
+                          <th width=9% align="left" bgcolor="#ccc">更新时间</th>
+                          <th width=2% align="center" bgcolor="#ccc">操作 </th>
+                        </tr>
+                     <volist name='data' id='st' empty="没有数据">
+                       <tr>
+                         <td align="left" ><{$st.sysno}></td>
+                         <td align="left" ><a href="__APP__/TAdmin/Path/indexp/sysid/<{$st.sysid}>/proid/<{$w.proid}>/prodid/<{$st.prodid}>"><{$st.system}></a>
+                             <span style="float:right;margin-right:5px;">
+                                 <a href="__APP__/TAdmin/Path/indexp/sysid/<{$st.sysid}>/proid/<{$w.proid}>/prodid/<{$st.prodid}>" >路径<{$st.sysid|countPath=###}></a>
+                                 <a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$w.proid}>/prodid/<{$st.prodid}>" >环境</a>
+                             </span>
+                         </td>
+                         <td align="left" ><{$st.moder}></td><td align="left" ><{$st.updateTime}></td>
+                         <td align="center" >
+                             <a href="__URL__/del/prosysid/<{$st.prosysid}>"  onclick="return confirm('你确定要从项目中移除：<{$st.system}>系统吗？')" >移除</a>
+                         </td>
+                       </tr>
+                    </volist>
+                    </table>
+
+                     </td>
+                     <td valign="top">
+
+
+                             <table border="1" width="100%" align="center">
+                                <tr>
+                                  <th width=4% align="left" bgcolor="#ccc">编号</th>
+                                  <th width=13% align="left" bgcolor="#ccc">系统
+                                      <span style="float:right;margin-right:5px;">
+                                         <a href="__APP__/System/add/proid/<{$w.proid}>/prodid/<{$w.prodid}>" >添加</a>
+                                      </span>
+                                  </th>
+                                  <th width=3% align="center" bgcolor="#ccc">状态</th>
+                                  <th width=3% align="center" bgcolor="#ccc">维护</th>
+                                  <th width=9% align="center" bgcolor="#ccc">更新时间</th>
+                                  <!-- <th width=2% align="center" bgcolor="#ccc">操作 </th> -->
+                                </tr>
+                            <volist name='syses' id='st' empty="没有数据">
+                                <tr>
+                                  <td align="left" >
+                                     <a href="__URL__/insert/proid/<{$w.proid}>/sysid/<{$st.id}>" ><{$st.sysno}></a>
+                                    <span style="float:right;margin-right:5px;">
+                                        <a href="__URL__/insert/proid/<{$w.proid}>/sysid/<{$st.id}>" >关联</a>
+                                    </span>
+                                 </td>
+                                   <td align="left" >
+                                         <{$st.system}>
+                                     <span style="float:right;margin-right:5px;">
+                                         <a href="__APP__/TAdmin/System/mod/id/<{$st.id}>/proid/<{$w.proid}>/prodid/<{$w.prodid}>" >修改</a>
+                                     </span>
+                                   </td>
+                                   <td align="center" ><a href="#"><{$st.state}></a></td>
+                                   <td align="center" ><{$st.moder}></td>
+                                   <td align="center" ><{$st.updateTime}></td>
+                                   <!--  <td align="center" >
+                                      <a href="__APP__/TAdmin/System/del/id/<{$st.id}>" onclick="return confirm('你确定要删除系统：<{$st.system}>？')" >删除</a>
+                                   </td>-->
+                                </tr>
+                            </volist>
+                         </table>
+                     </td>
+                 </tr>
+              </table>
+           </div><!-- main -->

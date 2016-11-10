@@ -1,0 +1,81 @@
+ <layout name="layout" />
+       <div class="place"> 所在位置：<a href="__APP__/TAdmin/Program">项目</a>><a href="__APP__/TAdmin/Stage/index/proid/<{$w.proid}>">里程碑</a>>测试者
+           <span style="float:right;margin-right:60px;">
+                 <a href="__APP__/TAdmin/Stage/index/proid/<{$w.proid}>"> 返回</a>
+           </span>
+       </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:20%;">里程碑：<{$w.type}>测试人员<{$w.proid|getProNo=###}><{$w.stageid|getStage=###}>
+                  <span style="float:right;">当前项目：<{$w.proid|getProNo=###}></span>
+              </div>
+              <div class="left" align="left" style="width:18%;padding:0 2% 0 0">
+                  <volist name='data' id='vo' empty="没有数据">
+                     <ul>
+                      <li><a href="__URL__/index/stageid/<{$vo.id}>/proid/<{$vo.proid}>/type/<{$w.type}>">
+                      <{$vo.sn}>.<{$vo.stage}>【<{$vo.state}>】</a><hr></li>
+                     </ul>
+                  </volist>
+              </div>
+              <div class="midd"  align="left">
+              <table border="0" width="80%" valign="top">
+                <tr>
+                    <th width=80% align="left"></th>
+                    <th width=20% align="left">测试人员</th>
+                </tr>
+                <tr>
+                 <td  valign="top">
+                   <table border="1" width="90%" align="left">
+                      <tr>
+                         <th width=3% align="center" bgcolor="#ccc">ID</th>
+                         <th width=3% align="center" bgcolor="#ccc">顺序</th>
+                         <th width=5% align="center" bgcolor="#ccc">测试类型</th>
+                         <th width=15% align="left" bgcolor="#ccc">人员</th>
+                         <th width=7% align="center" bgcolor="#ccc">开始</th>
+                         <th width=7% align="center" bgcolor="#ccc">结束</th>
+                         <th width=5% align="center" bgcolor="#ccc">计划/时</th>
+                      </tr>
+                    <form action="__URL__/order" method="post" >
+                    <volist name='testers' id='tester'>
+                      <tr>
+                         <td align="center"><{$tester.id}></td>
+                         <td align="center"><input type="text" name="sn[<{$tester.id}>]" value="<{$tester.sn}>"  class="input40"/></td>
+                         <td align="center"><{$tester.type}></td>
+                         <td align="left"><a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$tester.id}>/tester/<{$tester.tester}>/stageid/<{$w.stageid}>/proid/<{$vo.proid}>/type/<{$w.type}>" >
+                            <{$tester.tester}></a>
+                            <span style="float:right;margin-right:5px;">
+                                <a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$tester.id}>/tester/<{$tester.tester}>/stageid/<{$w.stageid}>/proid/<{$vo.proid}>/type/<{$w.type}>" >列队<{$tester.id|countExescene=###}></a>
+                                <a href="__URL__/mod/id/<{$tester.id}>/stageid/<{$w.stageid}>/proid/<{$vo.proid}>/type/<{$w.type}>" >修改</a>
+                            </span>
+                         </td>
+                         <td align="center"><{$tester.start}></td>
+                         <td align="center"><{$tester.end}></td>
+                         <td align="center"><{$tester.plan}></td>
+                       </tr>
+                    </volist>
+                       <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                    </form>
+                   </table>
+                 </td>
+                 <td  valign="top">
+                   <table border="1" width="90%" align="left">
+                     <tr>
+                         <th width=20% align="left" bgcolor="#ccc">人员</th>
+                         <th width=10% align="center" bgcolor="#ccc">分组</th>
+                    </tr>
+                   <volist name='users' id='user' empty="没有数据">
+                     <tr>
+                         <td align="left"><a href="__URL__/insert/tester/<{$user.realname}>/stageid/<{$w.stageid}>/type/<{$w.type}>" ><{$user.realname}></a>
+                            <span style="float:right;margin-right:5px;">
+                                <a href="__URL__/insert/tester/<{$user.realname}>/stageid/<{$w.stageid}>/type/<{$w.type}>" >安排</a>
+                            </span>
+                         </td>
+                         <td align="center"><{$user.usergp}></td>
+                    </tr>
+                  </volist>
+                 </table>
+               </td>
+             </tr>
+           </table>
+         </div><!-- midd -->
+      </div><!-- main -->

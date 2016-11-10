@@ -1,0 +1,44 @@
+      <layout name="layout" />
+        <div class="place"> 所在位置：<a href="__URL__">项目</a>>添加
+            <span style="float:right;margin-right:60px;">
+            <a href="__URL__"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">项目添加</div>
+              <div class="left" align="left"  style="width:25%;padding:0 2% 0 0;">
+                   <ul>
+                      <volist name='pros' id='pro' empty="没有数据">
+                        <li><a href="__URL__/mod/id/<{$pro.id}>"><{$pro.prono}>【<{$pro.prost}>】<{$pro.program}></a><hr></li>
+                      </volist>
+                  </ul>
+              </div>
+              <div class="midd">
+                  <table border="0" width="720" align="left">
+                  <form action="__URL__/insert" method="post" >
+                     <tr><td> 编号：</td>
+                         <td>
+                            <input type="text" name="prono" value="<{$p.prono}>"  class="input100"/>
+                            &nbsp;<{$startDate}>- &nbsp;<{$endDate}>&nbsp;状态：<{$select}>&nbsp;分组：<{$selectgp}><{$selectptype}>
+                        </td>
+                     </tr>
+                     <tr><td>&nbsp;</td></tr>
+                     <tr><td>项目：</td><td><input type="text" name="program" value="" class="input600"/></td></tr>
+                     <tr><td>&nbsp;</td></tr>
+                     <tr><td>负责人：</td>
+                         <td>
+                            <{$selectgpuer}>&nbsp;PM：<input type="text" name="pm" value="<{$p.pm}>" class="input100"/>
+                            &nbsp;类型：<{$reType}><{$reLevel}>&nbsp;<{$prod}>
+                         </td>
+                     </tr>
+                     <tr><td>&nbsp;</td></tr>
+                     <tr><td>简介：</td><td><{$jianjie}></td></tr>
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交" ></form>
+                            <a href="__URL__"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

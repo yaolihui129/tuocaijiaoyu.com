@@ -1,0 +1,66 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>>里程碑</div>
+        <div class="content">
+           <div class="main">
+              <div class="top" >
+                  <span style="margin-left:25%;">里程碑:<{$w.proid|getPro=###}></span>
+                  <span style="float:right;margin-right:5px;">
+                       <a href="__APP__/TAdmin/Program"><button class="btn"> 返回</button></a>
+                  </span>
+              </div>
+              <div class="left" align="left" style="width:23%;padding:0 2% 0 0">
+                 <volist name='pros' id='pro' empty="没有数据">
+                    <ul>
+                      <li>
+                         <a href="__URL__/index/proid/<{$pro.id}>">
+                         <{$pro.prono}>【<{$pro.prost}>】<{$pro.program}>:<{$pro.id|countStage=###}></a><hr>
+                      </li>
+                    </ul>
+                 </volist>
+              </div>
+              <div class="midd" >
+                   <table border="1" width="74%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=20% align="left"  bgcolor="#ccc">阶段
+                          <span style="float:right;margin-right:5px;">
+                             <a href="__URL__/add/proid/<{$w.proid}>"  >添加 </a>
+                          </span>
+                       </th>
+                       <th width=5% align="center" bgcolor="#ccc">状态</th>
+                       <th width=7% align="center" bgcolor="#ccc">开始</th>
+                       <th width=7% align="center" bgcolor="#ccc">结束</th>
+                       <th width=7% align="center" bgcolor="#ccc">文档</th>
+                       <th width=5% align="center" bgcolor="#ccc">维护</th>
+                       <th width=10% align="center" bgcolor="#ccc">更新时间</th>
+                       <!--  <th width=5% align="center" bgcolor="#ccc">操作 </th>-->
+                     </tr>
+                   <form action="__URL__/order" method="post" >
+                   <volist name='stages' id='st' empty="没有数据">
+                     <tr>
+                       <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
+                       <td ><a href="__APP__/TAdmin/Stagetester/index/proid/<{$st.proid}>/stageid/<{$st.id}>/type/M" ><{$st.stage}></a>
+                         <span style="float:right;margin-right:5px;">
+                           <a href="__APP__/TAdmin/Stagetester/index/proid/<{$st.proid}>/stageid/<{$st.id}>/type/C" >用例<{$st.id|countCTester=###}></a>
+                           <a href="__APP__/TAdmin/Stagetester/index/proid/<{$st.proid}>/stageid/<{$st.id}>/type/M" >手工<{$st.id|countMTester=###}></a>
+                           <a href="__APP__/TAdmin/Stagetester/index/proid/<{$st.proid}>/stageid/<{$st.id}>/type/A" >自动化<{$st.id|countATester=###}></a>
+                           <a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>">修改</a>
+                         </span>
+                       </td>
+                       <td align="center" ><a href="__URL__/modstate/id/<{$st.id}>/state/<{$st.state}>"><{$st.state}></a></td>
+                       <td align="center" ><{$st.start}></td>
+                       <td align="center" ><{$st.end}></td>
+                       <td align="center" ><{$st.document}></td>
+                       <td align="center" ><{$st.moder}></td>
+                       <td align="center" ><{$st.updateTime}></td>
+                       <!-- <td align="center" >
+                          <a href="__URL__/del/id/<{$st.id}>" onclick="return confirm('你确定要删除阶段：<{$st.stage}>？')">删除</a>
+                       </td> -->
+                     </tr>
+                  </volist>
+                     <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                  </form>
+                </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

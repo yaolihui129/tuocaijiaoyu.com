@@ -1,0 +1,30 @@
+<layout name="layout" />
+        <div class="place">所在位置：>系统信息</div>
+        <div class="content">
+           <div class="main">
+              <div class="top"><span style="margin-left:5%">系统信息</span></div>
+              <div  class="midd">
+	                <table width="90%" border="1" align="center" >
+		               <tr><th width="20%" bgcolor="#ccc">操作系统</th><td><?php echo PHP_OS;?></td></tr>
+		               <tr><th bgcolor="#ccc">Apache版本</th><td><?php echo apache_get_version();?></td></tr>
+		               <tr><th bgcolor="#ccc">PHP版本</th><td><?php echo PHP_VERSION;?></td></tr>
+		               <tr><th bgcolor="#ccc">运行方式</th><td><?php echo PHP_SAPI;?></td></tr>
+		               <tr><th bgcolor="#ccc">Apache目录</th><td><?php echo php_ini_loaded_file();?></td></tr>
+		               <tr><th bgcolor="#ccc">数据库服务器</th><td><{$Think.config.DB_HOST}></td></tr>
+		               <tr><th bgcolor="#ccc">数据库名字</th><td><{$Think.config.DB_NAME}></td></tr>
+		               <tr><th bgcolor="#ccc">数据库端口</th><td><{$Think.config.DB_PORT}></td></tr>
+		               <tr><th bgcolor="#ccc">数据库表前缀</th><td><{$Think.config.DB_PREFIX}></td></tr>
+		               <tr><th bgcolor="#ccc">系统名称</th><td>易车测试管理平台</td></tr>
+		               <tr><th bgcolor="#ccc">开发团队</th><td>yaolh</td></tr>
+		               <tr><th bgcolor="#ccc">公司网址</th><td><a href="http://www.yiche.com">http://www.yiche.com</a></td></tr>
+		               <tr><th bgcolor="#ccc">客户端IP</th><td><{$_SESSION['ip']}></td></tr>
+		               <tr><th bgcolor="#ccc">客户端浏览器</th><td><{$_SESSION['browser']}></td></tr>
+		               <tr><th bgcolor="#ccc">客户端浏览器语言</th><td><{$_SESSION['lang']}></td></tr>
+		               <tr><th bgcolor="#ccc">客户端系统</th><td><{$_SESSION['os']}></td></tr>
+		               <tr><th bgcolor="#ccc">客户端真实IP</th><td><{$_SESSION['realip']}></td></tr>
+		               <tr><th bgcolor="#ccc">客户端本地IP</th><td><{$_SESSION['localip']}></td></tr>
+		               <tr><th bgcolor="#ccc">客户端本所在地</th><td><{$_SESSION['caddress']}></td></tr>
+	                </table>
+	                <{$_SESSION['cal']}>
+              </div><!-- midd -->
+           </div><!-- main -->

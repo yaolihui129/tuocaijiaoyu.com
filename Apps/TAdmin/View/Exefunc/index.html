@@ -1,0 +1,88 @@
+      <layout name="layout" />
+        <div class="place">所在位置：<a href="__APP__/TAdmin/Exescene/index/type/M/stagetesterid/<{$w.stagetesterid}>">手工测试</a>>测试执行</div>
+        <div class="content">
+           <div class="main">
+              <div class="top">
+                  <span>手工测试执行-<{$w.proid|getPro=###}></span>
+                  <span style="float:right;"><a href="__APP__/TAdmin/Exescene/index/type/M/stagetesterid/<{$w.stagetesterid}>"><button class="btn">返回</button></a></span>
+              </div>
+              <div class="left" align="left" style="width:20%;">
+                    <volist name='data' id='vo' empty="没有数据">
+                      <ur>
+                         <li><a href="__URL__/index/id/<{$vo.id}>/stagetesterid/<{$w.stagetesterid}>/proid/<{$w.proid}>/type/<{$w.type}>">
+                         <{$vo.sn}>:<{$vo.swho}>【<{$vo.swhen}>】<{$vo.scene}><br />
+                         <{$vo.results}>:<{$vo.id|countExeFunc=###}></a><hr /></li>
+                       </ur>
+                    </volist>
+              </div>
+
+               <div class="midd" align="right" >
+
+                <table border="0" width="80%" align="center">
+                   <tr>
+                       <td>
+                          <table border="1" width="100%" align="center">
+                          <h1>测试场景</h1>
+                             <tr>
+                                <td width=2% align="center"><{$arr.sn}></td>
+                                <td width=5%  align="left">角色:<{$arr.swho}></td>
+                                <td width=5%  align="left">时间:<{$arr.swhen}></td>
+                                <td width=10% align="left">场景:<{$arr.scene}></td>
+                                <td  width=10% align="left">流程:<{$arr.flow}></td>
+                                <td width=3%  align="left">
+                                    <a href="__APP__/TAdmin/Exescene/pass/id/<{$arr.id}>" title="标记测试通过"><button>通过</button></a>
+                                    &nbsp;<{$arr.results}>&nbsp;
+                                    <a href="__APP__/TAdmin/Exescene/fail/id/<{$arr.id}>" title="标记测试失败"><button>失败</button></a>
+                                </td>
+                             </tr>
+                          </table>
+
+                       </td>
+                   </tr>
+                   <tr>
+                      <td>
+                       <table border="1" width="100%" align="center">
+                       <h1>场景功能</h1>
+                        <tr>
+                           <th width=2% align="center" bgcolor="#ccc">顺序</th>
+                           <th width=12% align="left" bgcolor="#ccc">路径</th>
+                           <th width=12% align="left" bgcolor="#ccc">功能</th>
+                           <th width=5% align="left" bgcolor="#ccc">备注</th>
+                           <th width=5% align="left" bgcolor="#ccc">结果</th>
+                           <th width=9% align="left" bgcolor="#ccc">说明</th>
+                           <th width=5% align="left" bgcolor="#ccc">意图</th>
+                           <th width=2% align="center" bgcolor="#ccc">num1</th>
+                        </tr>
+                     <volist name='exe' id='ex' empty="没有数据">
+                        <tr>
+                          <td align="center" ><{$ex.sn}></td>
+                          <td align="left" ><{$ex.path}></td>
+                          <td align="left" ><{$ex.func}>
+                            <span style="float:right;margin-right:5px;">
+                              <a target="_blank" href="__APP__/Case/indexe/funcid/<{$ex.funcid}>/proid/<{$w.proid}>" >用例</a>
+                              <a target="_blank" href="__APP__/Rules/indexe/funcid/<{$ex.funcid}>/proid/<{$w.proid}>" >规则</a>
+                              <a target="_blank" href="__APP__/Element/indexe/funcid/<{$ex.funcid}>/proid/<{$w.proid}>" >模板</a>
+                           </span>
+                         </td>
+                         <td align="left" ><{$ex.funcremarks}></td>
+                         <td align="left" ><{$ex.result}>
+                          <span style="float:right;margin-right:5px;">
+                              <a href="__URL__/pass/id/<{$ex.id}>" >标记</a>
+                          </span>
+                         </td>
+                          <form action="__URL__/update" method="post" >
+                            <input type="hidden" name="id" value="<{$ex.id}>" />
+                            <input type="hidden" name="result" value="失败" />
+                         <td align="left" ><input type="text" name="remark" value="<{$ex.remark}>"  class="input300"/>
+                          <span style="float:right;margin-right:5px;"><button>保存 </button></form></span>
+                         </td>
+                         <td align="left" ><{$ex.main}></td>
+                         <td align="center" ><{$ex.num1}></td>
+                       </tr>
+                    </volist>
+                     </table>
+                      </td>
+                   </tr>
+                </table>
+              </div><!-- midd -->
+           </div><!-- main -->

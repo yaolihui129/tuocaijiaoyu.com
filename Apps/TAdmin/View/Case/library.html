@@ -1,0 +1,60 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__APP__/TAdmin/Program/indexl">项目</a>>用例库</div>
+        <div class="content">
+           <div class="main">
+              <div class="top">
+                 <span style="margin-left:20%;">用例库:<{$w.proid|getPro=###}></span>
+                 <span style="float:right;">
+                    <a href="__APP__/TAdmin/Func/range/proid/<{$w.proid}>">
+                    <button  class="btn" >测试范围</button></a>
+                    <a href="__APP__/TAdmin/Program/indexl"><button  class="btn">返回</button></a>
+                 </span>
+               </div>
+              <div class="left" align="left"  style="width:18%;padding:0 2% 0 0;">
+                    <volist name='data' id='pro' empty="没有数据">
+                      <ul>
+                         <li><a href="__URL__/library/proid/<{$pro.id}>"">
+                         <{$pro.prono}>【<{$pro.prost}>】<{$pro.program}>:<{$pro.id|countCase=###}></a><hr></li>
+                      </ul>
+                    </volist>
+              </div>
+              <div class="midd" >
+                   <table border="1" width="80%" align="center">
+
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=10% align="left" bgcolor="#ccc">路径</th>
+                       <th width=7% align="left" bgcolor="#ccc">功能</th>
+                       <th width=7% align="left"  bgcolor="#ccc">意图 </th>
+                        <th width=7% align="left"  bgcolor="#ccc">评审建议 </th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=10% align="left"  bgcolor="#ccc">预期</th>
+
+                     <!-- <th width=5% align="center" bgcolor="#ccc">项目</th> -->
+                       <th width=5% align="center" bgcolor="#ccc">操作 </th>
+                     </tr>
+                     <volist name='cases' id='case' empty="没有数据">
+
+                    <tr>
+                       <td align="center" ><{$case.id}></td>
+                       <td align="left" ><{$case.path}></td>
+                       <td align="left" ><{$case.func}></td>
+                       <form action="__URL__/update" method="post" >
+                       <input type="hidden" name="id" value="<{$case.id}>" />
+                        <td align="left" ><textarea rows="2" cols="30" name="main" ><{$case.main}></textarea></td>
+                       <td align="left" ><textarea rows="2" cols="30" name="remarks" ><{$case.remarks}></textarea></td>
+                        <td align="center" ><{$case.state}></td>
+                       <td align="left" ><textarea rows="2" cols="30" name="expected"><{$case.expected}></textarea></td>
+
+                      <!-- <td align="center" ><{$case.fproid|getProNo=###}></td> -->
+                       <td align="center" >
+                          <button>修改</button></form>
+                          <a href="__APP__/TAdmin/Element/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/proid/<{$w.proid}>">模板</a>
+
+                       </td>
+                    </tr>
+                  </volist>
+                </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

@@ -1,0 +1,56 @@
+ <layout name="layout" />
+       <div class="place"> 所在位置：<a href="__APP__/TAdmin/Program">项目</a>
+             ><a href="__APP__/TAdmin/Stage/index/proid/<{$w.proid}>">里程碑</a>
+             ><a href="__APP__/TAdmin/Stagetester/index/proid/<{$w.proid}>/stageid/<{$w.stageid}>/type/<{$w.type}>">测试者</a>>列队
+            <span style="float:right;margin-right:60px;">
+            <a href="__APP__/TAdmin/Stagetester/index/proid/<{$w.proid}>/stageid/<{$w.stageid}>/type/<{$w.type}>"> 返回</a>
+            </span>
+       </div>
+        <div class="content">
+           <div class="main">
+              <div class="top" style="margin-left:25%;">规划列队:<{$w.proid|getProNo=###}>
+                  <span style="float:right;">
+                      <a href="__APP__/TAdmin/Path/library/stagetesterid/<{$w.stagetesterid}>/tester/<{$w.tester}>/stageid/<{$w.stageid}>/proid/<{$w.proid}>/type/<{$w.type}>">待测模块（路径）</a>
+                      <a href="__URL__/library/stagetesterid/<{$w.stagetesterid}>/tester/<{$w.tester}>/stageid/<{$w.stageid}>/proid/<{$w.proid}>/type/<{$w.type}>">
+                                                                 待测<{$w.type}>场景库<{$w.proid|countScene=###}></a>当前项目：<{$w.proid|getProNo=###}>
+                  </span>
+              </div>
+              <div class="left" align="left" style="width:19%;padding:0 3%;">
+                    <volist name='data' id='vo' empty="没有数据"><ol>
+                      <li><a href="__URL__/queue/stagetesterid/<{$vo.id}>/tester/<{$w.tester}>/stageid/<{$w.stageid}>/proid/<{$w.proid}>/type/<{$w.type}>">
+                       <{$vo.tester}>:<{$vo.stage}>【<{$vo.state}>】<{$vo.id|countExescene=###}></a><hr></li>
+                   </ol> </volist>
+              </div>
+                <div class="midd"  align="left" >
+                          <table border="1" width="75%" align="left">
+                            <tr>
+                              <th width=3% align="center" bgcolor="#ccc">ID</th>
+                              <th width=2% align="center" bgcolor="#ccc">顺序</th>
+                              <th width=7% align="center" bgcolor="#ccc">角色</th>
+                              <th width=7% align="center" bgcolor="#ccc">时间</th>
+                              <th width=30% align="center" bgcolor="#ccc">场景</th>
+                              <th width=5% align="center" bgcolor="#ccc">结果</th>
+                              <th width=10% align="center" bgcolor="#ccc">更新时间</th>
+                           </tr>
+                            <form action="__URL__/order" method="post" >
+                           <volist name='exe' id='ex'>
+                           <tr>
+                             <td align="center" ><{$ex.id}></td>
+                             <td align="center" ><input  type="text" name="sn[<{$ex.id}>]" value="<{$ex.sn}>" class="input40"/></td>
+                             <td align="center" ><{$ex.swho}></td>
+                             <td align="center" ><{$ex.swhen}></td>
+                             <td ><a href="#" ><{$ex.scene}></a>
+                                 <span style="float:right;margin-right:5px;">
+                                    <a href="#" >查看<{$ex.id|countExeFunc=###}></a>
+                                 </span>
+                             </td>
+                             <td align="center" ><{$ex.results}></td>
+                             <td align="center" ><{$ex.updateTime}></td>
+                           </tr>
+                          </volist>
+                            <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                          </form>
+                       </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

@@ -1,0 +1,37 @@
+<layout name="layout" />
+        <div class="place">
+                                 所在位置：
+             <a href="__APP__/TAdmin/Program">项目</a>
+             ><a href="__URL__/index/proid/<{$w.proid}>">里程碑</a>
+             >编辑
+            <span style="float:right;margin-right:60px;">
+            <a href="__URL__/index/proid/<{$w.proid}>"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">里程碑编辑</div>
+              <div class="left"  width="20%" align="left">
+                    <volist name='data' id='vo' empty="没有数据">
+                       <a href="__URL__/mod/id/<{$vo.id}>/proid/<{$w.proid}>"><{$vo.sn}>.<{$vo.stage}>:<{$vo.state}></a><br>
+                    </volist>
+              </div>
+              <div class="midd" width="50%" align="right" >
+                  <table border="0" width="500" align="left">
+                   <form action="__URL__/update" method="post" >
+                   <input type="hidden" name="id" value="<{$stage.id}>" />
+                   <tr><td>更新：</td><td><{$stage.moder}>更新于:<{$stage.updateTime}></td></tr>
+                     <tr><td>顺序：</td><td><input type="text" name="sn" value="<{$stage.sn}>"  class="input200"/></td></tr>
+                     <tr><td>阶段：</td><td><input type="text" name="stage" value="<{$stage.stage}>"  class="input200"/></td> </tr>
+                     <tr><td>状态：</td><td><{$state}></td></tr>
+                     <tr><td>文档：</td><td><{$document}></td></tr>
+                     <tr><td>时间：</td><td><{$startDate}>-<{$endDate}></td></tr>
+                     <tr><td></td>
+                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                             <a href="__URL__/add/proid/<{$w.proid}>"  ><button  class="btn" >添加</button> </a>
+                             <a href="__URL__/index/proid/<{$w.proid}>"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

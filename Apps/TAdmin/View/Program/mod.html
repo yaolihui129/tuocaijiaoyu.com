@@ -1,0 +1,41 @@
+      <layout name="layout" />
+        <div class="place">所在位置：<a href="__URL__">项目</a>>编辑
+            <span style="float:right;margin-right:60px;">
+                 <a href="__URL__"> 返回</a>
+             </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top"> 项目编辑 </div>
+             <div class="left" align="left"  style="width:25%;padding:0 2% 0 0;">
+                    <volist name='pros' id='pro' empty="没有数据"><ul><li>
+                       <a href="__URL__/mod/id/<{$pro.id}>"><{$pro.prono}>【<{$pro.prost}>】<{$pro.program}></a><hr>
+                    </li></ul></volist>
+              </div>
+              <div class="midd">
+                  <table border="0" width="720px" align="left">
+                   <form action="__URL__/update" method="post" >
+                   <input type="hidden" name="id" value="<{$p.id}>" />
+                   <tr><td>更新：</td><td><{$p.moder}>更新于:<{$p.updateTime}></td></tr>
+                   <tr><td>&nbsp;</td></tr>
+                   <tr><td>编号：</td>
+                       <td>
+                          <input type="text" name="prono" value="<{$p.prono}>"  class="input100"/>
+                          <{$startDate}>- &nbsp;<{$endDate}>&nbsp;状态：<{$select}>
+                       </td>
+                   </tr>
+                    <tr><td>&nbsp;</td></tr>
+                   <tr><td>项目：</td><td><input type="text" name="program" value="<{$p.program}>" class="input500"/></td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                   <tr><td>负责人：</td><td><{$selectgpuer}>&nbsp;<{$prod}>分组：<{$selectgp}>类型：<{$selectptype}></td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                   <tr><td></td>
+                       <td>
+                         <input type="submit" class="btn" name="do_submit" value="修   改" > </form>
+                          <a href="__URL__/add"  ><button  class="btn" >添加</button> </a>
+                          <a href="__URL__"><button  class="btn" >返回</button></a>
+                       </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

@@ -1,0 +1,59 @@
+<layout name="layout" />
+       <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>>风险
+            <span style="float:right;margin-right:60px;">
+                 
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">
+                  <span  style="margin-left:27%;">项目风险:<{$w.proid|getPro=###}></span>
+                  <span style="float:right;"><a href="__APP__/TAdmin/Program"><button class="btn">返回</button></a></span>
+              </div>
+               <div class="left" align="left"  style="width:25%;padding:0 2% 0 0;">
+                 <volist name='pros' id='pro' empty="没有数据">
+                    <ul>
+                       <li><a href="__URL__/index/proid/<{$pro.id}>"">
+                           <{$pro.prono}>【<{$pro.prost}>】<{$pro.program}>:<{$pro.id|countRisk=###}></a><hr></li>
+                    </ul>
+                 </volist>
+              </div>
+              <div class="midd" >
+                   <table border="1" width="73%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=20% align="left"  bgcolor="#ccc">风险
+                          <span style="float:right;margin-right:5px;">
+                             <a href="__URL__/add/proid/<{$w.proid}>"  >添加 </a>
+                          </span>
+                       </th>
+                       <th width=2% align="center" bgcolor="#ccc">级别</th>
+                       <th width=3% align="center" bgcolor="#ccc">状态</th>
+                       <th width=7% align="center" bgcolor="#ccc">规避方案</th>
+                       <th width=3% align="center" bgcolor="#ccc">创建</th>
+                       <th width=3% align="center" bgcolor="#ccc">维护</th>
+                       <th width=10% align="center" bgcolor="#ccc">更新时间</th>
+                      <!--  <th width=5% align="center" bgcolor="#ccc">操作 </th>-->
+                     </tr>
+                  <form action="__URL__/order" method="post" >
+                   <volist name='risks' id='st' empty="没有数据">
+                     <tr>
+                       <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
+                       <td ><a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>" ><{$st.risk}></a></td>
+                       <td align="center" ><{$st.level}></td>
+                       <td align="center" ><a href="#"><{$st.state}></a></td>
+                       <td align="center" ><a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>" ><{$st.amethod}></a></td>
+                       <td align="center" ><{$st.adder}></td>
+                       <td align="center" ><{$st.moder}></td>
+                       <td align="center" ><{$st.updateTime}></td>
+                       <!-- <td align="center" >
+                          <a href="__URL__/del/id/<{$st.id}>" onclick="return confirm('你确定要删除风险：<{$st.risk}>？')">删除</a>
+                       </td> -->
+                    </tr>
+                  </volist>
+                    <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
+                 </form>
+                </table>
+
+              </div><!-- midd -->
+           </div><!-- main -->

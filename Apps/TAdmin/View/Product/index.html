@@ -1,0 +1,45 @@
+<layout name="layout" />
+<ol class="breadcrumb">
+   <span>所在位置：</span>        
+       <li class="active">产品库</li> 
+</ol>   
+<div class="container">          
+     <h3>产品库</h3>								
+	 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	  <a href="__URL__/add" class="pull-right"><button type="button" class="btn btn-link ">添加 </button></a><br><br>
+		 <volist name='data' id='st' empty="没有数据">
+		 <div class="panel panel-default">
+		 	<div class="panel-heading" role="tab" id="heading<{$st.id}>">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
+					<{$st.id}>.<{$st.short}>【<{$st.state}>】</a>
+					<span class="pull-right">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
+						    系统<{$st.id|countSys=###}><span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+						    <li><a href="__APP__/TAdmin/System/index/prodid/<{$st.id}>">系统<span class="badge"><{$st.id|countSys=###}></span></a></li>						   
+						    <li><a href="__URL__/mod/id/<{$st.id}>">修改</a></li>
+						    <li class="divider"></li>
+						    <li><a href="__URL__/del/id/<{$st.id}>" onclick="return confirm('你确定要删除产品：<{$st.short}>吗？')">删除</a></li>
+						  </ul>
+						</div>
+					</span>
+				</h4>
+			</div>
+			<div id="<{$st.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$st.id}>">
+				<div class="panel-body">
+				    <{$st.product}><br>						        						       
+					<{$st.moder}>&nbsp;更新于:<{$st.updatetime}><br>
+					<div class="well well-sm">								        
+						<ul class="list-group"><br>
+							<{$st.id|getSys=###}>				           
+						</ul>
+					</div>									    
+				</div>
+			</div>
+		 </div>		                      
+		 </volist>
+	 </div>				               
+</div><!-- container -->

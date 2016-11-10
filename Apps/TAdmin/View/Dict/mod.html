@@ -1,0 +1,32 @@
+<layout name="layout" />
+        <div class="place">所在位置：<a href="__URL__/index/type/<{$w.type}>"> 数据字典</a>>编辑
+            <span style="float:right;margin-right:60px;">
+             <a href="__URL__/index/type/<{$w.type}>"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">字典:<{$w.tpye}></div>
+              <div class="left" >
+                <volist name='data' id='vo' empty="没有数据"><ul>
+                    <li><a href="__URL__/mod/id/<{$vo.id}>/type/<{$w.type}>"><{$vo.k}>:<{$vo.v}></a></li>
+                </ul></volist>
+              </div>
+              <div class="midd" align="left">
+                    <table border="0" width="400" align="left">
+                     <form action="__URL__/update" method="post" >
+                     <input type="hidden" name="id" value="<{$dic.id}>" />
+                         <tr><td> 更新：</td><td><{$dic.moder}>更新于:<{$dic.updatetime}></td></tr>
+                         <tr><td> Key：</td><td><input type="text" name="k" value="<{$dic.k}>"  class="input200"/></td></tr>
+                         <tr><td> Value：</td><td><input type="text" name="v" value="<{$dic.v}>"  class="input200"/></td></tr>
+                         <tr><td> Type：</td><td><input type="text" name="type" value="<{$dic.type}>"  class="input100"/>状态:<{$state}></td></tr>
+                         <tr><td></td>
+                             <td>
+                                <input type="submit" class="btn" name="do_submit" value="提 交"> </form>
+                                 <a href="__URL__/add/type/<{$w.type}>"  ><button  class="btn" >添加</button> </a>
+                                 <a href="__URL__"><button  class="btn" >返回</button></a>
+                             </td>
+                         </tr>
+                     </table>
+              </div><!-- midd -->
+           </div><!-- main -->

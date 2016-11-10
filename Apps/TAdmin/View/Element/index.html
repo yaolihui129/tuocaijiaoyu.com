@@ -1,0 +1,89 @@
+<layout name="layout" />
+        <div class="place"> 所在位置：<a href="__/TAdminAPP__/Product">产品</a>
+            ><a href="__APP__/TAdmin/System/index/prodid/<{$w.prodid}>">系统</a>
+            ><a href="__APP__/TAdmin/Path/index/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">路径</a>
+            ><a href="__APP__/TAdmin/Func/index/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">功能点</a>
+            >数据模板
+            <span style="float:right;margin-right:60px;">
+               <a href="__APP__/TAdmin/Func/index/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>"> 返回</a>
+            </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top"  >数据用例模板
+              <span>(功能点：<{$w.funcid|getSPFunc=###}>)</span>
+              </div>
+              <div class="left" align="left" >
+                  <h1>控件</h1>
+                  <span style="float:right;">
+                      <a href="__URL__/add/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">添加</a>
+                  </span>
+                <form action="__URL__/order" method="post" >
+                   <volist name='data' id='vo' empty="没有数据">
+                     <ul>
+                         <li>
+                           <input type="text" name="sn[<{$vo.id}>]" value="<{$vo.sn}>"  class="input40"/>
+                           <a href="__URL__/mod/id/<{$vo.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">
+                           <{$vo.typeset}>:<{$vo.control}>-<{$vo.data}></a>
+                         </li>
+                      </ul>
+                    </volist>
+                    <input type="submit" name="do_submit" value="批量排序" class="btn">
+                </form>
+              </div>
+               <div class="midd">
+                   <table border="1" width="80%" align="center">
+                     <tr>
+                       <th width=3% align="center" bgcolor="#ccc">ID</th>
+                       <th width=3% align="center" bgcolor="#ccc">顺序</th>
+                       <th width=15% align="left"  bgcolor="#ccc">意图
+                          <span style="float:right;margin-right:5px;">
+                             <a href="#"  >添加用例 </a>
+                          </span>
+                       </th>
+                       <th width=10% align="center"  bgcolor="#ccc">预期</th>
+                       <th width=5% align="center" bgcolor="#ccc">状态</th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[0]['control']?$data[0]['control']:'Num1'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[1]['control']?$data[1]['control']:'Num2'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[2]['control']?$data[2]['control']:'Num3'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[3]['control']?$data[3]['control']:'Num4'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[4]['control']?$data[4]['control']:'Num5'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[5]['control']?$data[5]['control']:'Num6'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[6]['control']?$data[6]['control']:'Num7'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[7]['control']?$data[7]['control']:'Num8'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[8]['control']?$data[8]['control']:'Num9'}></th>
+                       <th width=3% align="center" bgcolor="#ccc"><{$data[9]['control']?$data[9]['control']:'Num10'}></th>
+                       <th width=3% align="center" bgcolor="#ccc">操作 </th>
+                     </tr>
+                     <volist name='dcases' id='case' empty="没有数据">
+                    <tr>
+                       <td align="center" ><{$case.id}></td>
+                       <td align="center" ><{$case.sn}></td>
+                       <td >
+                         <a href="#" ><{$case.main}></a>
+                          <span style="float:right;margin-right:5px;">
+                         <a href="__APP__/TAdmin/Case/mod/id/<{$case.id}>" >修改</a>
+                         </span>
+                       </td>
+                       <td align="center" ><{$case.expected}></td>
+                       <td align="center" >
+                         <a href="__URL__/setdstate/id/<{$case.id}>/dstate/<{$case.dstate}>" title="变更状态"><{$case.dstate}></a>
+                       </td>
+                       <td align="center" ><{$case.num1}></td>
+                       <td align="center" ><{$case.num2}></td>
+                       <td align="center" ><{$case.num3}></td>
+                       <td align="center" ><{$case.num4}></td>
+                       <td align="center" ><{$case.num5}></td>
+                       <td align="center" ><{$case.num6}></td>
+                       <td align="center" ><{$case.num7}></td>
+                       <td align="center" ><{$case.num8}></td>
+                       <td align="center" ><{$case.num9}></td>
+                       <td align="center" ><{$case.num10}></td>
+                       <td align="center" >
+                          <a href="__APP__/TAdmin/Case/data/id/<{$case.id}>" >更多</a>
+                       </td>
+                    </tr>
+                    </volist>
+                </table>
+              </div><!-- midd -->
+           </div><!-- main -->
