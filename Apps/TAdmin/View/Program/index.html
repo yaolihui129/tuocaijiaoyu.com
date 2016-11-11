@@ -1,22 +1,25 @@
 <layout name="layout" />
-<ol class="breadcrumb">
-    <span>所在位置：</span>        
-        <li class="active">测试项目</li> 
-     <div class="container-fluid">
+ <ol class="breadcrumb">
+	    <span>所在位置：</span>        
+	        <li class="active">测试项目</li> 
+</ol> 
+<div class="container-fluid">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid ">
     <!-- Brand and toggle get grouped for better mobile display -->
- 
-    <div class="navbar-header pull-right">            
-      <ul class="nav navbar-nav navbar-left">      
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><{$w.testgp}>组 <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-          	<volist name='data' id='da' empty="没有数据">
-            	<li><a href="__APP__/TAdmin/Program/index/testgp/<{$da.v}>"><{$da.v}>组</a></li>                       	            
-            </volist>
-          </ul>
-        </li>
-      </ul>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><{$w.testgp}>组测试项目</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
       <form action="__URL__/search " method="post" class="navbar-form navbar-left" role="search">
         <div class="form-group input-group ">
           <input  type="text" class="form-control" name="search" value="<{$w.search}>" placeholder="项目、负责人、状态">
@@ -26,16 +29,29 @@
           </span>
         </div>        
       </form>
-    </div>  
-  </div><!-- /.container-fluid -->       
-</ol>
+      
+      <ul class="nav navbar-nav navbar-right">      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><{$w.testgp}>组 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          	<volist name='data' id='da' empty="没有数据">
+            	<li><a href="__APP__/TAdmin/Program/index/testgp/<{$da.v}>"><{$da.v}>组</a></li>                       	            
+            </volist>
+          </ul>
+        </li>
+        <li><a href="__URL__/add" class="btn btn-info   " role="button">添加</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>     
+</div>
       
         
   
   
-<div class="container"> 
+<div class="container-fluid">   
   <div class="starter-template">
-    <h3><{$w.testgp}>测试项目</h3>             
+           
      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"><br>
          <volist name='arr' id='pro' empty="没有数据">
              <div class="panel panel-default">
@@ -43,25 +59,30 @@
 					<h4 class="panel-title">
 					    <a data-toggle="collapse" data-parent="#accordion" href="#<{$pro.id}>" aria-expanded="true" aria-controls="<{$pro.id}>">
 					     <{$pro.prono}>.<{$pro.manager}></a>
-					     <span class="pull-right">【<{$pro.prost}>】					
+					     <span class="pull-right">				
 					     <div class="btn-group pull-right"  style="margin-top:-6px;">
-					          <button type="button" class="btn btn-warning btn-xs">
-					              <a  target="_blank" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围 <{$pro.id|countRange=###}> </a>
+					          <button type="button" class="btn btn-warning btn-sm">
+					              <a  target="_blank" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id|countRange=###}> </a>
 					          </button>
-					          <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
+					          <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
 					                <span class="caret"></span>
 					                <span class="sr-only">Toggle Dropdown</span>
 					          </button>
 					          <ul class="dropdown-menu" role="menu">
-					                <li><a href="__APP__/TAdmin/Risk/index/proid/<{$pro.id}>">风险 <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
-					                <li><a href="__APP__/TAdmin/Stage/index/proid/<{$pro.id}> ">里程碑 <span class="badge"><{$pro.id|countStage=###}></span> </a></li>
-					                <li><a href="__APP__/TAdmin/Scene/index/proid/<{$pro.id}>">场景 <span class="badge"><{$pro.id|countScene=###}><span></a></li>
-					                <li><a href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
-					                <li><a href="__APP__/TAdmin/Case/procase/proid/<{$pro.id}>">用例<span class="badge"><{$pro.id|countCase=###}></span></a></li>				                
+					                <li><a target="_blank" href="__APP__/TAdmin/Risk/index/proid/<{$pro.id}>">风险 <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
+					                <li><a target="_blank" href="__APP__/TAdmin/Stage/index/proid/<{$pro.id}> ">里程碑 <span class="badge"><{$pro.id|countStage=###}></span> </a></li>
+					                <li><a target="_blank" href="__APP__/TAdmin/Scene/index/proid/<{$pro.id}>">场景 <span class="badge"><{$pro.id|countScene=###}><span></a></li>
+					                <li><a target="_blank" href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
+					                <li><a target="_blank" href="__APP__/TAdmin/Case/procase/proid/<{$pro.id}>">用例<span class="badge"><{$pro.id|countCase=###}></span></a></li>				                
 					                <li class="divider"></li>
 					                <li><a href="#">上线结果【状态】</a></li>
+					                <li class="divider"></li>
+					                <li><a href="__URL__/mod/id/<{$pro.id}>">修改</a></li>
+					                <li><a href="__URL__/del/id/<{$pro.id}>" onclick="return confirm('你确定要删除项目：<{$pro.prono}>吗？')">删除</a></li>
 					          </ul>
+					           <a href="__URL__/modprost/id/<{$pro.id}>/prost/<{$pro.prost}>" class="btn btn-link btn-sm active" role="button"><{$pro.prost}></a>
 					      </div>
+					     	
 					      </span>						      
 					</h4>
 			   </div>

@@ -41,7 +41,7 @@ function selectgpuer($value="腰立辉",$testgp="Auto",$name="state"){
  * @param $value 选中值
  */
 function prodselect($value=1) {
-    $html = '<select name="prodid" class="inputselect">';
+    $html = '<select name="prodid" class="form-control">';
     $m =M('product');
     //$where=array("state"=>"正常");
     //获取所有分类
@@ -266,7 +266,19 @@ function countFQResult($id){
         return ;
     }
 }
-
+/**
+ * 根据id获取产品简称
+ */
+function getProd($id){
+    if ($id){
+        $m=M('product');
+        $data=$m->find($id);
+        //dump($data);
+        return $data['short'];
+    }else {
+        return ;
+    }
+}
 
 /**
  * 根据id获取功能结果

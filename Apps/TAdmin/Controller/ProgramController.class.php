@@ -4,7 +4,8 @@ namespace TAdmin\Controller;
 class ProgramController extends CommonController {
     public function index(){
         /* 接收参数*/
-        $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :"OP";
+        $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
+        //dump($_SESSION);
         $m=M('dict');
         $where=array("type"=>"testgp","state"=>"正常");
         $data=$m->where($where)->select();
@@ -22,38 +23,32 @@ class ProgramController extends CommonController {
     }
 
     
-
-
-
     public function add(){
         /* 接收参数*/
        $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
         /* 实例化模型*/
-        $pros= D("program")
+        $data= D("program")
         ->where(array("testgp"=>"$testgp"))
         ->order("end desc")
         ->select();
 
-        $this->assign("pros",$pros);
+        $this->assign("data",$data);
         //dump($pros);
         //初始化添加字段
         $tol=D("program")->where(array("testgp"=>"$testgp"))->count();
         $d=date("ym",time());
-        $manager= $_SESSION['realname'];
-        $start=date("Y-m-d",time());
-        $end=date("Y-m-d",time()+7*24*3600);
-        $arr=array("prono"=>"$testgp$d".".".($tol+1),"manager"=>"$manager","prodId"=>"1","state"=>"进行中","type"=>"简要","testgp"=>"$testgp");
+
+        $arr['start']=date("Y-m-d",time());
+        $arr['end']=date("Y-m-d",time()+7*24*3600);
+        $arr['prono']="$testgp$d".".".($tol+1);
         $this->assign("p",$arr);
         $this -> assign("prod", prodselect());
         $this -> assign("selectptype", formselect("简要","ptype","ptype"));
         $this -> assign("selectgp", formselect($testgp,"testgp","testgp"));
         $this -> assign("select", formselect("进行中","prost","prost"));
         $this -> assign("selectgpuer", selectgpuer($_SESSION['realname'],$_SESSION['testgp'],"manager"));
-        $this->assign("startDate",PublicController::date("start",$start));
-        $this->assign("endDate",PublicController::date("end",$end));
         $this -> assign("reType", formselect($arr['reType'],"reType","reType"));
-        $this -> assign("reLevel", formselect($arr['reLevel'],"reLevel","reLevel"));
-        $this->assign("jianjie",PublicController::editor("profile",$arr['profile']));
+        $this -> assign("reLevel", formselect("一般需求","reLevel","reLevel"));
 
         $this->display();
     }
@@ -83,21 +78,22 @@ class ProgramController extends CommonController {
         $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
        /* 实例化模型*/
         $m=M(program);
-        $pros= $m
+        $data= $m
         ->where(array("testgp"=>"$testgp"))
         ->order("end desc")
         ->select();
-        $this->assign("pros",$pros);
+        $this->assign("data",$data);
 
         $arr=$m->find($id);
         $this->assign('p',$arr);
-        $this -> assign("prod", prodselect($arr['prodid']));
+        
         $this -> assign("selectptype", formselect($arr['ptype'],"ptype","ptype"));
         $this -> assign("selectgp", formselect($arr['testgp'],"testgp","testgp"));
         $this -> assign("select", formselect($arr['prost'],"prost","prost"));
         $this -> assign("selectgpuer", selectgpuer($arr['manager'],$_SESSION['testgp'],"manager"));
-        $this->assign("startDate",PublicController::date("start",$arr['start']));
-        $this->assign("endDate",PublicController::date("end",$arr['end']));
+        $this -> assign("relevel", formselect($arr['relevel'],"relevel","relevel"));
+        $this -> assign("retype", formselect($arr['retype'],"retype","retype"));
+
 
         $this->display();
     }
@@ -136,10 +132,7 @@ class ProgramController extends CommonController {
    
    
        $this->display('index');
-   
-   
-   
-   
+           
    }
     
 
@@ -181,14 +174,30 @@ class ProgramController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('program');
-
-        $count =$m->delete($id);
-        if ($count>0) {
-            $this->success('删除成功');
+        $where['proid']=$id;
+        $m=M('stage');
+        $arr=$m->where($where)->select();
+        if($arr){
+            $this->error('项目下有里程碑，不能删除');
         }else{
-            $this->error('删除失败');
+            $m=M('prosys');
+            $data=$m->where($where)->select();
+            if ($data){
+                $this->error('项目下有系统，不能删除');
+            }else{
+                $m=M('program');
+                
+                $count =$m->delete($id);
+                if ($count>0) {
+                    $this->success('成功');
+                }else{
+                    $this->error('失败');
+                }
+            }
         }
+        
+        
+        
     }
 
 }

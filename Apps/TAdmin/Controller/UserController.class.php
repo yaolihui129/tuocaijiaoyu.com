@@ -147,7 +147,53 @@ class UserController extends CommonController {
             $this->error("重置失败！");
         }
     }
-
+    public function setpass(){
+        /* 接收参数*/
+        $id =  $_SESSION['id'];
+        /* 实例化模型*/
+        $m=M('user');
+    
+        $user=$m->find($id);
+        $this->assign('user',$user);
+    
+        $this->display();
+    }
+    
+    public function setp(){
+        /* 接收参数*/
+        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        $pass1= $_POST['pass1'];
+        $pass2= $_POST['pass2'];
+        $pass3= $_POST['pass3'];
+        /* 实例化模型*/
+        $m=M('user');
+    
+        $user=$m->find($id);
+        if (md5($pass1)==$user['password']) {
+            if ($pass2==$pass3) {
+                $arr['id']=$id;
+                $arr['password']=md5($pass2);
+                $arr['moder']=$_SESSION['realname'];
+                if ($m->save($arr)){
+                    $this->success("密码修改成功！",U('TAdmin/Program/index'));
+                }else{
+                    $this->error("密码修改失败！");
+                }
+    
+            }else{
+                $this->error('新密码和确认密码不一致');
+            }
+        }else{
+            $this->error('原密码错误');
+        }
+    
+    
+    }
+    
+    
+    
+    
+    
     public function del(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];

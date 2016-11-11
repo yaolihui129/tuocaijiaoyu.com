@@ -10,13 +10,14 @@ class LoginController extends Controller {
     public function login(){
         $user = D('user')
         ->where(array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password'])))
+        ->field("id,realname,username,head,usergp,phone,email")
         ->find();
         if ($user){
             session('[start]');
             $_SESSION=$user;
             $_SESSION['isLogin']=1;
             $_SESSION['testgp']=$user['usergp'];
-            $_SESSION['filename']=$user['filename'];
+            $_SESSION['head']=$user['head'];
             $this->redirect('TAdmin/Program/index');
         }else{
             // p($user);

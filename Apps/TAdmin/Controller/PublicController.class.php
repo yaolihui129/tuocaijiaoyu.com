@@ -33,7 +33,7 @@ class PublicController extends Controller {
     				<link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/js/date/css/border-radius.css" />
     				<link rel="stylesheet" type="text/css" href="'.__ROOT__.'/Public/js/date/css/steel/steel.css" />';
         }
-        $str .= '<input style="height:20px" type="text" name="'.$name.'" id="'.$id.'" value="'.$value.'" size="'.$size.'" class="date" readonly>&nbsp;';
+        $str .= '<input class="form-control"  type="text" name="'.$name.'" id="'.$id.'" value="'.$value.'" size="'.$size.'" class="date" readonly>&nbsp;';
         $str .= '<script type="text/javascript">
 			Calendar.setup({
 			weekNumbers: true,
