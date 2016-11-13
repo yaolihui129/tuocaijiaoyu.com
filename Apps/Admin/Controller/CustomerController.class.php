@@ -3,30 +3,19 @@ namespace Admin\Controller;
 class CustomerController extends CommonController {
 
 	public function index(){
-
-        $where =  array("type"=>"custype","state"=>"正常");
-		$m=M('dict');
-        $arr=$m->where($where)->field('id,k,v',false)->order('k')->select();
-        $this->assign('arr',$arr);
-
-        $where = !empty($_GET['custype']) ? array("custype"=>$_GET['custype']) : array("custype"=>"老师");
+     
 		$m=M('customer');
-        $data=$m->where($where)->select();
+        $data=$m->order("updateTime desc")->select();
         $this->assign('data',$data);
-        $this->assign('w',$where);
-
-        
+                
 	     $this->display();
     }
 
     public function add(){
 
-    	$where = !empty($_GET['custype']) ? array("custype"=>$_GET['custype']) : array("custype"=>"老师");
-		$m=M('customer');
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $this->assign('w',$where);
         $this->assign("state", PublicController::stateSelect("正常","state","state"));
+        $this->assign("coursetype", PublicController::stateSelect($arr['coursetype'],"coursetype","coursetype"));
+        $this->assign("custype", PublicController::stateSelect($arr['custype'],"custype","custype"));
 
 
        
@@ -55,19 +44,34 @@ class CustomerController extends CommonController {
         }
 
     }
+    
+    public function search(){
+        /* 接收参数*/
+        $search=$_POST['search'];
+        $map['realname|phone|custype']=array('like','%'.$search.'%');
+        /* 实例化模型*/
+        $m=M('customer');
+        $arr=$m->where($map)->order("updateTime desc")->select();
+        $this->assign('data',$arr);
+        $where=array("search"=>$search);
+        $this->assign('w',$where);
+         
+        $this->display('index');
+         
+    }
+    
 
     public function mod(){
 
-    	$where = !empty($_GET['custype']) ? array("custype"=>$_GET['custype']) : array("custype"=>"老师");
+    	
 		$m=M('customer');
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-
+ 
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
         $this->assign('w',$where);
         $this->assign("state", PublicController::stateSelect($arr['state'],"state","state"));
-       
+        $this->assign("coursetype", PublicController::stateSelect($arr['coursetype'],"coursetype","coursetype"));
+        $this->assign("custype", PublicController::stateSelect($arr['custype'],"custype","custype"));
 
         $this->display();
     }

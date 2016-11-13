@@ -16,6 +16,7 @@ class UserController extends CommonController {
         $where=array("state"=>"在职");
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
+        $this->assign("state", PublicController::stateSelect($user['state'],"state","adminst"));
 
         $this->display();
     }
@@ -50,10 +51,26 @@ class UserController extends CommonController {
 
         $user=$m->find($id);
         $this->assign('user',$user);
+        $this->assign("state", PublicController::stateSelect($user['state'],"state","adminst"));
 
         $this->display();
     }
 
+    
+    public function search(){       
+        /* 接收参数*/       
+        $search=$_POST['search'];               
+        /* 实例化模型*/
+        $m=M('admin');    
+        $map['phone|username|realname']=array('like','%'.$search.'%');    
+        $arr=$m->where($map)->select();
+        $this->assign('data',$arr);       
+        $where=array("search"=>$search);
+        $this->assign('w',$where);        
+         
+        $this->display('index');
+         
+    }
    
 
     public function photo(){

@@ -62,6 +62,23 @@ class HrController extends CommonController {
             $this->error("修改失败！");
         }
     }
+    
+    public function search(){
+        /* 接收参数*/
+        $search=$_POST['search'];
+        $map['title|salary|state']=array('like','%'.$search.'%');
+        /* 实例化模型*/
+        $m=M('hr');
+        $arr=$m->where($map)->order("updateTime desc")->select();
+        $this->assign('data',$arr);
+        $where=array("search"=>$search);
+        $this->assign('w',$where);
+         
+        $this->display('index');
+         
+    }
+    
+    
 
     public function del(){
         /* 接收参数*/

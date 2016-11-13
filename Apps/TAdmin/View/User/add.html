@@ -1,52 +1,49 @@
-      <layout name="layout" />
-        <div class="place">
-                                 所在位置：
-             <a href="__URL__">用户</a>
-             >添加
-            <span style="float:right;margin-right:60px;">
-            <a href="__URL__"> 返回</a>
-            </span>
-        </div>
-        <div class="content">
-           <div class="main">
-              <div class="top">用户添加</div>
-               <div class="left"  width="20%" align="center" >
-                    <volist name='data' id='vo' empty="没有数据">
-                       <a href="__URL__/mod/id/<{$vo.id}>""><{$vo.userNo}>-<{$vo.realname}>:<{$vo.state}></a><br>
-                    </volist>
+<layout name="layout" />
+  <ol class="breadcrumb">
+    <span>所在位置：</span>
+        <li><a href="__APP__/Admin/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+        <li><a href="__URL__/index">管理员</a></li>   
+        <li class="active">添加</li>
+    <span class="pull-right"><a href="__URL__/index"><button type="button" class="btn btn-warning btn-xs pull-right">返回</button></a></span>
+  </ol>
+  <h1 >管理员-添加</h1>
+  <div class="row">
+    <div class="col-sm-8">
+          <p class="pull-right visible-xs"><button class="btn-xs btn-primary">tar</button></p>
+          <div class="panel panel-default">  
+            <div class="panel-body addmod">
+                <form action="__URL__/insert" method="post" enctype='multipart/form-data' role="form">
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputusername"></label>
+                      <input type="text" class="form-control" name="username" value="" placeholder="登录名" >  *密码默认为：123456
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputrealname"></label>
+                      <input type="text" class="form-control" name="realname" value="" placeholder="姓名" > 
+                  </div>
+                  <div class="form-group input-group-lg">
+                      <label for="exampleInputphone"></label>
+                      <input type="text" class="form-control" name="phone" value="" placeholder="手机号" >  
+                  </div>
+                  
+                      <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+                  <div class="btn-group pull-left">
+                      <a href="__URL__"><button  class="btn btn-warning btn-lg" style="margin-left:50px;">返 回</button></a>
+                  </div>
               </div>
-              <div class="midd" width="50%" align="center" >
-                  <table border="0" width="600" align="left">
-                  <form action="__URL__/insert" method="post" enctype='multipart/form-data'>
-                     <tr><td> 员工号：</td>
-                         <td><input type="text" name="userNo" value=""  class="input300"/></td>
-                     </tr>
-                     <tr><td>登录名：</td>
-                         <td><input type="text" name="username" value="" class="input300"/> *密码默认为：123456</td>
-                     </tr>
-                     <tr><td>姓名：</td>
-                         <td><input type="text" name="realname" value="" class="input300"/></td>
-                     </tr>
-                     <tr><td>头像：</td>
-                         <td><input type="file" name="filename" class="input200"/></td>
-                     </tr>
-                     <tr><td>职位：</td><td><{$position}></td></tr>
-                     <tr><td> 分组：</td><td><{$usergp}></td></tr>
-                     <tr><td>部门：</td>
-                         <td><input type="text" name="team" value="惠买车-产品研发中心-质量管理部" class="input300"/></td>
-                     </tr>
-                     <tr><td>手机：</td>
-                         <td><input type="text" name="phone" value="" class="input300" /></td>
-                     </tr>
-                     <tr><td> 座机：</td>
-                         <td><input type="text" name="tel" value="" class="input300"/></td>
-                     </tr>
-                     <tr><td></td>
-                         <td>
-                             <input type="submit" class="btn" name="do_submit" value="提 交"></form>
-                              <a href="__URL__"><button  class="btn" >返回</button></a>
-                         </td>
-                     </tr>
-                  </table>
-              </div><!-- midd -->
-           </div><!-- main -->
+          </div>
+    </div>                      
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">管理员</h3>
+            </div>            
+            <ul class="list-group">
+            <volist name='data' id='vo' empty="没有数据">
+                <li class="list-group-item" title="管理员"><a href="__URL__/mod/id/<{$vo.id}>""><{$vo.realname}>:<{$vo.state}></a></li>
+            </volist>            
+            </ul>                        
+        </div>          
+    </div>
+</div>
