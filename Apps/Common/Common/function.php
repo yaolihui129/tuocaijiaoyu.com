@@ -99,3 +99,16 @@ function GetOs(){
         }
         
     }
+    /*
+     * 根据dateid 获取排课信息
+     *
+     *
+     * */
+    
+    function getPlan($dateid){
+        $m=D('plan');
+        $where['dateid']=$dateid;
+        $arr=$m->where($where)->select();
+        $str.=aaa;
+        return $str;
+    }

@@ -4,8 +4,13 @@ use Org\Util\Date;
 
 class PlanController extends CommonController {
     public function index(){
+        $_SESSION['techclassid']=$_GET['techclassid'];
         $arr['riqi']=date("Y-m-d",time());
         $this->assign("p",$arr);
+        $map['riqi']=$arr['riqi'];
+        $m=M('date');
+        $arr=$m->where($map)->order('sn')->select();
+        $this->assign('data',$arr);
         
         $this->display();
     }
@@ -16,22 +21,29 @@ class PlanController extends CommonController {
         $map['riqi']=$_POST['riqi'];
 
         /* 实例化模型*/
+        $m=D('dict');
+        $where['type']="sktime";
+        $where['state']="正常";
+        $data=$m->field('k,v')->where($where)->select();
         $m=M('date');
-        $arr=$m->where($map)->select();
+        $arr=$m->where($map)->order('sn')->select();
         if(!$arr){
-            //执行插入操作
-            $_POST['xingqi']=wk($_POST['riqi']);
-            dump($_POST);
-            if(!$m->create()){
-                $this->error($m->getError());
+            foreach ($data as $d){              
+                $_POST['xingqi']=wk($_POST['riqi']);
+                $_POST['sn']=$d['k'];
+                $_POST['sktime']=$d['v'];
+                if(!$m->create()){
+                    $this->error($m->getError());
+                }
+                $m->add();
             }
-            $m->add();
-            
+           $arr=$m->where($map)->order('sn')->select();
         }
       
         $this->assign('data',$arr);
         $where=array("riqi"=>$_POST['riqi']);
         $this->assign('p',$where);
+        
          
         $this->display('index');
         
@@ -39,7 +51,16 @@ class PlanController extends CommonController {
     }
     
     public function add(){
-        
+        $dateid=$_GET['dateid'];
+        $m=D('date');
+        $arr=$m->find($_GET['dateid']);
+        $this->assign('arr',$arr);
+        //dump($arr);
+        $techclassid=$_SESSION['techclassid'];
+        $m=D('techclass');
+        $data=$m->find($_SESSION['techclassid']);
+        $this->assign('data',$data);
+        //dump($data);
         
         $this->display();
     }
@@ -47,9 +68,33 @@ class PlanController extends CommonController {
     
     public function insert(){
                
-//         $date1=$_POST['date'];
-//         echo  wk($date1);
-
+         /* 实例化模型*/
+        $m=D('plan');
+        $_POST['state']='待确认';
+        $_POST['adder']=$_SESSION['realname'];
+        $_POST['moder']=$_SESSION['realname'];
+        $_POST['createTime']=time();
+        if(!$m->create()){
+            $this->error($m->getError());
+        }
+        $lastId=$m->add();
+        if($lastId){
+            $this->success("添加成功");
+        }else{
+            $this->error("添加失败");
+        }
+  
+    }
+    
+   
+    
+    
+    public function mod(){
+        
+        /* 实例化模型*/
+        $m=D('plan');
+        $arr=$m-find($_GET['id']);
+        $this->assign('arr',$arr);
         
     }
 }
