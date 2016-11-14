@@ -6,6 +6,7 @@ class ProgramController extends CommonController {
         /* 接收参数*/
         $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
         //dump($_SESSION);
+        $_SESSION['testgp']=$testgp;
         $m=M('dict');
         $where=array("type"=>"testgp","state"=>"正常");
         $data=$m->where($where)->select();

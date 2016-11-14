@@ -254,6 +254,9 @@ class FuncController extends CommonController{
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
+        
+        $arr=$m->find($proid);
+        $this->assign("arr",$arr);
 
         /* 实例化模型*/
         $s = D("prosys");
@@ -267,7 +270,7 @@ class FuncController extends CommonController{
         $this->assign("data",$data);
         $where=array("proid"=>$proid);
         $this->assign('w',$where);
-// dump($data);
+
         $this->display();
 
     }
@@ -283,6 +286,9 @@ class FuncController extends CommonController{
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
+        
+        $arr=$m->find($proid);
+        $this->assign("arr",$arr);
 
         /* 实例化模型*/
         $s = D("system");

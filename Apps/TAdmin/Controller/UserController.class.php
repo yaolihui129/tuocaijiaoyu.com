@@ -5,7 +5,8 @@ class UserController extends CommonController {
    public function index(){
 
     	 $m=M('user');
-    	 $arr=$m->select();
+    	 $where['state']="在职";
+    	 $arr=$m->where($where)->select();
 	     $this->assign('data',$arr);
 	     $this->display();
     }
@@ -13,7 +14,7 @@ class UserController extends CommonController {
     public  function add(){
         $testgp=$_SESSION['testgp'];
         $m=M('user');
-        $arr=$m->select();
+        $arr=$m->order('state desc')->select();
         $this->assign('data',$arr);
         $this -> assign("usergp", formselect($testgp,"usergp","testgp"));
         $this -> assign("position", formselect("测试工程师","position","position"));
@@ -109,22 +110,29 @@ class UserController extends CommonController {
     }
 
     public function upload(){
-        /* 实例化模型*/
-        $db=D('user');
-        $_POST['moder']=$_SESSION['realname'];
-        import('ORG.Net.UploadFile');
-        $upload = new UploadFile();// 实例化上传类
-        $upload->savePath =  './Public/Upload/';// 设置附件上传目录
-        if(!$upload->upload()) {// 上传错误提示错误信息
-            $this->error($upload->getErrorMsg());
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
+        $upload->savePath  = '/Test/user/'; // 设置附件上传目录
+    
+        $info  =   $upload->upload();
+        // dump($info);
+        if(!$info) {// 上传错误提示错误信息
+            $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息
-            $info =  $upload->getUploadFileInfo();
-        }
-        $_POST['filename']=$info[0]['savename'];
-        if ($db->save($_POST)){
-            $this->success("修改成功！");
-        }else{
-            $this->error("修改失败！");
+            $_POST['path']=$info['img']['savepath'];
+            $_POST['img']=$info['img']['savename'];
+            /* 实例化模型*/
+            $db=D('user');
+            if ($db->save($_POST)){
+                $image = new \Think\Image();
+                $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
+                $image->thumb(245, 160,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
+                $this->success("上传成功！");
+            }else{
+                $this->error("上传失败！");
+            }
         }
     }
 

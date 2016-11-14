@@ -80,7 +80,8 @@
 					                <li><a href="__URL__/mod/id/<{$pro.id}>">修改</a></li>
 					                <li><a href="__URL__/del/id/<{$pro.id}>" onclick="return confirm('你确定要删除项目：<{$pro.prono}>吗？')">删除</a></li>
 					          </ul>
-					           <a href="__URL__/modprost/id/<{$pro.id}>/prost/<{$pro.prost}>" class="btn btn-link btn-sm active" role="button"><{$pro.prost}></a>
+					           <a href="__URL__/modprost/id/<{$pro.id}>/prost/<{$pro.prost}>" 
+					           class="btn btn-link btn-sm active" role="button" onclick="return confirm('你确定要变更项目状态吗？（未开始->进行中->已完成->已上线）')"><{$pro.prost}></a>
 					      </div>
 					     	
 					      </span>						      

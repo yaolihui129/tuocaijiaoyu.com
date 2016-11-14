@@ -12,6 +12,9 @@ class SceneController extends CommonController {
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
+        
+        $arr=$m->find($proid);
+        $this->assign("arr",$arr);
 
         if (!empty($_GET['copy'])) {
             $_SESSION['copy']=$_GET['copy'];

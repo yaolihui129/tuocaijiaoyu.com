@@ -11,6 +11,9 @@ class RiskController extends CommonController {
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
+        
+        $arr=$m->find($proid);
+        $this->assign("arr",$arr);
 
         /* 实例化模型*/
         $s = D("risk");

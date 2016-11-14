@@ -6,17 +6,25 @@ class ProsysController extends CommonController {
          /* 接收参数*/
         $proid=$_GET['proid'];
         $prodid=$_GET['prodid'];
-         /* 实例化模型*/
-//         $s = D("prosys");
-        $s = D("system");
+        $gp=$_SESSION['testgp'];
+        /* 实例化模型*/
+        $m= D("program");
+        $where=array("testgp"=>"$gp");
+        $pros=$m->where($where)->order("end desc")->select();
+        $this->assign("pros",$pros);
+        
+        $arr=$m->find($proid);
+        $this->assign("arr",$arr);
+        
+        $m = D("system");
         $where=array("tp_prosys.proid"=>"$proid");
-        $data=$s->where($where)
+        $data=$m->where($where)
         ->join('tp_prosys ON tp_prosys.sysid =tp_system.id')
         ->select();
         $this->assign("data",$data);
         /* 实例化模型*/
         $m=M('system');
-        $where=array("prodid"=>$prodid);
+        $where=array("prodid"=>$arr['prodid']);
         $syses=$m->where($where)->select();
         /*输出数据 */
         $this->assign('syses',$syses);
