@@ -101,14 +101,35 @@ function GetOs(){
     }
     /*
      * 根据dateid 获取排课信息
-     *
-     *
      * */
     
     function getPlan($dateid){
         $m=D('plan');
-        $where['dateid']=$dateid;
-        $arr=$m->where($where)->select();
-        $str.=aaa;
+        $where['tuoc_plan.dateid']=$dateid;
+        $arr=$m
+        ->where($where)
+        ->join('tuoc_techclass ON tuoc_plan.techclassid =tuoc_techclass.id')
+        ->select();
+//         dump($arr);
+        if($arr){
+        foreach ($arr as $ar){
+        $str.='<li class="list-group-item">'
+                  . $ar['teacher']."老师的【".$ar['course']."】课程,上课地点：".$ar['adress']  
+              .'</li>';
+        };
         return $str;
+        }else{
+            return "暂无课程";
+        }
     }
+    
+    /*
+     * 根据dateid 获取排课信息
+     * */
+    function countPlan($dateid){
+        $m=D('plan');
+        $where['dateid']=$dateid;
+        $arr=$m->where($where)->count();
+        return $arr;
+    }
+    

@@ -10,7 +10,7 @@ class LoginController extends Controller {
     public function login(){
         $customer = D('customer')
         ->where(array('phone'=>$_POST['phone'],'password'=>md5($_POST['password'])))
-        ->field('phone,realname,path,isteacher',false)
+        ->field('id,phone,realname,path,isteacher',false)
         ->find();
         if ($customer){
             session('[start]');
