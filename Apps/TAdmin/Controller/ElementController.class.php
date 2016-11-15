@@ -184,10 +184,6 @@ class ElementController extends CommonController{
 
     public function mod(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
         $funcid=$_GET['funcid'];
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
@@ -199,8 +195,7 @@ class ElementController extends CommonController{
         $this->assign('element',$element);
         $this -> assign("state", formselect($element['state']));
         $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
+        
 
 
 
@@ -329,9 +324,14 @@ class ElementController extends CommonController{
         /* 实例化模型*/
         $m=D('program');
         $where=array("testgp"=>$testgp);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $m=D('element');
+        $pros=$m->where($where)->select();
+       //$this->assign('data',$data);
+        $this->assign("pros",$pros);
+        
+        $arr=$m->find($proid);
+        $this->assign("arr",$arr);
+        
+
         $m=D("prosys");
         $where=array("proid"=>$proid);
         $elements=$m

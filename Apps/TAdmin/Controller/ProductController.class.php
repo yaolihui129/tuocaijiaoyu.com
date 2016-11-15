@@ -8,23 +8,21 @@ class ProductController extends CommonController {
     	 $arr=$m->select();
 
 	     $this->assign('data',$arr);
+// 	     $this -> assign("state", formselect());
+	     
+	     /* 接收参数*/
+	     $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+	     /*查询数据 */
+	     $prod=$m->find($id);
+	     /*输出数据 */
+	     $this->assign('prod',$prod);
+	     $this -> assign("state", formselect($prod['state']));
+	     
 	     $this->display();
     }
 
 
-    public function add(){
-        /* 接收参数*/
-
-        /* 实例化模型*/
-        $m=M('product');
-        $arr=$m->select();
-        /*输出数据 */
-        $this->assign('data',$arr);
-
-        $this -> assign("state", formselect());
-
-        $this->display();
-    }
+   
 
     public function insert(){
         /* 实例化模型*/

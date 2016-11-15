@@ -21,34 +21,21 @@ class SceneController extends CommonController {
         }
 
         /* 实例化模型*/
-        $s = D("scene");
+        $m = D("scene");
         $where=array("proid"=>"$proid");
-        $scene=$s->where($where)->order('sn')->select();
+        $scene=$m->where($where)->order('sn')->select();
         $this->assign("scene",$scene);
         $where=array("proid"=>"$proid","copy"=>$_SESSION['copy']);
-        $this->assign('w',$where);
-	     $this->display();
-    }
-
-    public function add(){
-       /* 接收参数*/
-        $proid=$_GET['proid'];
-
-        /* 实例化模型*/
-        $m= D("scene");
-        $where=array("proid"=>$proid);
-        $pros=$m->where($where)->select();
-
-        $this->assign("data",$pros);
+//         $this->assign('w',$where);
+        
         $count=$m->where($where)->count()+1;
-        $this->assign('w',$where);
+        $this->assign('c',$count);
         $this -> assign("state", formselect());
         $this -> assign("type", formselect("Manual","type","sceneType"));
-        $this->assign('c',$count);
-
-
-        $this->display();
+        
+	    $this->display();
     }
+
 
     public function insert(){
         $m=D('scene');
@@ -98,13 +85,13 @@ class SceneController extends CommonController {
     }
 
     public function order(){
-dump($_POST);
+
         $db = D('scene');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
         }
-        dump($num);
+
         if($num) {
             $this->success("重新排序成功!");
         }else{
@@ -113,9 +100,7 @@ dump($_POST);
     }
 
 
-    public function library(){
-        $this->display();
-    }
+ 
 
 
     public function copy(){

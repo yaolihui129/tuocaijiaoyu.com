@@ -5,7 +5,6 @@ class ProsysController extends CommonController {
     public function index(){
          /* 接收参数*/
         $proid=$_GET['proid'];
-        $prodid=$_GET['prodid'];
         $gp=$_SESSION['testgp'];
         /* 实例化模型*/
         $m= D("program");
@@ -22,16 +21,13 @@ class ProsysController extends CommonController {
         ->join('tp_prosys ON tp_prosys.sysid =tp_system.id')
         ->select();
         $this->assign("data",$data);
-        /* 实例化模型*/
-        $m=M('system');
+
+
         $where=array("prodid"=>$arr['prodid']);
         $syses=$m->where($where)->select();
-        /*输出数据 */
         $this->assign('syses',$syses);
-        $where=array("prodid"=>$prodid,"proid"=>"$proid");
-        $this->assign('w',$where);
 
-	     $this->display();
+	    $this->display();
     }
 
 

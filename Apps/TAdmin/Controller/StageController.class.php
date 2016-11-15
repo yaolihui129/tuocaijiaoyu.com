@@ -16,38 +16,26 @@ class StageController extends CommonController {
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $s = D("stage");
+        $m = D("stage");
         $where=array("proid"=>"$proid");
-        $stages=$s->where($where)->order("sn,id")->select();
+        $stages=$m->where($where)->order("sn,id")->select();
         $this->assign("stages",$stages);
-        $this->assign('w',$where);
 
-
-	     $this->display();
-    }
-
-    public function add(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $start=date("Y-m-d",time());
-        $end=date("Y-m-d",time()+1*24*3600);
-        /* 实例化模型*/
-        $m= D("stage");
-        $where=array("proid"=>$proid);
-        $pros=$m->where($where)->order("sn,id")->select();
-
-        $this->assign("data",$pros);
+        
+        
+        /* 阶段添加*/
+        
         $count=$m->where($where)->count()+1;
-        $this->assign('w',$where);
-        $this->assign('c',$count);
+
+        $this->assign('c',$count);       
         $this -> assign("state", formselect("未开始","state","prost"));
         $this -> assign("document", formselect("无文档","document","document"));
-        $this->assign("startDate",PublicController::date("start",$start));
-        $this->assign("endDate",PublicController::date("end",$end));
-
-
-
-        $this->display();
+        $start=date("Y-m-d",time());
+        $this->assign('start',$start);
+        $end=date("Y-m-d",time()+1*24*3600);
+        $this->assign('end',$end);
+        
+	    $this->display();
     }
 
     public function insert(){

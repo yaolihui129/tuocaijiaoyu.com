@@ -16,36 +16,26 @@ class RiskController extends CommonController {
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $s = D("risk");
+        $m = D("risk");
         $where=array("proid"=>"$proid");
-        $risks=$s->where($where)->select();
+        $risks=$m->where($where)->select();
         $this->assign("risks",$risks);
-        $this->assign('w',$where);
-
-
-	     $this->display();
-    }
-
-    public function add(){
-       /* 接收参数*/
-        $proid=$_GET['proid'];
-        /* 实例化模型*/
-        $m= D("risk");
-        $where=array("proid"=>$proid);
-        $data=$m->where($where)->select();
-
-        $this->assign("data",$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign('w',$where);
+        //$this->assign('w',$where);
+        
+        
+        $count=$m->where($where)->count()+1;      
         $this->assign('c',$count);
         $this -> assign("state", formselect("打开","state","rstate"));
         $this -> assign("level", formselect("C","level","risklevel"));
         $this->assign("tamethod",PublicController::editor("amethod","暂无方案"));
         $this->assign("tremaks",PublicController::editor("remaks",""));
+        
 
-        $this->display();
+
+	     $this->display();
     }
 
+   
     public function insert(){
         $m=D('risk');
         $_POST['adder']=$_SESSION['realname'];

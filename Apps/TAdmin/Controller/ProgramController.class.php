@@ -19,26 +19,11 @@ class ProgramController extends CommonController {
         $this->assign('arr',$arr);
  
         $this->assign('w',$where);
-	    
-	     $this->display();
-    }
-
-    
-    public function add(){
-        /* 接收参数*/
-       $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
-        /* 实例化模型*/
-        $data= D("program")
-        ->where(array("testgp"=>"$testgp"))
-        ->order("end desc")
-        ->select();
-
-        $this->assign("data",$data);
-        //dump($pros);
-        //初始化添加字段
-        $tol=D("program")->where(array("testgp"=>"$testgp"))->count();
+        
+        
+        $tol=$m->where(array("testgp"=>"$testgp"))->count();
         $d=date("ym",time());
-
+        
         $arr['start']=date("Y-m-d",time());
         $arr['end']=date("Y-m-d",time()+7*24*3600);
         $arr['prono']="$testgp$d".".".($tol+1);
@@ -50,9 +35,13 @@ class ProgramController extends CommonController {
         $this -> assign("selectgpuer", selectgpuer($_SESSION['realname'],$_SESSION['testgp'],"manager"));
         $this -> assign("reType", formselect($arr['reType'],"reType","reType"));
         $this -> assign("reLevel", formselect("一般需求","reLevel","reLevel"));
-
-        $this->display();
+        
+	    
+	     $this->display();
     }
+
+    
+   
 
     public function insert(){
         /* 实例化模型*/

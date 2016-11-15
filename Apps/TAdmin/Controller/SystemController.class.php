@@ -140,13 +140,20 @@ class SystemController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('system');
-        $count =$m->delete($id);
-        if ($count>0) {
-            $this->success('删除成功');
+        $where['sysid']=$id;
+        $m=M('path');
+        $arr=$m->where($where)->select();
+        if($arr){
+            $this->error('系统下有路径，不能删除');
         }else{
-            $this->error('删除失败');
-        }
+            $m=M('system');
+            $count =$m->delete($id);
+            if ($count>0) {
+                $this->success('删除成功');
+            }else{
+                $this->error('删除失败');
+            }
+        }  
     }
 
 }
