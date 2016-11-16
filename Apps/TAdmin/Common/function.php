@@ -65,7 +65,7 @@ function prodselect($value=1) {
  * @param $value 选中值
  */
 function proselect($value=1,$name=prono) {
-    $html = '<select name="'.$name.'" class="inputselect">';
+    $html = '<select name="'.$name.'" class="form-control">';
     $m =M('program');
     $where=array("testgp"=>$_SESSION['testgp']);
     //获取所有分类

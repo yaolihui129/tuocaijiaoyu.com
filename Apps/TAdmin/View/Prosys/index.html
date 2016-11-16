@@ -34,10 +34,10 @@
 		           <volist name='data' id='st' empty="没有数据">
 		            <tr>  
 		            	<td align="left" ><{$st.sysno}></td>
-                         <td align="left" ><a target="_blank" href="__APP__/TAdmin/Path/indexp/sysid/<{$st.sysid}>/proid/<{$w.proid}>/prodid/<{$st.prodid}>"><{$st.system}></a>
+                         <td align="left" ><a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>"><{$st.system}></a>
                              <span style="float:right;margin-right:5px;">
-                                 <a target="_blank" href="__APP__/TAdmin/Path/indexp/sysid/<{$st.sysid}>/proid/<{$w.proid}>/prodid/<{$st.prodid}>" >路径<{$st.sysid|countPath=###}></a>
-                                 <a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$w.proid}>/prodid/<{$st.prodid}>" >环境</a>
+                                 <a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>" >路径<{$st.sysid|countPath=###}></a>
+                                 <a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$arr.id}>" >环境</a>
                              </span>
                          </td>
                         

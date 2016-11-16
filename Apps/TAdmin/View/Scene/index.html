@@ -4,7 +4,7 @@
   <div class="col-md-9">
   		<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><{$w.proid|getPro=###}></h3>
+    <h3 class="panel-title"><{$arr.id|getPro=###}></h3>
   </div>
   <div class="panel-body table-responsive">
    <div class="well well-sm">	    	
@@ -28,7 +28,7 @@
             <th width=1% align="center" bgcolor="#ccc">顺序</th>
             <th width=3% align="left"  bgcolor="#ccc">角色</th>
             <th width=20% align="left" bgcolor="#ccc">场景
-                <span style="float:right;margin-right:5px;">
+                <span class="pull-right">
                     <a data-toggle="modal" href="#tianjscene" class=" btn btn-info" >添加</a>
                 </span>
             </th>
@@ -48,8 +48,8 @@
                 <td align="left" ><{$st.swho}></td>
                 <td align="left" >
                 	<a href="__APP__/TAdmin/Scenefunc/index/proid/<{$st.proid}>/sceneid/<{$st.id}>"><{$st.type}>:<{$st.scene}></a>
-                	<span style="float:right;margin-right:5px;">
-                        <a href="__APP__/TAdmin/Scenefunc/index/proid/<{$st.proid}>/sceneid/<{$st.id}>" >场景功能<{$st.id|countSFunc=###}></a>
+                	<span class="pull-right">
+                        <a target="_blank" href="__APP__/TAdmin/Scenefunc/index/sceneid/<{$st.id}>" >场景功能<{$st.id|countSFunc=###}></a>
                         <a href="__URL__/copy/sceneid/<{$st.id}>/proid/<{$w.copy}>" onclick="return confirm('你确定复制场景<{$st.id}>到：<{$w.copy|getProNo=###}>吗？')">复制</a>
                         <a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>">修改</a>
                     </span>

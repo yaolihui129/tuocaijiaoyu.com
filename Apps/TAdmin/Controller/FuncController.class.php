@@ -4,120 +4,33 @@ namespace TAdmin\Controller;
 class FuncController extends CommonController{
     public function index(){
          /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
         $pathid=$_GET['pathid'];
+        $proid=$_SESSION['proid'];
+//         dump($_SESSION);
         /* 实例化模型*/
         $m=D('path');
-        $where=array("sysid"=>"$sysid","state"=>"正常");
+        $arr=$m->find($pathid);
+        $this->assign("arr",$arr);
+        
+        $where['sysid']=$arr['sysid'];
+        $where['state']="正常";        
         $data=$m->where($where)->order("sn,id")->select();
         $this->assign("data",$data);
+        
         /* 实例化模型*/
         $m= D("func");
-        $where=array("pathid"=>"$pathid");
+        $where['pathid']=$pathid;        
         $funcs=$m->where($where)->order("sn")->select();
         $this->assign("funcs",$funcs);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-
+        /* 添加*/
+        $count=$m->where($where)->count()+1;
+        $this->assign("c",$count);       
+        $this -> assign("state", formselect());
+        $this -> assign("fproid", proselect($proid,"fproid"));
+               
 	    $this->display();
     }
-    public function indexp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        /* 实例化模型*/
-        $m=D('path');
-        $where=array("sysid"=>"$sysid","state"=>"正常");
-        $data=$m->where($where)->order("sn,id")->select();
-        $this->assign("data",$data);
-
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $funcs=$m->where($where)->order("sn")->select();
-        $this->assign("funcs",$funcs);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-
-        $this->display();
-    }
-
-    public function add(){
-
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-       // dump($data);
-        $this->assign("data",$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $where=array("prodid"=>$prodid,"sysid"=>$sysid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-
-
-        $this->display();
-    }
-
-    public function addf(){
-
-        /* 接收参数*/
-
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-        // dump($data);
-        $this->assign("data",$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $where=array("proid"=>$proid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-
-
-        $this->display();
-    }
-
-    public function addp(){
-
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-        // dump($data);
-        $this->assign("data",$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-
-
-        $this->display();
-    }
+  
 
     public function insert(){
         $m=D('func');
@@ -248,6 +161,7 @@ class FuncController extends CommonController{
     public function func(){
          /* 接收参数*/
         $proid=$_GET['proid'];
+        $_SESSION['proid']=$proid;
     	$gp=$_SESSION['testgp'];
          /* 实例化模型*/
         $m= D("program");
@@ -364,15 +278,35 @@ class FuncController extends CommonController{
     public function del(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        $where['funcid']=$id;
         /* 实例化模型*/
-        $m=M('func');
-
-        $count =$m->delete($id);
-        if ($count>0) {
-            $this->success('删除成功');
-        }else{
-            $this->error('删除失败');
+        $m=D('case');
+        $arr=$m->where($where)->select();
+        if ($arr){
+            $this->error('该功能点下有用例，不能删除');
+        }else {
+            $m=D('rules');
+            $arr=$m->where($where)->select();
+            if ($arr){
+                $this->error('该功能点下有规则，不能删除');
+            }else {
+                $m=D('element');
+                $arr=$m->where($where)->select();
+                if ($arr){
+                    $this->error('该功能点下有控件，不能删除');
+                }else {
+                    $m=M('func');                   
+                    $count =$m->delete($id);
+                    if ($count>0) {
+                        $this->success('删除成功');
+                    }else{
+                        $this->error('删除失败');
+                    }
+                }
+            }
         }
+        
+       
     }
 
 

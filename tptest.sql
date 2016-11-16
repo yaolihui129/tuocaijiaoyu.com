@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2016-11-15 17:36:31
+Date: 2016-11-16 17:54:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -181,7 +181,7 @@ CREATE TABLE `tp_dict` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_dict
@@ -238,6 +238,7 @@ INSERT INTO `tp_dict` VALUES ('64', '4', '功能优化', 'reType', '正常', '�
 INSERT INTO `tp_dict` VALUES ('65', '5', '性能优化', 'reType', '正常', '腰立辉', '腰立辉', '2016-10-24 09:20:37', '2016-10-24 09:20:37');
 INSERT INTO `tp_dict` VALUES ('66', '6', '用户体验优化', 'reType', '正常', '腰立辉', '腰立辉', '2016-10-24 09:20:47', '2016-10-24 09:20:47');
 INSERT INTO `tp_dict` VALUES ('67', '4', '已上线', 'prost', '正常', '腰立辉', '腰立辉', '2016-10-27 11:33:53', '2016-11-11 16:50:05');
+INSERT INTO `tp_dict` VALUES ('69', '3', 'C', 'sceneType', '正常', '腰立辉', '腰立辉', '2016-11-16 17:23:14', '2016-11-16 17:23:14');
 INSERT INTO `tp_dict` VALUES ('68', '5', '已搁置', 'prost', '正常', '腰立辉', '腰立辉', '2016-11-09 14:21:09', '2016-11-11 16:50:15');
 
 -- ----------------------------
@@ -1263,7 +1264,7 @@ CREATE TABLE `tp_path` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10140 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10141 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_path
@@ -1335,7 +1336,7 @@ INSERT INTO `tp_path` VALUES ('10071', '10', '业务管理-价格收集管理', 
 INSERT INTO `tp_path` VALUES ('10073', '18', '任务管理-报价收集-我的报价', '正常', '11', '腰立辉', '腰立辉', '2016-10-25 10:24:59', '2016-10-25 10:24:59');
 INSERT INTO `tp_path` VALUES ('10074', '17', '任务管理-报价收集-待确定价格', '正常', '11', '腰立辉', '腰立辉', '2016-10-25 10:24:51', '2016-10-25 10:24:51');
 INSERT INTO `tp_path` VALUES ('10075', '21', '任务管理-报价收集-库存价格收集', '正常', '11', '腰立辉', '腰立辉', '2016-10-25 10:25:22', '2016-10-25 10:25:22');
-INSERT INTO `tp_path` VALUES ('10076', '1', '登陆模块', '正常', '54', '腰立辉', '腰立辉', '2016-09-26 16:19:26', '2016-09-26 16:19:26');
+INSERT INTO `tp_path` VALUES ('10076', '1', '登陆模块', '正常', '54', '腰立辉', '腰立辉', '2016-09-26 16:19:26', '2016-11-16 16:06:09');
 INSERT INTO `tp_path` VALUES ('10077', '2', '设置-角色管理', '正常', '54', '腰立辉', '腰立辉', '2016-09-26 16:20:09', '2016-09-26 16:20:09');
 INSERT INTO `tp_path` VALUES ('10078', '3', '设置-用户管理', '正常', '54', '腰立辉', '腰立辉', '2016-09-26 16:33:20', '2016-09-26 16:33:20');
 INSERT INTO `tp_path` VALUES ('10079', '4', '测试库-产品库', '正常', '54', '腰立辉', '腰立辉', '2016-09-26 16:21:00', '2016-09-26 16:21:00');

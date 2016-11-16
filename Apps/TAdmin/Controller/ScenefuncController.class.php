@@ -4,13 +4,15 @@ namespace TAdmin\Controller;
 class ScenefuncController extends CommonController {
     public function index(){
          /* 接收参数*/
-        $proid=$_GET['proid'];
         $sceneid=$_GET['sceneid'];
        /* 实例化模型*/
         $m = D("scene");
-        $where=array("proid"=>"$proid");
+        $where['proid']=$_SESSION['proid'];       
         $data=$m->where($where)->select();
         $this->assign("data",$data);
+        
+        $arr=$m->find($sceneid);
+        $this->assign("arr",$arr);
 
         $m=D('system');
         $where=array("tp_scenefunc.sceneid"=>$sceneid);
@@ -20,10 +22,7 @@ class ScenefuncController extends CommonController {
         ->join("inner JOIN tp_scenefunc ON tp_func.id = tp_scenefunc.funcid")
         ->where($where)->order('tp_scenefunc.sn')->select();
         $this->assign("sfunc",$sfunc);
-//        dump($sfunc);
-        $where=array("proid"=>"$proid","sceneid"=>$sceneid);
-        $this->assign("w",$where);
-
+       
 	     $this->display();
     }
 

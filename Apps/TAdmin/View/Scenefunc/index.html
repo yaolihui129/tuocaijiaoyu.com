@@ -1,32 +1,14 @@
 <layout name="layout" />
-      <div class="place">所在位置：<a href="__APP__/TAdmin/Program">项目</a>><a href="__APP__/TAdmin/Scene/index/proid/<{$w.proid}>">场景</a>>场景功能
-           <span style="float:right;margin-right:60px;">
-                <a href="__APP__/TAdmin/Scene/index/proid/<{$w.proid}>"> 返回</a>
-           </span>
-        </div>
-        <div class="content">
-           <div class="main">
-              <div class="top">
-                 <span style="margin-left:20%;">场景功能(<{$w.sceneid|getScene=###}>)</span>
-                 <span style="float:right;">
-                     <a href="__APP__/TAdmin/Func/library/proid/<{$w.proid}>/sceneid/<{$w.sceneid}>"><button  class="btn" >功能库</button></a>
-                     <a href="#"><button  class="btn" >场景数据</button></a>当前项目：<{$w.proid|getProNo=###}>
-                 </span>
-              </div>
-              <div class="left" align="left" >
-                    <volist name='data' id='vo' empty="没有数据">
-                       <ul>
-                          <li>
-                             <a href="__URL__/index/sceneid/<{$vo.id}>/proid/<{$w.proid}>">
-                             <{$vo.sn}>.<{$vo.type}>-<{$vo.swho}>[<{$vo.swhen}>]<{$vo.scene}>:<{$vo.id|countSFunc=###}></a><hr>
-                         </li>
-                       </ul>
-                    </volist>
-              </div>
-              <div class="midd" >
-                   <table border="1" width="80%" align="center">
-                     <tr>
-                       <th width=2% align="center" bgcolor="#ccc">ID</th>
+<div class="row"> 
+  <div class="col-md-9">
+  		<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">场景</h3>
+  </div>
+  <div class="panel-body table-responsive">   	      
+	<table class="table table-striped table-bordered table-hover table-condensed ">
+          <tr >
+          		<th width=2% align="center" bgcolor="#ccc">ID</th>
                        <th width=2% align="center" bgcolor="#ccc">顺序</th>
                        <th width=10% align="left"  bgcolor="#ccc">路径</th>
                        <th width=7% align="left" bgcolor="#ccc">功能</th>
@@ -34,10 +16,13 @@
                        <th width=7% align="left" bgcolor="#ccc">意图</th>
                        <th width=3% align="center" bgcolor="#ccc">状态</th>
                        <th width=8% align="center" bgcolor="#ccc">操作 </th>
-                     </tr>
-                     <volist name='sfunc' id='st' empty="没有数据">
-                    <tr>
-                    <form action="__URL__/update" method="post" >
+          	
+             
+         </tr>
+         <form action="__URL__/order" method="post" >
+         <volist name='sfunc' id='st' empty="没有数据">
+            <tr> 
+            	<form action="__URL__/update" method="post" >
                        <input type="hidden" name="id" value="<{$st.id}>" />
                        <td align="center" ><{$st.id}></td>
                        <td align="center" ><{$st.sn}></td>
@@ -55,9 +40,33 @@
                           <a href="__APP__/TAdmin/Rules/indexs/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>/sceneid/<{$w.sceneid}>" >规则</a>
                           <a href="__URL__/del/id/<{$st.id}>" onclick="return confirm('你确定要场景中移除这个功能点吗？')">移除</a>
                        </td>
-                    </tr>
-                    </volist>
-                </table>
-
-              </div><!-- midd -->
-           </div><!-- main -->
+            	
+                              
+            </tr>
+            </volist>            	
+       </table>
+    </div>
+  </div>
+  
+  
+  </div>
+  <div class="col-md-3 hidden-xs">
+  	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">场景列表</h3>
+	  </div>
+	  <ul class="list-group">
+	    <volist name='data' id='vo' empty="没有数据"> 			
+            <switch name="vo.id">
+				<case value="$arr.id"> <li class="list-group-item list-group-item-warning"></case>					   					    
+				<default /><li class="list-group-item ">
+			</switch> 
+            <a href="__URL__/index/sceneid/<{$vo.id}>">
+            	<{$vo.sn}>【<{$vo.swho}>】<{$vo.swhen}>:<{$vo.scene}></a><span class="badge"><{$vo.id}></span></li>
+        </volist>
+      </ul>	  
+	</div>
+  	 
+  </div>
+  
+</div> 

@@ -7,6 +7,7 @@ public function index(){
         $funcid=$_GET['funcid'];
         $sfuncid=$_GET['sfuncid'];
         $proid=$_GET['proid'];
+        $_SESSION['proid']=$proid;
         $sceneid=$_GET['sceneid'];
         /* 实例化模型*/
         $m=D('system');

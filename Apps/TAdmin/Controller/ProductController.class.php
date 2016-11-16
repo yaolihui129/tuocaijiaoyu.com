@@ -11,6 +11,7 @@ class ProductController extends CommonController {
 // 	     $this -> assign("state", formselect());
 	     
 	     /* 接收参数*/
+	     $_SESSION['proid']=null;
 	     $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
 	     /*查询数据 */
 	     $prod=$m->find($id);

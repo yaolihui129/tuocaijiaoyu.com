@@ -321,6 +321,7 @@ class ElementController extends CommonController{
         /* 接收参数*/
         $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
         $proid=$_GET['proid'];
+        $_SESSION['proid']=$proid;
         /* 实例化模型*/
         $m=D('program');
         $where=array("testgp"=>$testgp);

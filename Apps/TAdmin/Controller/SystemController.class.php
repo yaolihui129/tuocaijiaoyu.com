@@ -6,6 +6,7 @@ class SystemController extends CommonController {
     public function index(){
         /* 接收参数*/
         $prodid=$_GET['prodid'];
+        $_SESSION['proid']=null;
         /* 实例化模型*/
         $p=M('product');
         /*查询数据 */

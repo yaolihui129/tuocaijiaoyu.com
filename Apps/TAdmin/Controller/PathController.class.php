@@ -6,108 +6,44 @@ class PathController extends CommonController {
         /* 接收参数*/
         $prodid=$_GET['prodid'];
         $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-
-//         echo $sysid;
+        $sysid=$_GET['sysid'];      
+        if($proid){           
+            $m=D('prosys');
+            $map['proid']=$proid;
+            $syses=$m->where($map)
+            ->join('tp_system ON tp_system.id = tp_prosys.sysid')
+            ->order("tp_system.sysno")->select();
+            $this->assign("data",$syses);
+//          dump($syses);
+            
+        }else{
+            /* 实例化模型*/
+            $m=D('system');
+            $where['prodid']=$prodid;
+            $where['state']="正常";
+            
+            $syses=$m->where($where)->order("sysno")->select();
+            $this->assign("data",$syses);
+        }
         /* 实例化模型*/
         $m=D('system');
-        $where=array("prodid"=>"$prodid","state"=>"正常");
-        $syses=$m->where($where)->order("sysno")->select();
-        $this->assign("data",$syses);
+        $arr=$m->find($sysid);
+        $this->assign("arr",$arr);
          /* 实例化模型*/
         $m=D('path');
-        $where=array("sysid"=>"$sysid");
+        $where['sysid']=$sysid;
         $pathes= $m->where($where)->order("sn,id")->select();
         $this->assign("pathes",$pathes);
-        $where=array("prodid"=>"$prodid","proid"=>"$proid","sysid"=>"$sysid");
-        $this->assign("w",$where);
-
-	     $this->display();
-    }
-
-    public function indexp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-//       echo $prodid;
-        /* 实例化模型*/
-        $m=D('prosys');
-        $where=array("tp_prosys.proid"=>"$proid");
-        $syses=$m
-        ->join(" tp_system ON tp_system.id = tp_prosys.sysid")
-        ->where($where)->order("tp_system.sysno")->select();
-        $this->assign("data",$syses);
-        /* 实例化模型*/
-        $m=D('path');
-        $where=array("sysid"=>"$sysid");
-        $pathes= $m->where($where)->order("sn,id")->select();
-        $this->assign("pathes",$pathes);
-        $where=array("prodid"=>"$prodid","proid"=>"$proid","sysid"=>"$sysid");
-        $this->assign("w",$where);
-
-        $this->display();
-    }
-
-    public function add(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        /* 实例化模型*/
-        $m=D('path');
-        /* 查询传递数据*/
-        $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
+        $this->assign("proid",$proid);
+        
         $count=$m->where($where)->count()+1;
         $this->assign("c",$count);
         $this -> assign("pstate", formselect("","pstate"));
-        $where=array("prodid"=>"$prodid","sysid"=>"$sysid");
-        $this->assign("w",$where);
 
-        $this->display();
+	    $this->display();
     }
 
-    public function addf(){
-        /* 接收参数*/
 
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-//         echo $proid;
-        /* 实例化模型*/
-        $m=D('path');
-        /* 查询传递数据*/
-        $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("pstate", formselect("","pstate"));
-        $where=array("proid"=>"$proid","sysid"=>"$sysid");
-        $this->assign("w",$where);
-
-        $this->display();
-    }
-
-    public function addp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        /* 实例化模型*/
-        $m=D('path');
-        /* 查询传递数据*/
-        $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("pstate", formselect("","pstate"));
-        $where=array("prodid"=>"$prodid","proid"=>"$proid","sysid"=>"$sysid");
-        $this->assign("w",$where);
-
-        $this->display();
-    }
 
     public function insert(){
         $m=D('path');
@@ -312,14 +248,25 @@ class PathController extends CommonController {
     public function del(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+       
+        $where['pathid']=$id;
         /* 实例化模型*/
-        $m=D('path');
-
-        $count =$m->delete($id);
-        if ($count>0) {
-            $this->success('数据删除成功');
-        }else{
-            $this->error('数据删除失败');
+        $m=D('func');
+        $arr=$m->where($where)->select();
+        if($arr){
+            //不允许删除
+            $this->error('该路径下有功能，不能删除');
+        }else {
+            $m=D('path');
+            
+            $count =$m->delete($id);
+            if ($count>0) {
+                $this->success('数据删除成功');
+            }else{
+                $this->error('数据删除失败');
+            }
         }
+        
+        
     }
 }
