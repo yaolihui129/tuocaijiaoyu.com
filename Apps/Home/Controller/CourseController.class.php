@@ -10,7 +10,8 @@ class CourseController extends Controller {
         $arr=$m->where($where)->field('id,k,v',false)->order('k')->select();
         $this->assign('arr',$arr);
 
-        $where = !empty($_GET['coursetype']) ? array("coursetype"=>$_GET['coursetype']) : array("coursetype"=>"学前少儿");
+        $where['coursetype'] = !empty($_GET['coursetype']) ? $_GET['coursetype'] : "学前少儿";
+        $where['state']="发布";
 		$m=M('course');
         $data=$m->where($where)->select();
         $this->assign('data',$data);
@@ -36,6 +37,9 @@ class CourseController extends Controller {
             //查询学生的课程表
             $m=D('studentcla');
             $where['tuoc_studentcla.studentid']=$_SESSION['id'];
+            $start=date("Y-m-d",time()-7*24*3600);
+            $end=date("Y-m-d",time()+7*24*3600);
+            $where['tuoc_plan.skdate']  = array('between','$start,$end');
             $arr=$m->where($where)
             ->join('tuoc_techclass ON tuoc_techclass.id=tuoc_studentcla.techclassid')
             ->join('tuoc_plan ON tuoc_plan.techclassid=tuoc_techclass.id')

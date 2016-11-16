@@ -5,7 +5,8 @@ class CustomerController extends Controller {
 
 	public function index(){
 
-        $where = !empty($_GET['isteacher']) ? array("isteacher"=>$_GET['isteacher']) : array("isteacher"=>1);
+        $where['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
+        $where['state']="发布";
 		$m=M('customer');
         $data=$m->where($where)->select();
         $this->assign('data',$data);

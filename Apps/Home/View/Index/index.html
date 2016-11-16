@@ -1,9 +1,25 @@
 <layout name="layout" />
 <div  class="container" >
-	<div class="jumbotron">
-        <h1><{$_SESSION['web']}><br>
-        	<small>咨询热线:<{$_SESSION['phone']}></small>
+	<div class="jumbotron" style="background:url(__UPLOAD__<{$_SESSION['aimg']}>) no-repeat;">
+	<div class="row">
+	  <div class="col-md-6">
+	  		<h1><{$_SESSION['web']}><br>
+        	<small>咨询热线:<{$_SESSION['phone']}><br>
+        		<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$_SESSION['qq']}>&amp;site=qq&amp;menu=yes" target="_blank">
+				咨询QQ:<{$_SESSION['qq']}></a>
+        	</small>  	
         </h1>   
+	  </div>
+	  <div class="col-md-6">
+	  		<div class="thumbnail pull-right" style="width:250px;margin-right:20px;">
+			  	<img src="__IMAGES__/WechatIMG1.jpeg" alt="__IMAGES__/WechatIMG1.jpeg" width="100%">
+			    <div class="caption">
+				        <h4>扫描二维码关注微信公众号</h4>				       			         
+				</div>
+			</div>
+	  </div>
+	</div>
+        
     </div>     
     <div class="container-fluid">
     	<h3>课程导航</h3>

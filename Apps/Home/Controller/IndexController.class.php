@@ -14,23 +14,27 @@ class IndexController extends Controller {
             $_SESSION['ip']=get_client_ip();
             $_SESSION['browser']=GetBrowser();
             $_SESSION['os']=GetOs();
-            $_SESSION['himg']=$data['hpath'].'/thumb_'.$data['himg'];
-            $_SESSION['aimg']=$data['apath'].'/thumb_'.$data['aimg'];
+            $_SESSION['himg']=$data['hpath'].'thumb_'.$data['himg'];
+            $_SESSION['aimg']=$data['apath'].'thumb_'.$data['aimg'];
             
             $m=M('course');
             $where['coursetype']="学前少儿";
+            $where['state']='发布';
             $data=$m->where($where)->order('updateTime desc')->limit(4)->select();
             $this->assign('datase',$data);
             
             $where['coursetype']="小学课程";
+            $where['state']='发布';
             $data=$m->where($where)->order('updateTime desc')->limit(4)->select();
             $this->assign('dataxx',$data);
             
             $where['coursetype']="中学课程";
+            $where['state']='发布';
             $data=$m->where($where)->order('updateTime desc')->limit(4)->select();
             $this->assign('datazx',$data);                     
             
             $where['coursetype']="兴趣拓展";
+            $where['state']='发布';
             $data=$m->where($where)->order('updateTime desc')->limit(4)->select();
             $this->assign('dataxq',$data);
                      
