@@ -54,7 +54,7 @@
   
   
   </div>
-  <div class="col-md-3 hidden-xs">
+  <div class="col-md-3 hidden-xs hidden-sm">
   	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3>
@@ -66,7 +66,11 @@
 				<default /><li class="list-group-item ">
 			</switch>    			
             <a href="__URL__/library/proid/<{$pro.id}>">
-            	<{$pro.end}>【<{$pro.prost}>】<{$pro.prono}>:<{$pro.manager}></a><span class="badge"><{$pro.id|countCase=###}></span></li>
+            	<{$pro.end}>【<{$pro.prost}>】<br>
+            	<{$pro.prono}>:<{$pro.manager}>
+            </a>
+            	<span class="badge"><{$pro.id|countCase=###}></span>
+            </li>
         </volist>
       </ul>	  
 	</div>

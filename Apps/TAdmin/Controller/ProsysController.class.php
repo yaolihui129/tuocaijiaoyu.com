@@ -15,7 +15,7 @@ class ProsysController extends CommonController {
         
         $arr=$m->find($proid);
         $this->assign("arr",$arr);
-        
+
         $m = D("system");
         $where=array("tp_prosys.proid"=>"$proid");
         $data=$m->where($where)
@@ -27,6 +27,7 @@ class ProsysController extends CommonController {
         $where=array("prodid"=>$arr['prodid']);
         $syses=$m->where($where)->select();
         $this->assign('syses',$syses);
+        $this -> assign("state", formselect("正常"));
 
 	    $this->display();
     }

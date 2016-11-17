@@ -93,7 +93,7 @@ class ProgramController extends CommonController {
         $db=D('program');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
-            $this->success("修改成功！");
+            $this->success("修改成功",U("index?testgp={$_SESSION['testgp']}"));
         }else{
             $this->error("修改失败！");
         }

@@ -124,14 +124,14 @@ class CustomerController extends CommonController {
         if(!$info) {// 上传错误提示错误信息
             $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息
-            $_POST['hpath']=$info['himg']['savepath'];
-            $_POST['himg']=$info['himg']['savename'];
+            $_POST['path']=$info['img']['savepath'];
+            $_POST['img']=$info['img']['savename'];
             /* 实例化模型*/
             $db=D('customer');
             if ($db->save($_POST)){
                 $image = new \Think\Image();
-                $image->open('./Public/Upload/'.$info['himg']['savepath'].$info['himg']['savename']);
-                $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['himg']['savepath'].'/thumb_'.$info['himg']['savename']);
+                $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
+                $image->thumb(245, 160,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");

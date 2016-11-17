@@ -29,27 +29,6 @@ class SystemController extends CommonController {
 
 
 
-    public function add(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        /* 实例化模型*/
-        $m=M('system');
-        /*查询数据 */
-        $where=array("prodid"=>$prodid);
-        $syses=$m->where($where)->select();
-        /*输出数据 */
-        $this -> assign("prod", prodselect($prodid));
-        $this -> assign("state", formselect());
-        $this->assign('data',$syses);
-        $where=array("prodid"=>$prodid,"proid"=>$proid);
-        $this->assign('w',$where);
-
-
-
-        $this->display();
-    }
-
     public function insert(){
         /* 实例化模型*/
         $m=D('system');
@@ -69,29 +48,19 @@ class SystemController extends CommonController {
     }
 
     public function mod(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
 
         /* 实例化模型*/
         $m=M('system');
-        /*查询数据 */
-        $where=array(prodid=>$prodid);
-        $syses=$m->where($where)->select();
-        /*输出数据 */
-        $this->assign('data',$syses);
-        $where=array("prodid"=>$prodid,"proid"=>$proid);
-        $this->assign('w',$where);
-        //dump($syses);
-
-
-
-        /*查询数据 */
-        $sys=$m->find($id);
-        /*输出数据 */
+        $sys=$m->find($_GET['id']);
         $this->assign('sys',$sys);
-        $this -> assign("prod", prodselect($sys['prodid']));
+        
+        $where['prodid']=$sys['prodid'];
+        $syses=$m->where($where)->select();        
+        $this->assign('data',$syses);
+        
+        $where['proid']=$_GET['proid'];
+        $this->assign('w',$where);
+      
         $this -> assign("state", formselect($sys['state']));
         $this->display();
     }
@@ -102,7 +71,7 @@ class SystemController extends CommonController {
 
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
-            $this->success("修改成功！");
+            $this->success("修改成功",U("Prosys/index?proid={$_POST['proid']}"));
         }else{
             $this->error("修改失败！");
         }

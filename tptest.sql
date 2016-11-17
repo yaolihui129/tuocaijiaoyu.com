@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2016-11-16 17:54:58
+Date: 2016-11-17 17:54:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,7 +61,7 @@ CREATE TABLE `tp_case` (
 -- ----------------------------
 -- Records of tp_case
 -- ----------------------------
-INSERT INTO `tp_case` VALUES ('10000', '1', '', '正常登陆', '', '登入系统，并显示用户姓名', '正常', '45', '10000', '产品库', null, '腰立辉', '腰立辉', '2016-10-28 15:50:05', '2016-10-14 10:13:49', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `tp_case` VALUES ('10000', '1', '', '正常登陆', '', '登入系统，并显示用户姓名11', '正常', '45', '10000', '产品库', '', '腰立辉', '腰立辉', '2016-10-28 15:50:05', '2016-11-17 15:51:08', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `tp_case` VALUES ('10001', '2', null, '用户名不存在', '', '报错', '正常', '45', '10000', '产品库', null, '腰立辉', '腰立辉', '2016-09-22 14:33:33', '2016-09-22 14:33:33', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `tp_case` VALUES ('10002', '1', null, '正常注销', '', '登出系统', '正常', '45', '10001', '产品库', null, '腰立辉', '腰立辉', '2016-09-22 14:36:58', '2016-09-22 14:36:58', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `tp_case` VALUES ('10003', '1', null, '正常添加测试产品', '', '添加成功', '正常', '45', '10003', '产品库', null, '腰立辉', '腰立辉', '2016-10-20 16:59:08', '2016-10-20 16:59:08', '已完成', '点击', '惠买车', '惠买车', '点击', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
@@ -181,7 +181,7 @@ CREATE TABLE `tp_dict` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_dict
@@ -240,6 +240,8 @@ INSERT INTO `tp_dict` VALUES ('66', '6', '用户体验优化', 'reType', '正常
 INSERT INTO `tp_dict` VALUES ('67', '4', '已上线', 'prost', '正常', '腰立辉', '腰立辉', '2016-10-27 11:33:53', '2016-11-11 16:50:05');
 INSERT INTO `tp_dict` VALUES ('69', '3', 'C', 'sceneType', '正常', '腰立辉', '腰立辉', '2016-11-16 17:23:14', '2016-11-16 17:23:14');
 INSERT INTO `tp_dict` VALUES ('68', '5', '已搁置', 'prost', '正常', '腰立辉', '腰立辉', '2016-11-09 14:21:09', '2016-11-11 16:50:15');
+INSERT INTO `tp_dict` VALUES ('70', '1', '在职', 'adminst', '正常', '腰立辉', '腰立辉', '2016-11-17 13:58:18', '2016-11-17 13:57:24');
+INSERT INTO `tp_dict` VALUES ('71', '2', '离职', 'adminst', '正常', '腰立辉', '腰立辉', '2016-11-17 13:58:28', '2016-11-17 13:57:34');
 
 -- ----------------------------
 -- Table structure for `tp_element`
@@ -1420,7 +1422,7 @@ CREATE TABLE `tp_product` (
 -- ----------------------------
 -- Records of tp_product
 -- ----------------------------
-INSERT INTO `tp_product` VALUES ('1', '惠买车', '惠买车平台', '正常', '腰立辉', '腰立辉', '2016-09-16 22:04:58', '2016-09-16 22:04:58');
+INSERT INTO `tp_product` VALUES ('1', '惠买车', '惠买车平台', '正常', '腰立辉', '腰立辉', '2016-09-16 22:04:58', '2016-11-17 17:03:39');
 INSERT INTO `tp_product` VALUES ('2', '自动化', '自动化平台', '正常', '腰立辉', '腰立辉', '2016-09-16 22:07:52', '2016-09-16 22:07:52');
 
 -- ----------------------------
@@ -1502,7 +1504,7 @@ INSERT INTO `tp_program` VALUES ('91', 'C1611.20', '惠买车Wap站-大客户内
 INSERT INTO `tp_program` VALUES ('93', 'OP1611.12', '网销通排期增加字段&金牌作废合同替换增加邮件', '1', '已完成', '2016-11-07', '2016-11-16', '孔洋', 'OP', '简要', '胡春阳', '', '功能优化', '一般需求', '2016-11-16', '							<p class=\"p1\">\r\n	<span class=\"s1\">1、</span><span class=\"s2\">  </span><span class=\"s3\">网销通排期和导出增加排期号字段：</span></p>\r\n<p class=\"p1\">\r\n	<span class=\"s1\">2、</span><span class=\"s2\">  </span><span class=\"s3\">金牌合同作废重出自动替换每日汇总发邮件给运营同学：</span></p>\r\n<p class=\"p2\">\r\n	<span class=\"s4\">收件人：</span><span class=\"s3\">jiangyifan; huyang; linl; hucy</span></p>\r\n<p class=\"p1\">\r\n	 </p>\r\n<p class=\"p3\">\r\n	<span class=\"s3\">字段：预月结单</span><span class=\"s1\">ID</span><span class=\"s3\">，账单</span><span class=\"s1\">ID</span><span class=\"s3\">，账期，应提合同金额，会员</span><span class=\"s1\">ID</span><span class=\"s3\">，作废合同号，新合同号</span></p>\r\n						', '腰立辉', '腰立辉', '2016-11-09 09:32:30', '2016-11-14 09:35:08');
 INSERT INTO `tp_program` VALUES ('94', 'C1611.20', '惠买车C端- pc支付优化一期02', '1', '已上线', '2016-11-03', '2016-11-07', '师冬冬', 'C', '简要', '王明知', null, '功能优化', '一般需求', '2016-11-07', '<p>\r\n	Pc支付页优化：</p>\r\n<p>\r\n	1、支付页面布局调整</p>\r\n<p>\r\n	2、增加报价商家信息展示</p>\r\n', '腰立辉', '腰立辉', '2016-11-09 10:35:32', '2016-11-09 10:35:32');
 INSERT INTO `tp_program` VALUES ('95', 'B1611.13', '电销三期-电销客户管理', '1', '进行中', '2016-11-07', '2016-11-16', '郭佩佩', 'B', '简要', '', null, '新项目', '一般需求', '2016-11-16', '\r\n', '腰立辉', '腰立辉', '2016-11-09 10:36:42', '2016-11-09 10:36:42');
-INSERT INTO `tp_program` VALUES ('96', 'Auto1611.4', '易车首页提供接口 性能测试', '1', '已上线', '2016-11-03', '2016-11-08', '岳丹丹', 'Auto', '简要', '廖为，田尚讯', null, '性能优化', '一般需求', '2016-11-08', '<p>\r\n	一般情况下，测试易车首页接口的并发用户数情况</p>\r\n<p>\r\n	1、多个用户同时访问</p>\r\n<p>\r\n	2、多个用户同时在线，统计服务器的CPU占用率和内存占用率。</p>\r\n<p>\r\n	3、系统响应时间</p>\r\n<p>\r\n	4、TPS大于1200</p>\r\n', '腰立辉', '腰立辉', '2016-11-09 10:38:55', '2016-11-09 10:39:46');
+INSERT INTO `tp_program` VALUES ('96', 'Auto1611.4', '易车首页提供接口 性能测试', '1', '已上线', '2016-11-03', '2016-11-08', '岳丹丹', 'Auto', '简要', '廖为，田尚讯', '', '性能优化', '一般需求', '2016-11-08', '														<p>\r\n	一般情况下，测试易车首页接口的并发用户数情况</p>\r\n<p>\r\n	1、多个用户同时访问</p>\r\n<p>\r\n	2、多个用户同时在线，统计服务器的CPU占用率和内存占用率。</p>\r\n<p>\r\n	3、系统响应时间</p>\r\n<p>\r\n	4、TPS大于1200</p>\r\n												', '腰立辉', '腰立辉', '2016-11-09 10:38:55', '2016-11-17 17:07:01');
 INSERT INTO `tp_program` VALUES ('97', 'OP1611.13', '网销通电销买顾订单增加自动关闭规则', '1', '已上线', '2016-11-09', '2016-11-16', '李小梅', 'OP', '简要', '王侃', null, '功能优化', '一般需求', '2016-11-16', '<p style=\"margin-left:18.0pt;\">\r\n	1、网销通中电销推送的买顾订单，3天商家未确认成交，订单将自动关闭；</p>\r\n<p>\r\n	2、初始化电销的买顾订单。</p>\r\n', '腰立辉', '腰立辉', '2016-11-09 10:41:35', '2016-11-09 10:41:35');
 INSERT INTO `tp_program` VALUES ('98', 'C1611.21', 'OP 内容管理系统优化', '1', '已上线', '2016-11-07', '2016-11-08', '岳丹丹', 'C', '简要', '钱丽梅', null, '功能优化', '一般需求', '2016-11-16', '<p style=\"margin-left:21.0pt;\">\r\n	1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 将查看买顾评论权限拆分到区域，以便配置各区域分别查看C端客户点评内容的权限；</p>\r\n<p style=\"margin-left:21.0pt;\">\r\n	2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在审核页面底部增加&ldquo;批量通过&rdquo;、&ldquo;批量驳回&ldquo;按钮；或者是&ldquo;批量通过&rdquo;&ldquo;批量驳回&rdquo;可以吸顶；</p>\r\n<p style=\"margin-left:21.0pt;\">\r\n	3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在驳回原因中，增加一项&ldquo;无效评论&rdquo;选项；</p>\r\n<p style=\"margin-left:21.0pt;\">\r\n	4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用火狐浏览器时，点击通过，会出现以下对话框，请处理；</p>\r\n<p>\r\n	笔记本电脑屏幕宽度有限，&ldquo;评价内容&rdquo;不能完全显示，如下图；把&ldquo;评价内容&rdquo;放在第一列，且宽度增加，&ldquo;服务选项&rdquo;宽度也可以增加。其它如&ldquo;星级&rdquo;等宽度可以减少。</p>\r\n', '腰立辉', '腰立辉', '2016-11-09 10:43:34', '2016-11-09 10:44:03');
 INSERT INTO `tp_program` VALUES ('100', 'B1611.14', '惠买车顾问版1.4.4', '1', '进行中', '2016-11-15', '2016-11-22', '田亮', 'B', '简要', '', '', '需求新增', '一般需求', '2016-11-22', '							简介\r\n						', '腰立辉', '腰立辉', '2016-11-15 09:29:58', '2016-11-15 09:29:58');
@@ -1525,7 +1527,7 @@ CREATE TABLE `tp_prosys` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`prosysid`)
-) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_prosys
@@ -1917,7 +1919,7 @@ CREATE TABLE `tp_stage` (
 -- ----------------------------
 -- Records of tp_stage
 -- ----------------------------
-INSERT INTO `tp_stage` VALUES ('1000', '1', '功能验证', '24', '2016-09-26', '2016-09-27', '未开始', '无文档', '腰立辉', '腰立辉', '2016-09-22 16:45:00', '2016-09-22 16:45:00');
+INSERT INTO `tp_stage` VALUES ('1000', '1', '功能验证', '24', '2016-09-26', '2016-09-27', '未开始', '无文档', '腰立辉', '腰立辉', '2016-09-22 16:45:00', '2016-11-17 17:01:14');
 INSERT INTO `tp_stage` VALUES ('1001', '2', '第一轮测试', '24', '2016-09-27', '2016-09-28', '未开始', '无文档', '腰立辉', '腰立辉', '2016-09-22 16:45:15', '2016-09-22 16:45:15');
 INSERT INTO `tp_stage` VALUES ('1002', '3', '第二轮测试', '24', '2016-09-28', '2016-09-29', '未开始', '无文档', '腰立辉', '腰立辉', '2016-09-22 16:45:29', '2016-09-22 16:45:29');
 INSERT INTO `tp_stage` VALUES ('1003', '1', '功能验证', '45', '2016-09-26', '2016-09-27', '已完成', '无文档', '腰立辉', '腰立辉', '2016-10-28 15:38:30', '2016-11-14 15:10:37');
@@ -2034,7 +2036,7 @@ CREATE TABLE `tp_system` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_system
@@ -2043,6 +2045,8 @@ INSERT INTO `tp_system` VALUES ('3', 'APP.HMC', '惠买车APP', '正常', '1', n
 INSERT INTO `tp_system` VALUES ('4', 'Auto.Access', 'Access客户端', '正常', '2', null, 'V1.10', '192.168.43.61：easypass', '姓名', '123456', '腰立辉', '王鑫彤', '2016-10-21 10:29:12', '2016-10-21 10:29:12');
 INSERT INTO `tp_system` VALUES ('6', 'dealer.huimaiche.com', '惠买车商家版', '正常', '1', null, null, null, null, null, null, '腰立辉', '2016-10-28 11:46:57', '2016-10-28 11:46:57');
 INSERT INTO `tp_system` VALUES ('54', 'ydd.autoTest1', '自动化管理平台', '正常', '2', '暂无', '', 'http://192.168.43.12:8018/main/index', 'yaolh', '888888', '腰立辉', '王鑫彤', '2016-10-21 14:26:31', '2016-10-21 14:26:31');
+INSERT INTO `tp_system` VALUES ('60', 'sda', 'asdas', '正常', null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-11-17 17:27:52', '2016-11-17 17:26:59');
+INSERT INTO `tp_system` VALUES ('61', '122', 'asdasd', '正常', '2', null, null, null, null, null, '腰立辉', '腰立辉', '2016-11-17 17:30:05', '2016-11-17 17:53:39');
 INSERT INTO `tp_system` VALUES ('10', 'OP.Counselor', '买车顾问管理后台', '正常', '1', null, null, null, '域账号', null, null, '腰立辉', '2016-09-21 10:14:53', '2016-09-21 10:14:53');
 INSERT INTO `tp_system` VALUES ('11', 'OP.HmcDSCRM', '惠买车电商CRM', '正常', '1', null, null, null, '域账号', null, null, '腰立辉', '2016-09-26 11:28:46', '2016-09-26 11:28:46');
 INSERT INTO `tp_system` VALUES ('12', 'OP.DealerCRM', '惠买车商家运营系统', '正常', '1', null, null, null, '域账号', null, null, '腰立辉', '2016-09-21 10:15:15', '2016-09-21 10:15:15');
@@ -2068,8 +2072,8 @@ CREATE TABLE `tp_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `realname` varchar(20) DEFAULT NULL,
-  `headpath` varchar(200) DEFAULT NULL,
-  `head` varchar(18) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(18) DEFAULT NULL,
   `password` char(32) DEFAULT NULL,
   `state` varchar(5) DEFAULT NULL,
   `userno` int(5) DEFAULT NULL,
@@ -2084,23 +2088,23 @@ CREATE TABLE `tp_user` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_user
 -- ----------------------------
-INSERT INTO `tp_user` VALUES ('1', 'caoyf', '曹玉芳', null, '', 'e10adc3949ba59abbe56e057f20f883e', '离职', '0', '惠买车-产品研发中心-质量管理部', 'OP', '', '', 'caoyf@yiche.com', '测试工程师', '腰立辉', '腰立辉', '2016-09-26 17:12:02', '2016-11-11 14:41:20');
-INSERT INTO `tp_user` VALUES ('2', 'gaoxq', '高小欠', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '5945', '惠买车-产品研发中心-质量管理部', 'C', '15011217715', null, 'gaoxq@bitauto.com', '高级测试经理', '腰立辉', '腰立辉', '2016-09-12 11:34:16', '2016-10-28 16:32:07');
-INSERT INTO `tp_user` VALUES ('3', 'guopp', '郭佩佩', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '354', '惠买车-产品研发中心-质量管理部', 'B', null, null, null, '测试工程师', '腰立辉', '腰立辉', '2016-10-14 17:27:39', '2016-10-28 16:32:09');
-INSERT INTO `tp_user` VALUES ('11', 'yaolh', '腰立辉', null, '57dcf1cd1186b.jpeg', 'c33367701511b4f6020ec61ded352059', '在职', '6270', '惠买车-产品研发中心-质量管理部', 'OP', '18801043607', '', 'yaolh@yiche.com', '高级测试经理', '腰立辉', '腰立辉', '2016-09-22 16:54:21', '2016-11-11 11:13:04');
-INSERT INTO `tp_user` VALUES ('5', 'kongy', '孔洋', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '8028', '惠买车-产品研发中心-质量管理部', 'OP', '13641171889', null, 'kongy@bitauto.com', '高级测试工程师', '腰立辉', '腰立辉', '2016-09-12 11:34:09', '2016-10-28 16:32:11');
-INSERT INTO `tp_user` VALUES ('6', 'lixm', '李小梅', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '354', '惠买车-产品研发中心-质量管理部', 'OP', null, null, null, '测试工程师', '腰立辉', '腰立辉', '2016-10-14 17:30:10', '2016-10-28 16:32:13');
-INSERT INTO `tp_user` VALUES ('8', 'mengjl', '孟军良', null, '5816a9713cc6e.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '5714', '惠买车-产品研发中心-质量管理部', 'Auto', '13717659790', '323', 'mengjl@bitauto.com', '质量总监', '腰立辉', '腰立辉', '2016-10-19 16:56:39', '2016-10-31 10:16:17');
-INSERT INTO `tp_user` VALUES ('9', 'shidd', '师冬冬', null, '', 'e10adc3949ba59abbe56e057f20f883e', '在职', '9204', '惠买车-产品研发中心-质量管理部', 'C', '', '', '', '测试工程师', '腰立辉', '腰立辉', '2016-09-26 17:13:48', '2016-10-28 16:33:22');
-INSERT INTO `tp_user` VALUES ('10', 'tianl', '田亮', null, '', 'e10adc3949ba59abbe56e057f20f883e', '在职', '6851', '惠买车-产品研发中心-质量管理部', 'B', '15811407311', '', 'tianl@bitauto.com', '测试工程师', '腰立辉', '腰立辉', '2016-09-22 09:25:01', '2016-09-16 18:59:52');
-INSERT INTO `tp_user` VALUES ('24', 'wangp', '王朋', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '10520', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:17:47', '2016-10-28 16:31:55');
-INSERT INTO `tp_user` VALUES ('25', 'yuedd', '岳丹丹', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '9841', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:18:02', '2016-10-28 16:31:53');
-INSERT INTO `tp_user` VALUES ('26', 'zhengax', '郑阿旬', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '8110', '惠买车-产品研发中心-质量管理部', 'B', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:18:13', '2016-10-28 16:31:51');
-INSERT INTO `tp_user` VALUES ('27', 'wangmd', '王梦蝶', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '7174', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-10-19 12:47:30', '2016-10-28 16:31:50');
-INSERT INTO `tp_user` VALUES ('28', 'zhangxia', '张霞', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', '5715', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:22:34', '2016-10-28 16:31:48');
-INSERT INTO `tp_user` VALUES ('29', 'wangxt', '王鑫彤', null, null, 'e10adc3949ba59abbe56e057f20f883e', '在职', null, '惠买车-产品研发中心-质量管理部', 'B', null, null, null, null, '腰立辉', '腰立辉', '2016-10-14 17:30:23', '2016-10-28 16:31:46');
+INSERT INTO `tp_user` VALUES ('1', 'caoyf', '曹玉芳', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '离职', '0', '惠买车-产品研发中心-质量管理部', 'OP', '', '', 'caoyf@yiche.com', '测试工程师', '腰立辉', '腰立辉', '2016-09-26 17:12:02', '2016-11-17 13:20:05');
+INSERT INTO `tp_user` VALUES ('2', 'gaoxq', '高小欠', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '5945', '惠买车-产品研发中心-质量管理部', 'C', '15011217715', null, 'gaoxq@bitauto.com', '高级测试经理', '腰立辉', '腰立辉', '2016-09-12 11:34:16', '2016-11-17 13:21:45');
+INSERT INTO `tp_user` VALUES ('3', 'guopp', '郭佩佩', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '354', '惠买车-产品研发中心-质量管理部', 'B', null, null, null, '测试工程师', '腰立辉', '腰立辉', '2016-10-14 17:27:39', '2016-11-17 13:21:47');
+INSERT INTO `tp_user` VALUES ('11', 'yaolh', '腰立辉', '/Test/user/2016-11-17/', '582d29a179c33.jpg', 'c33367701511b4f6020ec61ded352059', '在职', '6270', '惠买车-产品研发中心-质量管理部', 'OP', '', '', 'yaolh@yiche.com', '高级测试经理', '腰立辉', '腰立辉', '2016-09-22 16:54:21', '2016-11-17 14:30:31');
+INSERT INTO `tp_user` VALUES ('5', 'kongy', '孔洋', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '8028', '惠买车-产品研发中心-质量管理部', 'OP', '13641171889', null, 'kongy@bitauto.com', '高级测试工程师', '腰立辉', '腰立辉', '2016-09-12 11:34:09', '2016-11-17 13:20:07');
+INSERT INTO `tp_user` VALUES ('6', 'lixm', '李小梅', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '354', '惠买车-产品研发中心-质量管理部', 'OP', null, null, null, '测试工程师', '腰立辉', '腰立辉', '2016-10-14 17:30:10', '2016-11-17 13:20:08');
+INSERT INTO `tp_user` VALUES ('8', 'mengjl', '孟军良', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '5714', '惠买车-产品研发中心-质量管理部', 'Auto', '13717659790', '323', 'mengjl@bitauto.com', '质量总监', '腰立辉', '腰立辉', '2016-10-19 16:56:39', '2016-11-17 13:21:36');
+INSERT INTO `tp_user` VALUES ('9', 'shidd', '师冬冬', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '9204', '惠买车-产品研发中心-质量管理部', 'C', '', '', '', '测试工程师', '腰立辉', '腰立辉', '2016-09-26 17:13:48', '2016-11-17 13:20:12');
+INSERT INTO `tp_user` VALUES ('10', 'tianl', '田亮', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '6851', '惠买车-产品研发中心-质量管理部', 'B', '15811407311', '', 'tianl@bitauto.com', '测试工程师', '腰立辉', '腰立辉', '2016-09-22 09:25:01', '2016-11-17 13:20:13');
+INSERT INTO `tp_user` VALUES ('24', 'wangp', '王朋', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '10520', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:17:47', '2016-11-17 13:20:13');
+INSERT INTO `tp_user` VALUES ('25', 'yuedd', '岳丹丹', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '9841', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:18:02', '2016-11-17 13:20:18');
+INSERT INTO `tp_user` VALUES ('26', 'zhengax', '郑阿旬', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '8110', '惠买车-产品研发中心-质量管理部', 'B', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:18:13', '2016-11-17 13:20:19');
+INSERT INTO `tp_user` VALUES ('27', 'wangmd', '王梦蝶', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '7174', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-10-19 12:47:30', '2016-11-17 13:20:20');
+INSERT INTO `tp_user` VALUES ('28', 'zhangxia', '张霞', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '5715', '惠买车-产品研发中心-质量管理部', 'C', null, null, null, null, '腰立辉', '腰立辉', '2016-09-26 17:22:34', '2016-11-17 13:20:21');
+INSERT INTO `tp_user` VALUES ('29', 'wangxt', '王鑫彤', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', null, '惠买车-产品研发中心-质量管理部', 'B', null, null, null, null, '腰立辉', '腰立辉', '2016-10-14 17:30:23', '2016-11-17 13:20:24');

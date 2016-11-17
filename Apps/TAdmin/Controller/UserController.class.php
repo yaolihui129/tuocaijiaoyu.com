@@ -3,57 +3,34 @@ namespace TAdmin\Controller;
 
 class UserController extends CommonController {
    public function index(){
-
+         $testgp=$_SESSION['testgp'];
     	 $m=M('user');
     	 $where['state']="在职";
     	 $arr=$m->where($where)->select();
 	     $this->assign('data',$arr);
+	     $this -> assign("usergp", formselect($testgp,"usergp","testgp"));
+	     $this -> assign("position", formselect("测试工程师","position","position"));
+	     
 	     $this->display();
     }
 
-    public  function add(){
-        $testgp=$_SESSION['testgp'];
-        $m=M('user');
-        $arr=$m->order('state desc')->select();
-        $this->assign('data',$arr);
-        $this -> assign("usergp", formselect($testgp,"usergp","testgp"));
-        $this -> assign("position", formselect("测试工程师","position","position"));
-
-        $this->display();
-
-
-    }
 
     public function insert(){
        // var_dump($_POST);
         $m=D('user');
         $_POST['password']=md5("123456");
         $_POST['state']="在职";
+        $_POST['path']="/";
+        $_POST['img']="head.png";
         $_POST['email']=$_POST['username']."@yiche.com";
+        $_POST['team']="惠买车-产品研发中心-质量管理部";
         $_POST['adder']=$_SESSION['realname'];
         $_POST['moder']=$_SESSION['realname'];
         $_POST['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create()){
             $this->error($m->getError());
         }
-
-        import('ORG.Net.UploadFile');
-        $upload = new UploadFile();// 实例化上传类
-        $upload->maxSize  = 3145728 ;// 设置附件上传大小
-        $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->savePath =  './Public/Upload/';// 设置附件上传目录
-        $upload->thumb = true;//开启缩略图
-        $upload->thumbPrefix = 'tb'; //设置前缀
-//         $upload->thumbPath =  './Upload/tb/';// 设置缩略图上传目录
-
-        if(!$upload->upload()) {// 上传错误提示错误信息
-            $this->error($upload->getErrorMsg());
-        }else{// 上传成功 获取上传文件信息
-            $info =  $upload->getUploadFileInfo();
-        }
-        $m->filename=$info[0]['savename'];
-
-
+       
         $lastId=$m->add();
         if($lastId){
            $this->success("添加成功");
@@ -75,6 +52,8 @@ class UserController extends CommonController {
         $user=$m->find($id);
         $this->assign('user',$user);
         $this -> assign("usergp", formselect($user['usergp'],"usergp","testgp"));
+        $this->assign("state", PublicController::stateSelect($user['state'],"state","adminst"));
+        
         $this -> assign("position", formselect($user['position'],"position","position"));
         $this->display();
     }
@@ -87,7 +66,7 @@ class UserController extends CommonController {
         $db=D('user');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
-            $this->success("修改成功！");
+            $this->success("修改成功",U('User/index'));
         }else{
             $this->error("修改失败！");
         }
@@ -99,10 +78,7 @@ class UserController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('user');
-        $arr=$m->select();
-        $this->assign('data',$arr);
-
+        $m=M('user');      
         $user=$m->find($id);
         $this->assign('user',$user);
 
@@ -117,7 +93,7 @@ class UserController extends CommonController {
         $upload->savePath  = '/Test/user/'; // 设置附件上传目录
     
         $info  =   $upload->upload();
-        // dump($info);
+        dump($info);
         if(!$info) {// 上传错误提示错误信息
             $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息

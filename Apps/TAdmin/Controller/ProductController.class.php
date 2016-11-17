@@ -69,7 +69,7 @@ class ProductController extends CommonController {
         $db=D('product');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
-            $this->success("修改成功！");
+            $this->success("修改成功",U('index'));
         }else{
             $this->error("修改失败！");
         }

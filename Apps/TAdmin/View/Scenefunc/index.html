@@ -62,7 +62,8 @@
 				<default /><li class="list-group-item ">
 			</switch> 
             <a href="__URL__/index/sceneid/<{$vo.id}>">
-            	<{$vo.sn}>【<{$vo.swho}>】<{$vo.swhen}>:<{$vo.scene}></a><span class="badge"><{$vo.id}></span></li>
+            	<{$vo.sn}>【<{$vo.swho}>】<{$vo.swhen}><br>
+            	<{$vo.scene}></a><span class="badge"><{$vo.id|countSFunc=###}></span></li>
         </volist>
       </ul>	  
 	</div>

@@ -60,27 +60,19 @@ class StageController extends CommonController {
 
     public function mod(){
         /* 接收参数*/
-        $proid=$_GET['proid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
+        $id = $_GET['id'];
+        /* 实例化模型*/ 
         $m= D("stage");
-        $where=array("proid"=>$proid);
+        $where['proid']=$_SESSION['proid'];
         $pros=$m->where($where)->order("sn,id")->select();
-
         $this->assign("data",$pros);
+        
         $stage=$m->find($id);
         $this->assign("stage",$stage);
-        $this->assign('w',$where);
+        
         $this -> assign("state", formselect($stage['state'],"state","prost"));
         $this -> assign("document", formselect($stage['document'],"document","document"));
-        $this->assign("startDate",PublicController::date("start",$stage['start']));
-        $this->assign("endDate",PublicController::date("end",$stage['end']));
 
-
-        /* 实例化模型*/
-        $m=M('stage');
-        $stage=$m->find($id);
-        $this->assign("stage",$stage);
 
         $this->display();
     }
@@ -90,7 +82,7 @@ class StageController extends CommonController {
         $db=D('stage');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
-            $this->success("修改成功！");
+            $this->success("修改成功！",U("Stage/index?proid={$_POST['proid']}"));
         }else{
             $this->error("修改失败！");
         }
