@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2016-11-17 17:54:18
+Date: 2016-11-18 12:04:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1527,7 +1527,7 @@ CREATE TABLE `tp_prosys` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`prosysid`)
-) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_prosys
@@ -1542,10 +1542,11 @@ INSERT INTO `tp_prosys` VALUES ('64', '56', '49', '腰立辉', '腰立辉', '201
 INSERT INTO `tp_prosys` VALUES ('65', '4', '49', '腰立辉', '腰立辉', '2016-09-24 21:16:05', '2016-09-24 21:16:05');
 INSERT INTO `tp_prosys` VALUES ('69', '11', '50', '腰立辉', '腰立辉', '2016-10-19 12:50:06', '2016-10-19 12:50:06');
 INSERT INTO `tp_prosys` VALUES ('70', '54', '45', '王鑫彤', '王鑫彤', '2016-10-21 10:27:07', '2016-10-21 10:27:07');
+INSERT INTO `tp_prosys` VALUES ('79', '11', '97', '腰立辉', '腰立辉', '2016-11-18 09:24:06', '2016-11-18 09:23:11');
 INSERT INTO `tp_prosys` VALUES ('74', '11', '51', '腰立辉', '腰立辉', '2016-10-25 15:17:08', '2016-10-25 15:17:08');
 INSERT INTO `tp_prosys` VALUES ('73', '3', '65', '腰立辉', '腰立辉', '2016-10-24 09:21:35', '2016-10-24 09:21:35');
 INSERT INTO `tp_prosys` VALUES ('75', '6', '51', '腰立辉', '腰立辉', '2016-10-25 17:11:04', '2016-10-25 17:11:04');
-INSERT INTO `tp_prosys` VALUES ('76', '11', '80', '腰立辉', '腰立辉', null, '2016-11-02 09:59:42');
+INSERT INTO `tp_prosys` VALUES ('76', '11', '80', '腰立辉', '腰立辉', '2016-11-02 09:59:42', '2016-11-18 09:24:01');
 
 -- ----------------------------
 -- Table structure for `tp_risk`
@@ -2042,11 +2043,11 @@ CREATE TABLE `tp_system` (
 -- Records of tp_system
 -- ----------------------------
 INSERT INTO `tp_system` VALUES ('3', 'APP.HMC', '惠买车APP', '正常', '1', null, null, null, null, null, null, '腰立辉', '2016-09-21 10:17:05', '2016-09-21 10:17:05');
-INSERT INTO `tp_system` VALUES ('4', 'Auto.Access', 'Access客户端', '正常', '2', null, 'V1.10', '192.168.43.61：easypass', '姓名', '123456', '腰立辉', '王鑫彤', '2016-10-21 10:29:12', '2016-10-21 10:29:12');
+INSERT INTO `tp_system` VALUES ('4', 'Auto.Access', 'Access客户端', '正常', '2', '', 'V1.10', '192.168.43.61：easypass', '121', '123456', '腰立辉', '腰立辉', '2016-10-21 10:29:12', '2016-11-18 10:42:17');
 INSERT INTO `tp_system` VALUES ('6', 'dealer.huimaiche.com', '惠买车商家版', '正常', '1', null, null, null, null, null, null, '腰立辉', '2016-10-28 11:46:57', '2016-10-28 11:46:57');
 INSERT INTO `tp_system` VALUES ('54', 'ydd.autoTest1', '自动化管理平台', '正常', '2', '暂无', '', 'http://192.168.43.12:8018/main/index', 'yaolh', '888888', '腰立辉', '王鑫彤', '2016-10-21 14:26:31', '2016-10-21 14:26:31');
 INSERT INTO `tp_system` VALUES ('60', 'sda', 'asdas', '正常', null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-11-17 17:27:52', '2016-11-17 17:26:59');
-INSERT INTO `tp_system` VALUES ('61', '122', 'asdasd', '正常', '2', null, null, null, null, null, '腰立辉', '腰立辉', '2016-11-17 17:30:05', '2016-11-17 17:53:39');
+INSERT INTO `tp_system` VALUES ('61', '133', 'qw3', '正常', '2', null, null, null, null, null, '腰立辉', '腰立辉', '2016-11-17 17:30:05', '2016-11-18 11:19:39');
 INSERT INTO `tp_system` VALUES ('10', 'OP.Counselor', '买车顾问管理后台', '正常', '1', null, null, null, '域账号', null, null, '腰立辉', '2016-09-21 10:14:53', '2016-09-21 10:14:53');
 INSERT INTO `tp_system` VALUES ('11', 'OP.HmcDSCRM', '惠买车电商CRM', '正常', '1', null, null, null, '域账号', null, null, '腰立辉', '2016-09-26 11:28:46', '2016-09-26 11:28:46');
 INSERT INTO `tp_system` VALUES ('12', 'OP.DealerCRM', '惠买车商家运营系统', '正常', '1', null, null, null, '域账号', null, null, '腰立辉', '2016-09-21 10:15:15', '2016-09-21 10:15:15');

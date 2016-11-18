@@ -1,50 +1,65 @@
-      <layout name="layout" />
-      <div class="place">
-                                 所在位置：
-             <empty name="w.proid">
-                  <a href="__URL__/index/prodid/<{$w.prodid}>">系统</a>
-                  >测试环境
-                  <span style="float:right;margin-right:60px;">
-                  <a href="__URL__/index/prodid/<{$w.prodid}>"> 返回</a>
-                  </span>
-            <else />
-                   <a href="__APP__/TAdmin/Program">项目</a>
-                   ><a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>/prodid/<{$w.prodid}>">系统</a>
-                   >测试环境
-                  <span style="float:right;margin-right:60px;">
-                  <a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>/prodid/<{$w.prodid}>"> 返回</a>
-                  </span>
-            </empty>
-        </div>
-        <div class="content">
-           <div class="main">
-              <div class="top">测试环境</div>
-              <div class="left"    align="left" style="width:25%">
-                    <volist name='data' id='vo' empty="没有数据">
-                       <a href="__URL__/test/id/<{$vo.id}>/prodid/<{$w.prodid}>/proid/<{$w.proid}>">
-                                                          【<{$vo.state}>】<{$vo.sysno}>:<{$vo.system}></a><br>
-                    </volist>
-              </div>
-              <div class="midd"  align="right" >
-                  <table border="0" width="600" align="left">
-                    <form action="__URL__/update" method="post" >
-                    <input type="hidden" name="id" value="<{$sys.id}>" />
-                     <tr><td> 更新：</td><td><{$sys.moder}>更新于:<{$sys.updateTime}></td></tr>
-                     <tr><td>系统</td><td><{$sys.sysno}>:<{$sys.system}></td></tr>
-                     <tr><td>生产版本</td><td ><input type="text" name="useversion" value="<{$sys.useversion}>"  class="input500"/></td></tr>
-                     <tr><td>测试版本</td><td><input type="text" name="testversion" value="<{$sys.testversion}>"  class="input500"/></td></tr>
-                     <tr><td>测试地址</td><td><input type="text" name="testip" value="<{$sys.testip}>"  class="input500"/></td></tr>
-                     <tr><td>测试用户</td><td><input type="text" name="testuser" value="<{$sys.testuser}>"  class="input500"/></td></tr>
-                     <tr><td>测试密码</td><td><input type="text" name="testpass" value="<{$sys.testpass}>"  class="input500"/></td></tr>
-                     <tr><td></td>
-                         <td><input type="submit" class="btn" name="do_submit" value="提 交"> </form>
-                              <empty name="w.proid">
-                                 <a href="__URL__/index/prodid/<{$w.prodid}>"><button  class="btn" >返回</button></a>
-                              <else />
-                                 <a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>/prodid/<{$w.prodid}>"><button  class="btn" >返回</button></a>
-                              </empty>
-                         </td>
-                     </tr>
-                  </table>
-              </div><!-- midd -->
-           </div><!-- main -->
+<layout name="layout" />
+ <div class="container">	
+  		<h3>系统-测试环境</h3>	
+  			<div class="panel-body">
+  		     	<form action="__URL__/update" method="post" class="form-horizontal" role="form" >
+  		     	  <input type="hidden" name="id" value="<{$sys.id}>" />
+  		     	  <input type="hidden" name="proid" value="<{$w.proid}>" />
+  		     	    <div class="form-group">
+  		     	      <div class="col-sm-2">
+  		     	      </div>
+  		     	      <div class="col-sm-10">
+  		     	       <{$sys.moder}>更新于:<{$sys.updatetime}>
+  		     	      </div>
+  		     	    </div>
+					  <div class="form-group">
+					   
+					    <label for="short" class="col-sm-2 control-label">编号:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="sysno" value="<{$sys.sysno}>" placeholder="编号" readonly>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="product" class="col-sm-2 control-label">系统:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="system" value="<{$sys.system}>" placeholder="系统" readonly>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="state" class="col-sm-2 control-label">生产版本:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="useversion" value="<{$sys.useversion}>" placeholder="生产环境版本">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="state" class="col-sm-2 control-label">测试版本:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="testversion" value="<{$sys.testversion}>" placeholder="测试环境版本">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="state" class="col-sm-2 control-label">测试地址:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="testip" value="<{$sys.testip}>" placeholder="测试地址">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="state" class="col-sm-2 control-label">用户名:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="testuser" value="<{$sys.testuser}>" placeholder="用户名">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="state" class="col-sm-2 control-label">密码:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="testpass" value="<{$sys.testpass}>" placeholder="密码">
+					    </div>
+					  </div>
+					  
+					  <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+                 <div class="btn-group pull-right">                       
+                        <a href="__APP__/TAdmin/Prosys/index/proid/<{$w.proid}>" type="button"  class="btn btn-warning btn-lg pull-right " >返 回</a>                        
+                  </div>
+  		     	</div>	            		      
+</div><!-- container -->   

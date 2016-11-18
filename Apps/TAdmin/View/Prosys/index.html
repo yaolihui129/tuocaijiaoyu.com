@@ -24,63 +24,59 @@
 	</ul>
 	<div class="row">
 	  <div class="col-md-6">
-	  		<table class="table table-striped table-bordered table-hover table-condensed ">
-		          	<tr >
-		          		<th width=3% align="left" bgcolor="#ccc">编号</th>
-                        <th width=13% align="left" bgcolor="#ccc">关联系统</th>
-                        
-                        <th width=2% align="center" bgcolor="#ccc">操作 </th>
-		         	</tr>         
-		           <volist name='data' id='st' empty="没有数据">
-		            <tr>  
-		            	<td align="left" ><{$st.sysno}></td>
-                         <td align="left" ><a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>"><{$st.system}></a>
-                             <span class="pull-right">
-                                 <a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>" >路径<{$st.sysid|countPath=###}></a>
-                                 <a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$arr.id}>" >环境</a>
-                             </span>
-                         </td>
-                        
-                         <td align="center" >
-                             <a href="__URL__/del/prosysid/<{$st.prosysid}>"  onclick="return confirm('你确定要从项目中移除：<{$st.system}>系统吗？')" >移除</a>
-                         </td>           	                                           
-		            </tr>
-		           </volist>            	
-	      	 </table>
+	  		<div class="panel panel-default">
+			  <div class="panel-heading">关联系统</div>
+			      <ul class="list-group">
+			        <volist name='data' id='st' empty="没有数据">
+			            <li class="list-group-item">
+			              <{$st.sysno}>:<{$st.system}>
+			              <!-- Split button -->
+			              <div class="btn-group pull-right">
+			                <button type="button" class="btn btn-info btn-xs">路径<{$st.sysid|countPath=###}></button>
+			                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+			                  <span class="caret"></span>
+			                  <span class="sr-only">Toggle Dropdown</span>
+			                </button>
+			                <ul class="dropdown-menu" role="menu">
+			                  <li><a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>" >路径<{$st.sysid|countPath=###}></a></li>
+			                  <li><a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$arr.id}>">环境</a></li>                 
+			                  <li class="divider"></li>
+			                  <li><a href="__URL__/del/prosysid/<{$st.prosysid}>"  onclick="return confirm('你确定要从项目中移除：<{$st.system}>系统吗？')">移除</a></li>
+			                </ul>
+			              </div>
+			            </li>
+			        </volist> 
+			      </ul>
+			</div>
 	  </div>
 	  <div class="col-md-6">
-	  		<table class="table table-striped table-bordered table-hover table-condensed ">
-		          	<tr >
-		          		<th width=4% align="left" bgcolor="#ccc">编号</th>
-                        <th width=13% align="left" bgcolor="#ccc">备选系统
-                            <span class="pull-right">
-                             
-                              <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#tianjsystem">添加</button>
-                            </span>
-                        </th>
-                        <th width=3% align="center" bgcolor="#ccc">状态</th>
-                        
-                        
-		             
-		         	</tr>         
-		           <volist name='syses' id='st' empty="没有数据">
-		            <tr>
-		            	<td align="left" >
-                           <a href="__URL__/insert/proid/<{$w.proid}>/sysid/<{$st.id}>" ><{$st.sysno}></a>
-                           <span class="pull-right">
-                               <a href="__URL__/insert/proid/<{$w.proid}>/sysid/<{$st.id}>" >关联</a>
-                           </span>
-                        </td>
-                        <td align="left" ><{$st.system}>
-                           <span class="pull-right">
-                               <a href="__APP__/TAdmin/System/mod/id/<{$st.id}>/proid/<{$arr.id}>" >修改</a>
-                           </span>
-                        </td>
-                        <td align="center" ><{$st.state}></td>                       
-                                    	                                           
-		            </tr>
-		           </volist>            	
-	      	 </table>
+	  		<div class="panel panel-default">
+			  <div class="panel-heading">
+			  备选系统
+			  		<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#tianjsystem">添加</button>
+			  </div>
+			      <ul class="list-group">
+			        <volist name='syses' id='st' empty="没有数据">
+			            <li class="list-group-item">
+			              <{$st.sysno}>:<{$st.system}>【<{$st.state}>】
+			              <!-- Split button -->
+			              <div class="btn-group pull-right">
+			                <button type="button" class="btn btn-danger btn-xs">关联</button>
+			                <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
+			                  <span class="caret"></span>
+			                  <span class="sr-only">Toggle Dropdown</span>
+			                </button>
+			                <ul class="dropdown-menu" role="menu">
+			                  <li><a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" >关联</a></li>
+			                               
+			                  <li class="divider"></li>
+			                  <li><a href="__APP__/TAdmin/System/mod/id/<{$st.id}>/proid/<{$arr.id}>">修改</a></li>
+			                </ul>
+			              </div>
+			            </li>
+			        </volist> 
+			      </ul>
+			</div>
 	 
 	  </div>
 	</div>

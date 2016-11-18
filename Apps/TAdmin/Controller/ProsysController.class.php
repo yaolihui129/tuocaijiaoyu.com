@@ -39,7 +39,7 @@ class ProsysController extends CommonController {
         $m=D('prosys');
         $_GET['adder']=$_SESSION['realname'];
         $_GET['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
+        $_GET['createTime']=date("Y-m-d H:i:s",time());
 //         dump($_GET);
 //         exit();
         if(!$m->create($_GET)){
