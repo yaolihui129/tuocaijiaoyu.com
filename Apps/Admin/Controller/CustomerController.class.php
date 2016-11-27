@@ -120,7 +120,7 @@ class CustomerController extends CommonController {
         $upload->savePath  = '/Customer/'; // 设置附件上传目录
     
         $info  =   $upload->upload();
-        dump($info);
+
         if(!$info) {// 上传错误提示错误信息
             $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息

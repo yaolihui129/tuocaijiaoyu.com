@@ -1,0 +1,79 @@
+ <layout name="layout" />
+ <h1 >广告轮播图 <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#tianj">添加</button></h1>
+        <div class="panel panel-default">
+            <volist name='data' id='ar' empty="没有数据">
+            	<div class="btn-group pull-right">
+					<button type="button" class="btn btn-warning btn-sm">
+						 <a  href="__URL__/img/id/<{$ar.id}>">上传图片</a>
+					</button>
+					<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
+						 <span class="caret"></span>
+						 <span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="__URL__/mod/id/<{$ar.id}>">修改</a></li>   
+					</ul>
+				</div>						        
+		        <div class="media">
+						<a class="media-left" href="#">
+						    <img src="__UPLOAD__<{$ar.path}>thumb_<{$ar.img}>" alt="<{$ar.img}>" class="img-thumbnail" height="50px">
+						</a>
+						<div class="media-body">
+						    <h4 class="media-heading"><{$ar.title}></h4>
+						    <{$ar.remark}>
+						</div>
+				</div>
+             </volist>
+        </div>
+        
+        
+        
+<div class="modal fade " id = "tianj" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    	<div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h4 class="modal-title" id="myModalLabel">轮播图-添加</h4>
+	    </div>
+	    <div class="modal-body">
+	      	<form action="__URL__/insert" method="post" class="form-horizontal" role="form" >
+				<div class="form-group">
+					<label for="short" class="col-sm-4 control-label">标题:</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="title" value="" placeholder="标题">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="product" class="col-sm-4 control-label">备注:</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="remark" value="" placeholder="备注">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="product" class="col-sm-4 control-label">url:</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="url" value="" placeholder="URL">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-4 control-label">状态:</label>
+					<div class="col-sm-8">
+						<{$state}>
+					</div>
+				</div>
+		</div>
+		<div class="modal-footer">
+		     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		     <button type="submit" class="btn btn-primary">提交</button></form>
+		</div>
+    </div>       
+  </div>
+  
+  
+  
+  
+  <!-- 修改模态框 -->
+  
+  
+  
+</div>

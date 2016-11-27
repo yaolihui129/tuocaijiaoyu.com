@@ -17,6 +17,11 @@ class IndexController extends Controller {
             $_SESSION['himg']=$data['hpath'].'thumb_'.$data['himg'];
             $_SESSION['aimg']=$data['apath'].'thumb_'.$data['aimg'];
             
+            $m=D('ad');
+            $pic=$m->order('updateTime desc')->select();
+            $this->assign('pic',$pic);
+            
+            
             $m=M('course');
             $where['coursetype']="学前少儿";
             $where['state']='发布';
@@ -37,6 +42,13 @@ class IndexController extends Controller {
             $where['state']='发布';
             $data=$m->where($where)->order('updateTime desc')->limit(4)->select();
             $this->assign('dataxq',$data);
+            
+            $map['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
+            $map['state']="发布";
+            $m=M('customer');
+            $data=$m->where($map)->order('updateTime desc')->select();
+            $this->assign('datasz',$data);
+            
                      
           $this->display();
     }

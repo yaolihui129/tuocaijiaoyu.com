@@ -27,23 +27,7 @@
 		              <button type="submit" class="btn btn-info" >提 交</button>
 		          </form>
 		  </div>
-		  <div class="col-md-4">
-		  	<form action="__URL__/imgh" method="post" enctype='multipart/form-data'  role="form">
-		        <input type="hidden" name="id" value="<{$arr.id}>" /> 
-		        <div class="form-group">
-		             <label for="exampleupdatetime">首页图</label>
-		             <br>
-		        </div>                    
-		       	<div class="panel panel-default" style="width:300px;">
-		             <img alt="__UPLOAD__<{$arr.hpath}>/thumb_<{$arr.himg}>" src="__UPLOAD__<{$arr.hpath}>/thumb_<{$arr.himg}>" width="100%">
-		        </div>
-		        <div class="form-group input-group-lg">
-		             <label for="exampleInputFile"></label>
-		             <input type="file" name="himg" > 
-		        </div>                            
-		        <button type="submit" class="btn btn-info" >上 传</button>
-		     </form>
-		  </div>
+		 
 		  <div class="col-md-4">
 		  		<form action="__URL__/imga" method="post" enctype='multipart/form-data'  role="form">
 		              <input type="hidden" name="id" value="<{$arr.id}>" />  

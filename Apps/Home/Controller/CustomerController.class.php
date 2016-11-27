@@ -8,7 +8,7 @@ class CustomerController extends Controller {
         $where['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
         $where['state']="发布";
 		$m=M('customer');
-        $data=$m->where($where)->select();
+        $data=$m->where($where)->order('updateTime desc')->select();
         $this->assign('data',$data);
         $this->assign('w',$where);       
 	    $this->display();
