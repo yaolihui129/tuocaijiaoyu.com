@@ -4,7 +4,6 @@ use Think\Controller;
 class AboutController extends Controller {
    public function index(){
 
-
             $m=D('setting');
             $data=$m->find(1);
             $_SESSION['web']=$data['web'];
