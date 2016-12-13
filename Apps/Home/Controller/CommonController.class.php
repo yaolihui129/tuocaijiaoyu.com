@@ -9,11 +9,4 @@ class CommonController extends Controller{
 
         }
     }
-
-
-
-
-
-
-
 }

@@ -64,7 +64,7 @@ class AdController extends CommonController {
     
     public function pic(){
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+//         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
         $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
         $upload->savePath  = '/Ad/'; // 设置附件上传目录
@@ -79,9 +79,9 @@ class AdController extends CommonController {
             /* 实例化模型*/
             $db=D('ad');
             if ($db->save($_POST)){
-                $image = new \Think\Image();
-                $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
-                $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
+//                 $image = new \Think\Image();
+//                 $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
+//                 $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");

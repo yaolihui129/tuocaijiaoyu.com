@@ -21,7 +21,7 @@ class SettingController extends Controller {
     
     public function imgh(){
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+//         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
         $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
         $upload->savePath  = '/Setting/home/'; // 设置附件上传目录
@@ -36,9 +36,9 @@ class SettingController extends Controller {
             /* 实例化模型*/
             $db=D('setting');
             if ($db->save($_POST)){
-                $image = new \Think\Image();
-                $image->open('./Public/Upload/'.$info['himg']['savepath'].$info['himg']['savename']);               
-                $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['himg']['savepath'].'/thumb_'.$info['himg']['savename']);
+//                 $image = new \Think\Image();
+//                 $image->open('./Public/Upload/'.$info['himg']['savepath'].$info['himg']['savename']);               
+//                 $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['himg']['savepath'].'/thumb_'.$info['himg']['savename']);
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");
@@ -58,7 +58,7 @@ class SettingController extends Controller {
     public function imga(){
 
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+//         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
         $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
         $upload->savePath  = '/Setting/adress/'; // 设置附件上传目录
@@ -72,9 +72,9 @@ class SettingController extends Controller {
             /* 实例化模型*/
             $db=D('setting');
             if ($db->save($_POST)){
-                $image = new \Think\Image();
-                $image->open('./Public/Upload/'.$info['aimg']['savepath'].$info['aimg']['savename']);
-                $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['aimg']['savepath'].'/thumb_'.$info['aimg']['savename']);
+//                 $image = new \Think\Image();
+//                 $image->open('./Public/Upload/'.$info['aimg']['savepath'].$info['aimg']['savename']);
+//                 $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['aimg']['savepath'].'/thumb_'.$info['aimg']['savename']);
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");
